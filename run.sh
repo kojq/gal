@@ -13,7 +13,6 @@ sudo pacman --noconfirm -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts
 sudo pacman --noconfirm -S nvidia
 #steam
 sudo pacman --noconfirm -S lib32-nvidia-utils lib32-vulkan-radeon steam
-#miscellaneous
 #kitty pcmanfm refind booster borg bupstash restic
 sudo pacman --noconfirm -S --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
@@ -37,7 +36,6 @@ systemctl enable --now warp-svc.service
 systemctl enable --now power-profiles-daemon.service
 systemctl enable --now supergfxd.service
 yes | warp-cli register
-#warp-cli set-license 6kn2e5C8-U68eV7I2-193RsT7f
 warp-cli set-families-mode malware
 warp-cli set-mode warp
 warp-cli connect
