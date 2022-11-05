@@ -23,13 +23,13 @@ makepkg --noconfirm -si
 cd ..
 rm -rf ame
 #system tools
-paru --noconfirm -S fastfetch cloudflare-warp-bin pandoc-bin ventoy-bin linux-wifi-hotspot
+ame --noconfirm -S fastfetch cloudflare-warp-bin pandoc-bin ventoy-bin linux-wifi-hotspot
 #applications
-paru --noconfirm -S brave-bin onlyoffice-bin cemu citra-qt-bin bottles gdm-settings
+ame --noconfirm -S brave-bin onlyoffice-bin cemu citra-qt-bin bottles gdm-settings
 #fonts
-paru --noconfirm -S ttf-ms-win11-auto apple-fonts
+ame --noconfirm -S ttf-ms-win11-auto apple-fonts
 #asus tools
-paru --noconfirm -S asusctl supergfxctl
+ame --noconfirm -S asusctl supergfxctl
 #visual-studio-code-bin jetbrains-fleet librewolf-bin fprintd yuzu-mainline-bin ryujinx-git btrbk kopia-bin vorta pika-backup backintime rog-control-center ulauncher tofi kickoff/wofi/fuzzel/bemenu
 #ttf-ms-win11-auto-japanese ttf-ms-win11-auto-korean ttf-ms-win11-auto-other ttf-ms-win11-auto-sea ttf-ms-win11-auto-thai ttf-ms-win11-auto-zh_cn ttf-ms-win11-auto-zh_tw
 systemctl enable --now nftables.service
