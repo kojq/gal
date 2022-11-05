@@ -35,9 +35,9 @@ paru --noconfirm -S asusctl supergfxctl
 systemctl enable --now nftables.service
 systemctl enable --now bluetooth.service
 systemctl enable --now warp-svc.service
+systemctl enable --now libvirtd.service
 systemctl enable --now power-profiles-daemon.service
 systemctl enable --now supergfxd.service
-systemctl enable --now libvirtd.service
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
