@@ -17,19 +17,19 @@ sudo pacman --noconfirm -S lib32-nvidia-utils lib32-vulkan-radeon steam
 sudo pacman --noconfirm -S virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
 #kitty pcmanfm refind booster borg bupstash restic
 sudo pacman --noconfirm -S --needed base-devel pacman-contrib cargo
-git clone https://aur.archlinux.org/ame.git
-cd ame
+git clone https://aur.archlinux.org/paru.git
+cd paru
 makepkg --noconfirm -si
 cd ..
-rm -rf ame
+rm -rf paru
 #system tools
-ame --noconfirm -S fastfetch cloudflare-warp-bin pandoc-bin ventoy-bin linux-wifi-hotspot
+paru --noconfirm -S fastfetch cloudflare-warp-bin pandoc-bin ventoy-bin linux-wifi-hotspot
 #applications
-ame --noconfirm -S brave-bin onlyoffice-bin cemu citra-qt-bin bottles gdm-settings
+paru --noconfirm -S brave-bin onlyoffice-bin cemu citra-qt-bin bottles gdm-settings
 #fonts
-ame --noconfirm -S ttf-ms-win11-auto apple-fonts
+paru --noconfirm -S ttf-ms-win11-auto apple-fonts
 #asus tools
-ame --noconfirm -S asusctl supergfxctl
+paru --noconfirm -S asusctl supergfxctl
 #visual-studio-code-bin jetbrains-fleet librewolf-bin fprintd yuzu-mainline-bin ryujinx-git btrbk kopia-bin vorta pika-backup backintime rog-control-center ulauncher tofi kickoff/wofi/fuzzel/bemenu
 #ttf-ms-win11-auto-japanese ttf-ms-win11-auto-korean ttf-ms-win11-auto-other ttf-ms-win11-auto-sea ttf-ms-win11-auto-thai ttf-ms-win11-auto-zh_cn ttf-ms-win11-auto-zh_tw
 systemctl enable --now nftables.service
