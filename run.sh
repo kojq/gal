@@ -25,7 +25,7 @@ rm -rf paru-bin
 #system tools
 paru --noconfirm -S fastfetch cloudflare-warp-bin pandoc-bin ventoy-bin linux-wifi-hotspot
 #applications
-paru --noconfirm -S brave-bin onlyoffice cemu citra-qt-bin bottles gdm-settings
+paru --noconfirm -S brave-bin onlyoffice-bin cemu citra-qt-bin bottles gdm-settings
 #fonts
 paru --noconfirm -S ttf-ms-win11-auto apple-fonts
 #asus tools
