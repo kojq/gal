@@ -6,13 +6,15 @@ sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 #system tools
 sudo pacman --noconfirm -Syu git wget curl fzf helix imagemagick ffmpeg mpv bluez bluez-utils
 #applications
-sudo pacman --noconfirm -S lapce qbittorrent blender inkscape gimp obs-studio diffuse meld gnome-boxes desmume dolphin-emu
+sudo pacman --noconfirm -S lapce qbittorrent blender inkscape gimp obs-studio diffuse meld desmume dolphin-emu
 #fonts
 sudo pacman --noconfirm -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 #drivers
 sudo pacman --noconfirm -S nvidia
 #steam
 sudo pacman --noconfirm -S lib32-nvidia-utils lib32-vulkan-radeon steam
+#virtual machine
+sudo pacman --noconfirm -S virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
 #kitty pcmanfm refind booster borg bupstash restic
 sudo pacman --noconfirm -S --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
@@ -35,6 +37,7 @@ systemctl enable --now bluetooth.service
 systemctl enable --now warp-svc.service
 systemctl enable --now power-profiles-daemon.service
 systemctl enable --now supergfxd.service
+systemctl enable --now libvirtd.service
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
