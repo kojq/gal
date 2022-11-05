@@ -16,7 +16,7 @@ sudo pacman --noconfirm -S lib32-nvidia-utils lib32-vulkan-radeon steam
 #virtual machine
 sudo pacman --noconfirm -S virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
 #kitty pcmanfm refind booster borg bupstash restic
-sudo pacman --noconfirm -S --needed base-devel pacman-contrib cargo
+sudo pacman --noconfirm -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg --noconfirm -si
