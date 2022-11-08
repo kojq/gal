@@ -22,7 +22,7 @@ git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
 makepkg -si
 cd ..
-rm -r paru-bin
+rm -rf paru-bin
 
 #tools
 paru -S fastfetch cloudflare-warp-bin ventoy-bin #pandoc-bin linux-wifi-hotspot
