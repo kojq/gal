@@ -25,7 +25,7 @@ cd ..
 rm -r paru-bin
 
 #tools
-paru -S fastfetch-bin cloudflare-warp-bin ventoy-bin #pandoc-bin linux-wifi-hotspot
+paru -S fastfetch cloudflare-warp-bin ventoy-bin #pandoc-bin linux-wifi-hotspot
 
 #applications
 paru -S brave-bin onlyoffice-bin bottles #cemu citra-qt-bin yuzu-mainline-bin ryujinx-git visual-studio-code-bin jetbrains-fleet
