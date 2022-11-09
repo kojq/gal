@@ -9,7 +9,8 @@ sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 24/" /etc/pacman.con
 sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg mpv bluez bluez-utils fwupd
 
 #applications
-sudo pacman -S lapce qbittorrent blender inkscape gimp obs-studio #diffuse meld desmume dolphin-emu
+sudo pacman -S lapce qbittorrent blender inkscape gimp obs-studio
+#diffuse meld desmume dolphin-emu
 
 #fonts
 sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
@@ -25,10 +26,12 @@ cd ..
 rm -rf paru-bin
 
 #tools
-paru -S fastfetch cloudflare-warp-bin ventoy-bin #pandoc-bin linux-wifi-hotspot
+paru -S fastfetch cloudflare-warp-bin ventoy-bin
+#pandoc-bin linux-wifi-hotspot
 
 #applications
-paru -S brave-bin onlyoffice-bin #bottles cemu citra-qt-bin yuzu-mainline-bin ryujinx-git visual-studio-code-bin jetbrains-fleet
+paru -S brave-bin onlyoffice-bin
+#bottles cemu citra-qt-bin yuzu-mainline-bin ryujinx-git visual-studio-code-bin jetbrains-fleet
 
 #fonts
 #paru -S apple-fonts ttf-ms-win11-auto
