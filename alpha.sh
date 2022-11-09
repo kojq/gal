@@ -7,7 +7,7 @@ sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 36/" /etc/pacman.con
 sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 #system tools
-sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg mpv bluez bluez-utils
+sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg mpv bluez bluez-utils fwupd
 
 #applications
 sudo pacman -S lapce qbittorrent blender inkscape gimp obs-studio diffuse meld desmume dolphin-emu
