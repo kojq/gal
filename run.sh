@@ -37,15 +37,14 @@ paru -S brave-bin onlyoffice-bin
 #paru -S apple-fonts ttf-ms-win11-auto
 
 #asus tools
-paru -S asusctl
-#supergfxctl-git
+paru -S asusctl supergfxctl-git
 
 systemctl enable --now nftables
 systemctl enable --now bluetooth
 #systemctl enable --now libvirtd
 systemctl enable --now warp-svc
 systemctl enable --now power-profiles-daemon
-#systemctl enable --now supergfxd
+systemctl enable --now supergfxd
 
 yes | warp-cli register
 warp-cli set-families-mode malware
