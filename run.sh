@@ -3,7 +3,7 @@
 cd ~
 
 echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
-sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 30/" /etc/pacman.conf
+sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 36/" /etc/pacman.conf
 
 #tools
 sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg mpv bluez bluez-utils fwupd
