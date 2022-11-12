@@ -37,7 +37,7 @@ paru -S brave-bin onlyoffice-bin
 #paru -S apple-fonts ttf-ms-win11-auto
 
 #asus tools
-paru -S asusctl-git supergfxctl-git
+paru -S asusctl supergfxctl-git
 
 systemctl enable --now nftables
 systemctl enable --now bluetooth
