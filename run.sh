@@ -26,7 +26,7 @@ cd ..
 rm -rf paru-bin
 
 #tools
-paru -S fastfetch cloudflare-warp-bin ventoy-bin
+paru -S fastfetch-git cloudflare-warp-bin ventoy-bin
 #pandoc-bin linux-wifi-hotspot
 
 #applications
@@ -37,7 +37,7 @@ paru -S brave-bin onlyoffice-bin
 #paru -S apple-fonts ttf-ms-win11-auto
 
 #asus tools
-paru -S asusctl supergfxctl-git
+paru -S asusctl-git supergfxctl-git
 
 systemctl enable --now nftables
 systemctl enable --now bluetooth
