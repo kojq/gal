@@ -34,7 +34,7 @@ paru -S brave-bin onlyoffice-bin
 #bottles cemu citra-qt-bin yuzu-mainline-bin ryujinx-git visual-studio-code-bin jetbrains-fleet
 
 #fonts
-#paru -S apple-fonts ttf-ms-win11-auto
+paru -S apple-fonts ttf-ms-win11-auto
 
 #asus tools
 paru -S asusctl supergfxctl
