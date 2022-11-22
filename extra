@@ -11,3 +11,13 @@ paru -S visual-studio-code-bin jetbrains-fleet
 
 #virtual machine
 sudo pacman -S virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
+
+#kitty pcmanfm refind booster borg bupstash restic
+
+#visual-studio-code-bin jetbrains-fleet librewolf-bin fprintd yuzu-mainline-bin ryujinx-git btrbk kopia-bin vorta pika-backup backintime rog-control-center ulauncher tofi kickoff/wofi/fuzzel/bemenu
+#ttf-ms-win11-auto-japanese ttf-ms-win11-auto-korean ttf-ms-win11-auto-other ttf-ms-win11-auto-sea ttf-ms-win11-auto-thai ttf-ms-win11-auto-zh_cn ttf-ms-win11-auto-zh_tw
+
+#sudo pacman -S cups cups-pdf
+#systemctl enable --now cups.socket
+#set ChangeFanProfile, fn+f5 to asusctl profile -n
+#set fn+f4, fn+f6, ROG Key, and ctrl+shift+delete
