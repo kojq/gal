@@ -50,3 +50,4 @@ systemctl enable --now supergfxd
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
+paru
