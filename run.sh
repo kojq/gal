@@ -27,7 +27,7 @@ cd ..
 rm -rf paru-bin
 
 #tools
-paru -S fastfetch-git cloudflare-warp-bin ventoy-bin
+paru -S fastfetch cloudflare-warp-bin ventoy-bin
 #pandoc-bin linux-wifi-hotspot
 
 #applications
