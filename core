@@ -1,19 +1,16 @@
 #!/usr/bin/env sh
-
 cd ~
-
 echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
 sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 36/" /etc/pacman.conf
 
 #tools
 sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg mpv bluez bluez-utils fwupd
-
 #applications
 sudo pacman -S lapce qbittorrent obs-studio
-
 #fonts
 sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
+#AUR helper
 sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
@@ -23,10 +20,8 @@ rm -rf paru-bin
 
 #tools
 paru -S fastfetch cloudflare-warp-bin ventoy-bin
-
 #applications
 paru -S brave-bin onlyoffice-bin
-
 #fonts
 paru -S apple-fonts ttf-ms-win11-auto
 
@@ -35,7 +30,6 @@ paru -S asusctl supergfxctl
 
 systemctl enable --now nftables
 systemctl enable --now bluetooth
-#systemctl enable --now libvirtd
 systemctl enable --now warp-svc
 systemctl enable --now power-profiles-daemon
 systemctl enable --now supergfxd
