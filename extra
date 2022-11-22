@@ -11,6 +11,7 @@ paru -S visual-studio-code-bin jetbrains-fleet
 
 #virtual machine
 sudo pacman -S virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
+systemctl enable --now libvirtd
 
 #kitty pcmanfm refind booster borg bupstash restic
 
