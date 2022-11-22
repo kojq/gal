@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+cd ~
+
+sudo pacman -S blender inkscape gimp
+
+sudo pacman -S diffuse meld
+paru -S visual-studio-code-bin jetbrains-fleet
+
+#pandoc-bin linux-wifi-hotspot
+
+#virtual machine
+sudo pacman -S virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
