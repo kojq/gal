@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+
 cd ~
 echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
 sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 36/" /etc/pacman.conf
@@ -10,7 +11,6 @@ sudo pacman -S lapce qbittorrent obs-studio
 #fonts
 sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
-#AUR helper
 sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
