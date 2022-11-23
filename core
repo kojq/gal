@@ -28,6 +28,8 @@ paru -S apple-fonts ttf-ms-win11-auto
 #asus tools
 paru -S asusctl supergfxctl
 
+sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
 systemctl enable --now nftables
 systemctl enable --now bluetooth
 systemctl enable --now warp-svc
