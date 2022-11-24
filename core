@@ -11,6 +11,7 @@ sudo pacman -S lapce qbittorrent obs-studio
 #fonts
 sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
+flatpak install flathub com.usebottles.bottles
 sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
