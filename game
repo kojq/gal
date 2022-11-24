@@ -3,7 +3,6 @@
 cd ~
 sudo pacman -S desmume dolphin-emu
 paru -S cemu citra-qt-bin yuzu-mainline-bin ryujinx-git
-flatpak install flathub com.usebottles.bottles
 flatpak install flathub com.valvesoftware.Steam
 
 #sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
