@@ -5,17 +5,11 @@ echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | su
 sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 36/" /etc/pacman.conf
 
 #tools
-sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd mpv
+sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd mpv meld
 #applications
-#sudo pacman -S lapce qbittorrent obs-studio
+sudo pacman -S lapce qbittorrent obs-studio
 #fonts
 sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-
-#flatpak install flathub io.github.celluloid_player.Celluloid
-flatpak install flathub dev.lapce.lapce
-flatpak install flathub org.qbittorrent.qBittorrent
-flatpak install flathub com.obsproject.Studio
-flatpak install flathub com.usebottles.bottles
 
 sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
