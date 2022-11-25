@@ -1,9 +1,7 @@
 # Usage
 
-Run the following command.
-
-If you do not want a menu, in the following command, replace `start` with any other file name you desire to use from the repository.
+Before running the command below, replace `core` with any file name you desire to use from the repository.
 
 ```
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/start)
+sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
