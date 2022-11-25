@@ -5,9 +5,9 @@ echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | su
 sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 36/" /etc/pacman.conf
 
 #fonts
-sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+sudo pacman -Syu noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 #tools
-sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd meld mpv
+sudo pacman -S git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd meld mpv
 #applications
 sudo pacman -S lapce qbittorrent obs-studio libreoffice-fresh hunspell-en_us
 
