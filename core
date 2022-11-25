@@ -21,7 +21,7 @@ rm -rf paru-bin
 #tools
 paru -S fastfetch cloudflare-warp-bin ventoy-bin
 #applications
-paru -S brave-bin onlyoffice-bin
+paru -S brave-bin libreoffice-fresh
 #fonts
 paru -S apple-fonts ttf-ms-win11-auto
 
