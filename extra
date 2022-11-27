@@ -7,13 +7,10 @@ sudo pacman -S blender inkscape gimp
 paru -S visual-studio-code-bin jetbrains-fleet
 #virtual machine
 sudo pacman -S virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
-#printer
-sudo pacman -S cups cups-pdf
 #misc
 sudo pacman -S pandoc-bin linux-wifi-hotspot
 
 systemctl enable --now libvirtd
-systemctl enable --now cups.socket
 
 #kitty pcmanfm refind booster borg bupstash restic
 #librewolf-bin fprintd btrbk kopia-bin vorta pika-backup backintime rog-control-center ulauncher tofi kickoff/wofi/fuzzel/bemenu
