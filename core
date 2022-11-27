@@ -31,7 +31,6 @@ sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 systemctl enable --now nftables
 systemctl enable --now bluetooth
 systemctl enable --now warp-svc
-
 systemctl enable --now cups.socket
 
 systemctl enable --now power-profiles-daemon
