@@ -7,7 +7,7 @@ sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 36/" /etc/pacman.con
 #fonts
 sudo pacman -Syu noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 #tools
-sudo pacman -S git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd meld mpv
+sudo pacman -S git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd mpv meld cups cups-pdf
 #applications
 sudo pacman -S lapce qbittorrent obs-studio libreoffice-fresh hunspell-en_us
 
@@ -31,6 +31,8 @@ sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 systemctl enable --now nftables
 systemctl enable --now bluetooth
 systemctl enable --now warp-svc
+
+systemctl enable --now cups.socket
 
 systemctl enable --now power-profiles-daemon
 systemctl enable --now supergfxd
