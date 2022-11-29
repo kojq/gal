@@ -1,3 +1,11 @@
+# Usage
+
+Before running the command below, optionally replace `core` with a selected file name from the repository.
+
+```
+sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
+```
+
 # Activity
 
 Current Status: **Active Maintenance Mode**
@@ -17,14 +25,6 @@ The project will be archived if development has concluded.
 If activity is not seen in this repository after `40 days`, the project has gone on hiatus.
 
 If activity is not seen in this repository after `60 days`, the project has likely concluded.
-
-# Usage
-
-Before running the command below, optionally replace `core` with a selected file name from the repository.
-
-```
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
-```
 
 # TODO
 
