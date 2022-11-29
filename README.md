@@ -5,3 +5,9 @@ Before running the command below, replace `core` with the selected file name fro
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
+
+# TODO
+
+- IME
+
+- Hotspot
