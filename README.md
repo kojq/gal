@@ -42,8 +42,10 @@ Configure Arch Linux post-installation for basic desktop usage.
 - Enables various features
 
 # Limitations
+
 - The premise will remain exactly as in the `About` section
 - Sensible suggestions to change the premise are welcome if assistance will be provided
 
 # Contribution
+
 Any contribution is welcome as long as it does not violate `Limitations`.
