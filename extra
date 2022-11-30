@@ -2,14 +2,14 @@
 
 cd ~
 #graphics
-sudo pacman -S blender inkscape gimp
+sudo pacman -Syu blender inkscape gimp
 #coding
-paru -S visual-studio-code-bin jetbrains-fleet
+paru -Syu visual-studio-code-bin jetbrains-fleet
 #misc
-sudo pacman -S pandoc-bin linux-wifi-hotspot
+sudo pacman -Syu pandoc-bin linux-wifi-hotspot
 
 #virtual machine
-sudo pacman -S virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
+sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
 systemctl enable --now libvirtd
 
 #kitty pcmanfm refind booster borg bupstash restic
