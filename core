@@ -7,11 +7,11 @@ sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 36/" /etc/pacman.con
 #fonts
 sudo pacman -Syu noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 #tools
-sudo pacman -S git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd mpv meld cups cups-pdf
+sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd mpv meld cups cups-pdf
 #applications
-sudo pacman -S lapce qbittorrent obs-studio libreoffice-fresh hunspell-en_us
+sudo pacman -Syu lapce qbittorrent obs-studio libreoffice-fresh hunspell-en_us
 
-sudo pacman -S --needed base-devel
+sudo pacman -Syu --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
 makepkg -si
@@ -19,12 +19,12 @@ cd ..
 rm -rf paru-bin
 
 #fonts
-paru -S apple-fonts ttf-ms-win11-auto
+paru -Syu apple-fonts ttf-ms-win11-auto
 #tools
-paru -S fastfetch cloudflare-warp-bin ventoy-bin brave-bin
+paru -Syu fastfetch cloudflare-warp-bin ventoy-bin brave-bin
 
 #asus tools
-paru -S asusctl supergfxctl
+paru -Syu asusctl supergfxctl
 
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 
