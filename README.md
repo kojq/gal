@@ -20,7 +20,7 @@ Possible Statuses:
 - Very Passive Maintenance Mode (issues and pull requests may be considered)
 - Archived
 
-The project will be archived if development has concluded.
+The project should be archived if development has concluded.
 
 If activity is not seen in this repository after `40 days`, the project has gone on hiatus.
 
