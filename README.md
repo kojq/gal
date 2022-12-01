@@ -36,6 +36,11 @@ If activity is not seen in this repository after `60 days`, the project has like
 
 Configure Arch Linux post-installation for basic desktop usage.
 
+# Warnings
+
+- Packages are never ensured to install properly, so be sure to read output
+- Certain lines of code are unique to certain hardware, so those should changed accordingly
+
 # Features
 
 - Installs fonts, tools, and applications via pacman or paru
