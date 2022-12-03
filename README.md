@@ -1,6 +1,6 @@
 # Usage
 
-Before running the command below, optionally replace `core` with a selected file name from the repository.
+Before running the command below, optionally replace `core` with a file name selected from the repository.
 
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
@@ -38,8 +38,8 @@ Configure Arch Linux post-installation for basic desktop usage.
 
 # Warnings
 
-- Packages are never ensured to install properly, so be sure to read output
-- Certain lines of code are unique to certain hardware, so those should be changed accordingly
+- Packages are not ensured to install properly, so be sure to read output
+- Certain lines of code are unique to certain hardware, so be sure to change those accordingly
 
 # Features
 
