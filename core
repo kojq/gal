@@ -24,12 +24,12 @@ paru -Syu apple-fonts ttf-ms-win11-auto
 paru -Syu fastfetch cloudflare-warp-bin ventoy-bin brave-bin
 
 # asus tools
-paru -Syu asusctl supergfxctl
+# paru -Syu asusctl supergfxctl
 # enable GNOME Wayland on NVIDIA GPU
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 # enable asus tools
-systemctl enable --now power-profiles-daemon
-systemctl enable --now supergfxd
+# systemctl enable --now power-profiles-daemon
+# systemctl enable --now supergfxd
 
 systemctl enable --now nftables
 systemctl enable --now bluetooth
