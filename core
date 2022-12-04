@@ -9,7 +9,7 @@ sudo pacman -Syu noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 # tools
 sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd mpv meld cups cups-pdf
 # applications
-sudo pacman -Syu lapce qbittorrent obs-studio libreoffice-fresh hunspell-en_us
+sudo pacman -Syu qbittorrent libreoffice-fresh hunspell-en_us # lapce obs-studio
 
 sudo pacman -Syu --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
