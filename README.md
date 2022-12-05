@@ -14,7 +14,7 @@ Status Reason: There are little to no structural changes; changes primarily cons
 
 Possible Statuses:
 
-- Active Developement
+- Active Development
 - Active Maintenance Mode (project is considered complete but undergoing minor changes)
 - Passive Maintenance Mode (issues and pull requests only)
 - Very Passive Maintenance Mode (issues and pull requests may be considered)
