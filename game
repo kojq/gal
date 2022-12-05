@@ -1,8 +1,0 @@
-#!/usr/bin/env sh
-
-cd ~
-sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam desmume dolphin-emu
-paru -Syu cemu citra-qt-bin yuzu-mainline-bin ryujinx-git
-# flatpak install flathub com.valvesoftware.Steam
-# flatpak install flathub com.usebottles.bottles
