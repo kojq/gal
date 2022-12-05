@@ -8,6 +8,13 @@ sudo pacman -Syu pandoc-bin linux-wifi-hotspot
 # coding
 paru -Syu visual-studio-code-bin jetbrains-fleet
 
+# games
+sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam desmume dolphin-emu
+paru -Syu cemu citra-qt-bin yuzu-mainline-bin ryujinx-git
+# flatpak install flathub com.valvesoftware.Steam
+flatpak install flathub com.usebottles.bottles
+
 # virtual machine
 sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
 systemctl enable --now libvirtd
