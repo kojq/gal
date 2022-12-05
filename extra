@@ -13,7 +13,7 @@ paru -Syu cemu citra-qt-bin yuzu-mainline-bin ryujinx-git
 flatpak install flathub com.usebottles.bottles
 # virtual machine
 sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
-systemctl enable --now libvirtd
+sudo systemctl enable --now libvirtd
 
 # misc
 sudo pacman -Syu pandoc-bin linux-wifi-hotspot
