@@ -5,13 +5,13 @@ echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | su
 sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 36/" /etc/pacman.conf
 
 # fonts
-sudo pacman -Syu noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+sudo pacman -Syu --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 # tools
-sudo pacman -Syu git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd mpv meld cups cups-pdf
+sudo pacman -Syu --noconfirm git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd mpv meld cups cups-pdf
 # applications
-sudo pacman -Syu qbittorrent libreoffice-fresh hunspell-en_us lapce obs-studio
+sudo pacman -Syu --noconfirm qbittorrent libreoffice-fresh hunspell-en_us lapce obs-studio
 
-sudo pacman -Syu --needed base-devel
+sudo pacman -Syu --noconfirm --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
 makepkg -si
@@ -19,14 +19,14 @@ cd ..
 rm -rf paru-bin
 
 # fonts
-paru -Syu apple-fonts ttf-ms-win11-auto
+paru -Syu --noconfirm apple-fonts ttf-ms-win11-auto
 # tools
-paru -Syu fastfetch cloudflare-warp-bin ventoy-bin brave-bin
+paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin brave-bin
 
 # enable GNOME Wayland on NVIDIA GPU
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 # asus tools
-paru -Syu asusctl supergfxctl
+paru -Syu --noconfirm asusctl supergfxctl
 sudo systemctl enable --now power-profiles-daemon
 sudo systemctl enable --now supergfxd
 
