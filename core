@@ -10,9 +10,9 @@ sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 # fonts
 sudo pacman -Syu --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 # tools
-sudo pacman -Syu --noconfirm git wget curl fzf helix imagemagick ffmpeg bluez bluez-utils fwupd mpv meld cups cups-pdf
+sudo pacman -Syu --noconfirm bluez bluez-utils cups cups-pdf git wget curl fzf helix imagemagick ffmpeg fwupd mpv meld
 # applications
-sudo pacman -Syu --noconfirm qbittorrent libreoffice-fresh hunspell-en_us lapce obs-studio
+sudo pacman -Syu --noconfirm hunspell-en_us libreoffice-fresh lapce qbittorrent obs-studio
 
 sudo pacman -Syu --noconfirm --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
@@ -27,7 +27,7 @@ paru -Syu --noconfirm apple-fonts ttf-ms-win11-auto
 paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin brave-bin
 
 # asus tools
-paru -Syu --noconfirm asusctl supergfxctl
+paru -Syu --noconfirm supergfxctl asusctl
 
 sudo systemctl enable --now power-profiles-daemon
 sudo systemctl enable --now supergfxd
@@ -40,4 +40,5 @@ sudo systemctl enable --now cups.socket
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
+
 paru
