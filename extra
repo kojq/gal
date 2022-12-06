@@ -1,19 +1,21 @@
 #!/usr/bin/env sh
 
 cd ~
+# games
+flatpak install flathub com.usebottles.bottles
+# flatpak install flathub com.valvesoftware.Steam
+sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam desmume dolphin-emu
+paru -Syu cemu citra-qt-bin yuzu-mainline-bin ryujinx-git
+
+# virtual machine
+sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
+sudo systemctl enable --now libvirtd
+
 # graphics
 sudo pacman -Syu blender inkscape gimp
 # coding
 paru -Syu visual-studio-code-bin jetbrains-fleet
-# games
-sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam desmume dolphin-emu
-paru -Syu cemu citra-qt-bin yuzu-mainline-bin ryujinx-git
-# flatpak install flathub com.valvesoftware.Steam
-flatpak install flathub com.usebottles.bottles
-# virtual machine
-sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
-sudo systemctl enable --now libvirtd
 
 # misc
 sudo pacman -Syu pandoc-bin linux-wifi-hotspot
