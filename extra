@@ -18,6 +18,10 @@ sudo systemctl enable --now libvirtd
 # misc
 sudo pacman -Syu pandoc-bin linux-wifi-hotspot
 
+# hotspot
+# echo -e '[main]\ndns=dnsmasq' | sudo tee /etc/NetworkManager/conf.d/dns.conf
+# sudo nmcli general reload
+
 # kitty pcmanfm refind booster borg bupstash restic
 # librewolf-bin fprintd btrbk kopia-bin vorta pika-backup backintime rog-control-center ulauncher tofi kickoff/wofi/fuzzel/bemenu
 
