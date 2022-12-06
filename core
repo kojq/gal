@@ -27,7 +27,6 @@ paru -Syu fastfetch cloudflare-warp-bin ventoy-bin brave-bin
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 # asus tools
 paru -Syu asusctl supergfxctl
-# enable asus tools
 sudo systemctl enable --now power-profiles-daemon
 sudo systemctl enable --now supergfxd
 
