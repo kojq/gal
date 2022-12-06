@@ -23,8 +23,6 @@ paru -Syu apple-fonts ttf-ms-win11-auto
 # tools
 paru -Syu fastfetch cloudflare-warp-bin ventoy-bin brave-bin
 
-# echo -e '[main]\ndns=dnsmasq' | sudo tee /etc/NetworkManager/conf.d/dns.conf
-# sudo nmcli general reload
 # enable GNOME Wayland on NVIDIA GPU
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 # asus tools
