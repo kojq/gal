@@ -53,4 +53,4 @@ Configure Arch Linux post-installation for basic desktop usage.
 
 # Contribution
 
-Disrespect is not tolerated and a contribution is welcome as long as it does not violate `Limitations`.
+Disrespect is not tolerated. A contribution is welcome as long as it does not violate `Limitations`.
