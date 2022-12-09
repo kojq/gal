@@ -6,7 +6,7 @@ flatpak install flathub com.usebottles.bottles
 # flatpak install flathub com.valvesoftware.Steam
 sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam desmume dolphin-emu
-paru -Syu cemu citra-qt-bin yuzu-mainline-bin ryujinx-git
+paru -Syu citra-qt-bin yuzu-mainline-bin ryujinx-bin # cemu cemu-bin
 
 # virtual machine
 sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
