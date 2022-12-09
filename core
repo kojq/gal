@@ -3,16 +3,8 @@
 cd ~
 echo "SUBSYSTEM=='block', ENV{ID_FS_TYPE}=='ntfs', ENV{ID_FS_TYPE}='ntfs3'" | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
 sudo sed -i 's/^#ParallelDownloads = 5$/ParallelDownloads = 36/' /etc/pacman.conf
-
 # enable GNOME Wayland on NVIDIA GPU
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
-
-# fonts
-sudo pacman -Syu --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-# tools
-sudo pacman -Syu --noconfirm bluez bluez-utils cups cups-pdf curl ffmpeg fwupd fzf git helix imagemagick meld mpv wget
-# applications
-sudo pacman -Syu --noconfirm hunspell-en_us lapce libreoffice-fresh obs-studio qbittorrent
 
 sudo pacman -Syu --noconfirm --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
@@ -22,21 +14,19 @@ cd ..
 rm -rf paru-bin
 
 # fonts
+sudo pacman -Syu --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 paru -Syu --noconfirm apple-fonts ttf-ms-win11-auto
 # tools
-paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin brave-bin
-
-# asus tools
-paru -Syu --noconfirm supergfxctl asusctl
-
-sudo systemctl enable --now power-profiles-daemon
-sudo systemctl enable --now supergfxd
-
-sudo systemctl enable --now nftables
-sudo systemctl enable --now bluetooth
-sudo systemctl enable --now warp-svc
-sudo systemctl enable --now cups.socket
-
+sudo pacman -Syu --noconfirm bluez bluez-utils cups cups-pdf curl ffmpeg fwupd fzf git helix imagemagick meld wget
+paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin gnome-shell-extension-blur-my-shell
+# enable services
+sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
+
+flatpak install flathub io.github.realmazharhussain.GdmSettings io.github.celluloid_player.Celluloid com.usebottles.bottles com.brave.Browser com.obsproject.Studio org.libreoffice.LibreOffice org.qbittorrent.qBittorrent
+
+# asus tools
+paru -Syu --noconfirm supergfxctl asusctl
+sudo systemctl enable --now power-profiles-daemon supergfxd
