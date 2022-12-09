@@ -1,24 +1,23 @@
 #!/usr/bin/env sh
 
 cd ~
-# games
-flatpak install flathub com.usebottles.bottles
-# flatpak install flathub com.valvesoftware.Steam
+# installs Steam with NVIDIA and AMD utils
 sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam desmume dolphin-emu
-paru -Syu citra-qt-bin yuzu-mainline-bin ryujinx-bin # cemu cemu-bin
+sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam
+
+# games
+sudo pacman -Syu desmume
+paru -Syu cemu cemu-bin
 
 # virtual machine
 sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
 sudo systemctl enable --now libvirtd
 
-# graphics
-sudo pacman -Syu blender inkscape gimp
 # coding
 paru -Syu visual-studio-code-bin jetbrains-fleet
 
 # misc
-sudo pacman -Syu pandoc-bin linux-wifi-hotspot
+sudo pacman -Syu pandoc-bin
 
 # hotspot
 # echo -e '[main]\ndns=dnsmasq' | sudo tee /etc/NetworkManager/conf.d/dns.conf
