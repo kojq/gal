@@ -25,7 +25,15 @@ yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
 
-flatpak install flathub io.github.realmazharhussain.GdmSettings io.github.celluloid_player.Celluloid com.usebottles.bottles com.brave.Browser com.obsproject.Studio org.libreoffice.LibreOffice org.qbittorrent.qBittorrent
+# tools
+flatpak install flathub io.github.realmazharhussain.GdmSettings io.github.celluloid_player.Celluloid
+# applications
+flatpak install flathub com.brave.Browser com.obsproject.Studio org.libreoffice.LibreOffice org.qbittorrent.qBittorrent
+# games
+# NOTE: cemu and desmume are not included as they have no and outdated Flatpaks, respectively
+flatpak install flathub com.usebottles.bottles com.valvesoftware.Steam org.ryujinx.Ryujinx flathub org.yuzu_emu.yuzu org.DolphinEmu.dolphin-emu org.citra_emu.citra
+# graphics
+flatpak install flathub org.blender.Blender org.gimp.GIMP org.inkscape.Inkscape
 
 # asus tools
 paru -Syu --noconfirm supergfxctl asusctl
