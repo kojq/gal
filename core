@@ -28,7 +28,7 @@ warp-cli set-mode warp
 # tools
 flatpak install flathub io.github.realmazharhussain.GdmSettings io.github.celluloid_player.Celluloid com.github.rafostar.Clapper com.obsproject.Studio
 # applications
-flatpak install flathub com.usebottles.bottles com.brave.Browser org.libreoffice.LibreOffice org.qbittorrent.qBittorrent dev.lapce.lapce
+flatpak install flathub io.gitlab.librewolf-community com.brave.Browser com.usebottles.bottles org.libreoffice.LibreOffice org.qbittorrent.qBittorrent dev.lapce.lapce
 # games
 # NOTE: cemu and desmume are not included as they have no and outdated Flatpaks, respectively
 flatpak install flathub com.valvesoftware.Steam org.ryujinx.Ryujinx flathub org.yuzu_emu.yuzu org.DolphinEmu.dolphin-emu org.citra_emu.citra
