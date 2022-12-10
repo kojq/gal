@@ -26,7 +26,7 @@ warp-cli set-families-mode malware
 warp-cli set-mode warp
 
 # tools
-flatpak install flathub io.github.realmazharhussain.GdmSettings io.github.celluloid_player.Celluloid com.obsproject.Studio
+flatpak install flathub io.github.realmazharhussain.GdmSettings io.github.celluloid_player.Celluloid com.github.rafostar.Clapper com.obsproject.Studio
 # applications
 flatpak install flathub com.usebottles.bottles com.brave.Browser org.libreoffice.LibreOffice org.qbittorrent.qBittorrent dev.lapce.lapce
 # games
