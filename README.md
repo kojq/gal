@@ -1,7 +1,10 @@
 # Usage
 
-Before running the command below, optionally replace `core` with a file name selected from the repository.
+Run either of the commands seen below.
 
+```
+curl https://raw.githubusercontent.com/kojq/run/main/core | sh
+```
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
