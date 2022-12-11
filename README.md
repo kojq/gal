@@ -1,6 +1,6 @@
 # Usage
 
-Run either of the commands seen below.
+Run either of the below commands.
 
 ```
 curl https://raw.githubusercontent.com/kojq/run/main/core | sh
