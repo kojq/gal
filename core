@@ -18,7 +18,7 @@ sudo pacman -Syu --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fon
 paru -Syu --noconfirm apple-fonts ttf-ms-win11-auto
 # tools
 sudo pacman -Syu --noconfirm bluez bluez-utils cups cups-pdf curl ffmpeg fwupd fzf git helix imagemagick meld wget
-paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin gnome-shell-extension-blur-my-shell
+paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin gnome-shell-extension-blur-my-shell game-devices-udev
 # enable services
 sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
 yes | warp-cli register
