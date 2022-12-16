@@ -33,7 +33,7 @@ If activity is not seen in this repository after `60 days`, the project has like
 
 - Add configuration for these
   - IME (too complex as I cannot find optimal package and configuration requirements)
-  - Hotspot (seems to be a GNOME bug with unwieldy workarounds)
+  - Hotspot (seems to be a bug with unwieldy workarounds)
 - Reconsiderations
   - Consider an immutable distribution such as openSUSE MicroOS
   - Change source procedure for system tools such as for acquiring fonts
