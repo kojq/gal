@@ -15,6 +15,7 @@ sudo transactional-update -n -c pkg in console git fzf helix ImageMagick ffmpeg 
 # asus tools
 zypper ar -p 50 -f https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/ asus-linux
 sudo transactional-update -n -c pkg in asusctl supergfxctl
+sudo systemctl enable --now power-profiles-daemon supergfxd
 
 # below is WIP
 # noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra apple-fonts ttf-ms-win11-auto
