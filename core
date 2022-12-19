@@ -14,6 +14,7 @@ flatpak install flathub -y com.usebottles.bottles com.valvesoftware.Steam org.ry
 # graphics
 flatpak install flathub -y org.blender.Blender org.gimp.GIMP org.inkscape.Inkscape
 
+echo
 PS3="Enter a number: "
 select distro in Arch MicroOS
 do
