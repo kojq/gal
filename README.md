@@ -35,9 +35,9 @@ If activity is not seen in this repository after `60 days`, the project has like
   - IME (is too complex as I cannot find optimal package and configuration requirements)
   - Hotspot (seems to have a bug and workarounds are unwieldy)
 - openSUSE MicroOS issues
-  - Ensure btrfs compression, zram, and NVIDIA driver issues
+  - Ensure btrfs compression, zram, and graphics drivers function
   - Procure system tools such as for acquiring fonts
-  - Flatpaks alternatives as there may be a lack of upstream support or updates
+  - Use Flatpak alternatives, as certain Flatpaks lack updates or upstream support
 
 # About
 
@@ -50,8 +50,10 @@ Configure Linux post-installation for basic desktop usage. Currently, only Arch 
 
 # Features
 
-- Installs fonts, tools, and applications via pacman and paru
-- Enables various features
+- Installs basic applications via Flatpak
+- Installs fonts, tools, and applications via the package manager
+- Enables ability to mount and unmount NTFS drives via the file manager
+- Enables core functions such as those found in DE settings
 
 # Limitations
 
