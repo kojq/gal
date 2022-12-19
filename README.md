@@ -31,16 +31,13 @@ If activity is not seen in this repository after `60 days`, the project has like
 
 # TODO
 
-- Add configuration for these
-  - IME (too complex as I cannot find optimal package and configuration requirements)
-  - Hotspot (seems to be a bug with unwieldy workarounds)
-- Reconsiderations
-  - Consider an immutable distribution such as openSUSE MicroOS
-  - Change source procedure for system tools such as for acquiring fonts
-- Cons of Reconsiderations
-  - Rework tooling and adjust to different package management
-  - Check for btrfs compression, zram, and NVIDIA driver issues
-  - Some Flatpaks are too slow in releasing updates and some Flatpaks may not have upstream support
+- General configuration issues
+  - IME (is too complex as I cannot find optimal package and configuration requirements)
+  - Hotspot (seems to have a bug and workarounds are unwieldy)
+- openSUSE MicroOS issues
+  - Ensure btrfs compression, zram, and NVIDIA driver issues
+  - Procure system tools such as for acquiring fonts
+  - Flatpaks alternatives as there may be a lack of upstream support or updates
 
 # About
 
