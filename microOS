@@ -1,37 +1,22 @@
 #!/usr/bin/env sh
-
 cd ~
-echo "SUBSYSTEM=='block', ENV{ID_FS_TYPE}=='ntfs', ENV{ID_FS_TYPE}='ntfs3'" | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
-alias ri = 'sudo transactional-update -c pkg in'
 
-# do I need to enable GNOME Wayland on NVIDIA GPU after installing drivers? I'll see later.
-sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+alias r = 'sudo transactional-update -c pkg'
+alias ri = 'r in'
+alias ru = 'r rm'
+
+# console can replace terminal
+ru gnome-terminal
 
 # tools
-ri console
+ri console git
 
-# below chunk is WIP
-# fonts
-sudo pacman -Syu --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-paru -Syu --noconfirm apple-fonts ttf-ms-win11-auto
-# tools
-sudo pacman -Syu --noconfirm bluez bluez-utils cups cups-pdf curl ffmpeg fwupd fzf git helix imagemagick wget
-paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin gnome-shell-extension-blur-my-shell game-devices-udev
-# enable services
-sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
-yes | warp-cli register
-warp-cli set-families-mode malware
-warp-cli set-mode warp
-# asus tools
-paru -Syu --noconfirm supergfxctl
-
-# openSUSE MicroOS has a good default for GDM, so we don't need io.github.realmazharhussain.GdmSettings
-# tools
-yes | flatpak install flathub io.github.celluloid_player.Celluloid com.github.rafostar.Clapper com.obsproject.Studio
-# applications
-yes | flatpak install flathub io.gitlab.librewolf-community com.brave.Browser org.libreoffice.LibreOffice org.qbittorrent.qBittorrent dev.lapce.lapce
-# games
-# NOTE: cemu and desmume are not included as they have no and outdated Flatpaks, respectively
-yes | flatpak install flathub com.usebottles.bottles com.valvesoftware.Steam org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.DolphinEmu.dolphin-emu org.citra_emu.citra
-# graphics
-yes | flatpak install flathub org.blender.Blender org.gimp.GIMP org.inkscape.Inkscape
+# below is WIP
+# noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra apple-fonts ttf-ms-win11-auto
+# cups cups-pdf ffmpeg fwupd fzf helix imagemagick wget
+# fastfetch cloudflare-warp-bin ventoy-bin game-devices-udev
+# sudo systemctl enable --now nftables warp-svc
+# yes | warp-cli register
+# warp-cli set-families-mode malware
+# warp-cli set-mode warp
+# supergfxctl asusctl
