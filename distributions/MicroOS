@@ -6,20 +6,19 @@ sudo transactional-update -n -c pkg rm gnome-terminal
 
 # drivers
 # sudo sed -i 's/^multiversion =$/multiversion = provides:multiversion(kernel)/' /etc/zypp/zypp.conf
-zypper ar -f https://download.nvidia.com/opensuse/tumbleweed NVIDIA
+sudo zypper ar -f https://download.nvidia.com/opensuse/tumbleweed NVIDIA
 sudo transactional-update -n -c pkg in xf86-video-amdgpu kernel-firmware x11-video-nvidiaG06 nvidia-glG06
 
 # tools
 sudo transactional-update -n -c pkg in console git fzf helix ImageMagick ffmpeg steam-devices
 
 # asus tools
-zypper ar -f https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/ asus-linux
+sudo zypper ar -f https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/ asus-linux
 sudo transactional-update -n -c pkg in asusctl supergfxctl
 sudo systemctl enable --now power-profiles-daemon supergfxd
 
-# below is WIP
+# below is a WIP
 # noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra apple-fonts ttf-ms-win11-auto
-# cups cups-pdf fwupd
 # fastfetch cloudflare-warp-bin ventoy-bin
 # sudo systemctl enable --now nftables warp-svc
 # yes | warp-cli register
