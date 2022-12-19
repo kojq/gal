@@ -44,7 +44,7 @@ If activity is not seen in this repository after `60 days`, the project has like
 
 # About
 
-Configure Arch Linux post-installation for basic desktop usage.
+Configure Linux post-installation for basic desktop usage. Currently, only Arch Linux and openSUSE MicroOS are supported.
 
 # Warnings
 
