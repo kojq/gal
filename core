@@ -19,5 +19,5 @@ select distro in Arch MicroOS
 do
     echo "$distro was chosen."
     curl https://raw.githubusercontent.com/kojq/run/main/distributions/$distro | sh
+    break
 done
-break
