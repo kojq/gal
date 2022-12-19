@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+cd ~
+
+alias r = 'sudo transactional-update -c pkg'
+alias ri = 'r in'
+alias ru = 'r rm'
+
+# console can replace terminal
+ru gnome-terminal
+
+# tools
+ri console git
+
+# below is WIP
+# noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra apple-fonts ttf-ms-win11-auto
+# cups cups-pdf ffmpeg fwupd fzf helix imagemagick wget
+# fastfetch cloudflare-warp-bin ventoy-bin game-devices-udev
+# sudo systemctl enable --now nftables warp-svc
+# yes | warp-cli register
+# warp-cli set-families-mode malware
+# warp-cli set-mode warp
+# supergfxctl asusctl
