@@ -16,4 +16,4 @@ ri com.usebottles.bottles com.valvesoftware.Steam org.ryujinx.Ryujinx org.yuzu_e
 # graphics
 ri org.blender.Blender org.gimp.GIMP org.inkscape.Inkscape
 
-curl https://raw.githubusercontent.com/kojq/run/main/MicroOS | sh
+curl https://raw.githubusercontent.com/kojq/run/main/distributions/MicroOS | sh
