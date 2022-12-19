@@ -20,3 +20,4 @@ do
     echo "$distro was chosen."
     curl https://raw.githubusercontent.com/kojq/run/main/distributions/$distro | sh
 done
+break
