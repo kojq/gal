@@ -5,12 +5,12 @@ cd ~
 sudo transactional-update -n -c pkg rm gnome-terminal
 
 # tools
-sudo transactional-update -n -c pkg in console git fzf helix ImageMagick ffmpeg
+sudo transactional-update -n -c pkg in console git fzf helix ImageMagick ffmpeg steam-devices
 
 # below is WIP
 # noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra apple-fonts ttf-ms-win11-auto
 # cups cups-pdf fwupd
-# fastfetch cloudflare-warp-bin ventoy-bin game-devices-udev
+# fastfetch cloudflare-warp-bin ventoy-bin
 # sudo systemctl enable --now nftables warp-svc
 # yes | warp-cli register
 # warp-cli set-families-mode malware
