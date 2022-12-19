@@ -4,6 +4,9 @@ cd ~
 # console can replace terminal
 sudo transactional-update -n -c pkg rm gnome-terminal
 
+# drivers
+sudo transactional-update -n -c pkg in xf86-video-amdgpu kernel-firmware x11-video-nvidiaG06 nvidia-glG06
+
 # tools
 sudo transactional-update -n -c pkg in console git fzf helix ImageMagick ffmpeg steam-devices
 
