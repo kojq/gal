@@ -18,6 +18,6 @@ PS3="Enter a number: "
 select distro in Arch MicroOS
 do
     echo "$distro was chosen."
-    curl https://raw.githubusercontent.com/kojq/run/main/distributions/$distro | sh
+    sh <(curl https://raw.githubusercontent.com/kojq/run/main/distributions/$distro)
     break
 done
