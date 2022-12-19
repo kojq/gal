@@ -2,10 +2,10 @@
 cd ~
 
 # console can replace terminal
-sudo transactional-update -c pkg rm gnome-terminal
+sudo transactional-update -n -c pkg rm gnome-terminal
 
 # tools
-sudo transactional-update -c pkg in console git fzf helix ImageMagick ffmpeg
+sudo transactional-update -n -c pkg in console git fzf helix ImageMagick ffmpeg
 
 # below is WIP
 # noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra apple-fonts ttf-ms-win11-auto
