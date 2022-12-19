@@ -1,10 +1,7 @@
 # Usage
 
-Run either of the below commands.
+Run below command.
 
-```
-curl https://raw.githubusercontent.com/kojq/run/main/core | sh
-```
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
