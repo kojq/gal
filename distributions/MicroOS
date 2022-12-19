@@ -5,6 +5,7 @@ cd ~
 sudo transactional-update -n -c pkg rm gnome-terminal
 
 # drivers
+sudo sed -i 's/^multiversion =$/multiversion = provides:multiversion(kernel)/' /etc/zypp/zypp.conf
 sudo transactional-update -n -c pkg in xf86-video-amdgpu kernel-firmware x11-video-nvidiaG06 nvidia-glG06
 
 # tools
