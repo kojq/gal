@@ -33,3 +33,27 @@ warp-cli set-mode warp
 # asus tools
 paru -Syu --noconfirm supergfxctl asusctl
 sudo systemctl enable --now power-profiles-daemon supergfxd
+
+# installs Steam with NVIDIA and AMD utils
+# sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+# sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam
+
+# games
+# sudo pacman -Syu desmume
+# paru -Syu cemu cemu-bin
+
+# virtual machine
+# sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
+# sudo systemctl enable --now libvirtd
+
+# coding
+# paru -Syu jetbrains-fleet
+
+# misc
+# sudo pacman -Syu pandoc-bin
+
+# kitty pcmanfm refind booster borg bupstash restic
+# fprintd btrbk kopia-bin vorta pika-backup backintime rog-control-center ulauncher tofi kickoff/wofi/fuzzel/bemenu
+
+# set ChangeFanProfile, fn+f5 to asusctl profile -n
+# set fn+f4, fn+f6, ROG Key, and ctrl+shift+delete
