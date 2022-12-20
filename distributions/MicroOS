@@ -13,7 +13,7 @@ sudo transactional-update -n -c pkg in xf86-video-amdgpu kernel-firmware x11-vid
 sudo transactional-update -n -c pkg in console git fzf helix ImageMagick ffmpeg steam-devices
 # sudo transactional-update -n -c pkg in libvirt qemu virt-manager libvirt-daemon-driver-qemu qemu-kvm
 # sudo systemctl enable --now libvirtd
-# from Arch: libvirt qemu-desktop virt-manager edk2-ovmf dnsmasq iptables-nft
+# from Arch: edk2-ovmf dnsmasq iptables-nft
 
 # asus tools
 sudo zypper ar -f https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/ asus-linux
