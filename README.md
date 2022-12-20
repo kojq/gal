@@ -35,7 +35,7 @@ If activity is not seen in this repository after `60 days`, the project has like
   - Ensure btrfs compression, zram, and graphics drivers function
   - Procure system tools such as for acquiring fonts
   - Use Flatpak alternatives, as certain Flatpaks lack updates or upstream support
-  - https://github.com/openSUSE/zypper/issues/104
+  - openSUSE/zypper/issues/104
 
 # About
 
