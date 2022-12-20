@@ -67,9 +67,9 @@ Configure Linux post-installation for basic desktop usage. Currently, only Arch 
 
 # Limitations
 
-- The premise will remain exactly as described in the `About` section
+- The premise will remain exactly as described in the [About](#about) section
 - Sensible suggestions to change the premise are welcome if assistance will be provided
 
 # Contribution
 
-Disrespect is not tolerated. A contribution is welcome as long as it does not violate `Limitations`.
+Disrespect is not tolerated. A contribution is welcome as long as it does not violate [Limitations](#limitations).
