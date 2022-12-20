@@ -32,11 +32,13 @@ Possible Status:
 
 ---
 
+Dispute Status:
+
 If activity is not seen in this repository after 60 days, the project has gone on hiatus.
 
 If activity is not seen in this repository after 90 days, the project has likely concluded.
 
-The project should be archived if development has concluded.
+The project should be archived if development has concluded. An issue can be rasied to archive the repository in this case.
 
 ---
 
