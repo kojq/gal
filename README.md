@@ -1,6 +1,6 @@
 # Usage
 
-Run below command.
+Run the following command.
 
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
@@ -8,16 +8,16 @@ sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 
 # Activity
 
-Current Status: **Active Maintenance Mode**
+Current Status: **Active Maintenance**
 
 Status Reason: There are little to no structural changes; changes primarily consist of adding package names or QOL developments
 
-Possible Statuses:
+Possible Status:
 
 - Active Development
-- Active Maintenance Mode (project is considered complete but undergoing minor changes)
-- Passive Maintenance Mode (issues and pull requests only)
-- Very Passive Maintenance Mode (issues and pull requests may be considered)
+- Passive Development (this strictly includes the project undergoing mostly minor changes)
+- Active Maintenance (this strictly includes issues and pull requests)
+- Passive Maintenance (this strictly considers issues and pull requests only)
 - Archived
 
 The project should be archived if development has concluded.
@@ -48,7 +48,7 @@ Configure Linux post-installation for basic desktop usage. Currently, only Arch 
 
 # Features
 
-- Installs basic applications via Flatpak
+- Installs basic applications as Flatpaks
 - Installs fonts, tools, and applications via the package manager
 - Enables ability to mount and unmount NTFS drives via the file manager
 - Enables core functions such as those found in DE settings
