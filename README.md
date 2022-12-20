@@ -8,7 +8,7 @@ sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 
 # Activity
 
-Current Status: **Active Maintenance**
+Current Status: **Active Development**
 
 Status Reason: There are little to no structural changes; changes primarily consist of adding package names or QOL developments
 
