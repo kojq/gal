@@ -8,13 +8,19 @@ sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 
 # Activity
 
+---
+
 Current Status:
 
 **Active Development**
 
+---
+
 Status Reason:
 
 There are little to no structural changes. Changes primarily consist of adding package names or QOL developments.
+
+---
 
 Possible Status:
 
@@ -24,11 +30,15 @@ Possible Status:
 - Passive Maintenance (this strictly considers issues and pull requests only)
 - Archived
 
+---
+
 The project should be archived if development has concluded.
 
-If activity is not seen in this repository after `40 days`, the project has gone on hiatus.
+If activity is not seen in this repository after 60 days, the project has gone on hiatus.
 
-If activity is not seen in this repository after `60 days`, the project has likely concluded.
+If activity is not seen in this repository after 90 days, the project has likely concluded.
+
+---
 
 # TODO
 
@@ -53,7 +63,7 @@ Configure Linux post-installation for basic desktop usage. Currently, only Arch 
 # Features
 
 - Installs basic applications as Flatpaks
-- Installs fonts, tools, and applications via the package manager
+- Installs fonts, tools, and applications from repositories
 - Enables ability to mount and unmount NTFS drives via the file manager
 - Enables core functions such as those found in DE settings
 
