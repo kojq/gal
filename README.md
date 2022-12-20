@@ -16,16 +16,16 @@ Current Status:
 
 Status Reason:
 
-There are little to no structural changes. Changes primarily consist of adding package names or QOL developments.
+Changes primarily consist of adding package names or QOL developments.
 
 ---
 
 Possible Status:
 
 - Active Development
-- Passive Development (this strictly includes the project undergoing mostly minor changes)
-- Active Maintenance (this strictly includes issues and pull requests)
-- Passive Maintenance (this strictly considers issues and pull requests only)
+- Passive Development (strictly allows mostly minor changes)
+- Active Maintenance (strictly allows issues and pull requests)
+- Passive Maintenance (strictly considers issues and pull requests)
 - Archived
 
 ---
