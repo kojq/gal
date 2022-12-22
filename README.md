@@ -14,7 +14,7 @@ sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 
 ## Community
 
-Feel free to join the Discord server [here](https://discord.com/). It does not currenly exist.
+Feel free to join the Discord server [here](https://example.com/). It does not currenly exist.
 
 ## Activity
 
