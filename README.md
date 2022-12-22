@@ -83,7 +83,7 @@ Configure Linux post-installation for basic desktop usage. Currently, only Arch 
 
 ## Limitations
 
-- The premise will remain exactly as described in the [About](#about) section
+- The premise will remain exactly as described in [About](#about)
 - Sensible suggestions to change the premise are welcome if assistance will be provided
 
 ## Build
@@ -100,4 +100,4 @@ The license is subject to change at the discretion of [kojq](https://github.com/
 
 ## Accessibility
 
-This markdown file is meant to be practical and comprehensive. Please reach out with an issue or via the [Community](#community) for any suggestions.
+This markdown file is meant to be practical and comprehensive. Please reach out with an issue or via [Community](#community) for any suggestions.
