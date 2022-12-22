@@ -1,3 +1,9 @@
+<div align="center">
+  <img src="LOGO.svg"/>
+
+# Run
+</div>
+
 ## Usage
 
 Run the following command.
@@ -5,6 +11,10 @@ Run the following command.
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
+
+## Community
+
+Feel free to join the Discord server [here](https://discord.com/). It does not currenly exist.
 
 ## Activity
 
@@ -16,7 +26,7 @@ Current Status:
 
 Status Reason:
 
-Changes primarily consist of adding package names or QOL developments.
+Changes primarily consist of QOL developments.
 
 ---
 
@@ -78,12 +88,16 @@ Configure Linux post-installation for basic desktop usage. Currently, only Arch 
 
 ## Build
 
-N/A
+There are no build instructions.
 
 ## Contribution
 
-Disrespect is not tolerated. A contribution is welcome as long as it does not violate [Limitations](#limitations).
+Disrespect is not tolerated. A contribution is welcome if it does not violate [Limitations](#limitations).
 
 ## License
 
 The license is subject to change at the discretion of [kojq](https://github.com/kojq).
+
+## Accessibility
+
+This markdown file is meant to be relatively comprehensive and practical. Please reach out with an issue or on the Discord for any suggestions.
