@@ -20,7 +20,7 @@ Feel free to join the Discord server [here](https://example.com/). It does not c
 
 #### Current Status:
 
-*Active Development*
+Active Development
 
 ---
 
