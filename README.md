@@ -18,19 +18,19 @@ Feel free to join the Discord server [here](https://example.com/). It does not c
 
 ## Activity
 
-Current Status:
+#### Current Status:
 
-**Active Development**
+*Active Development*
 
 ---
 
-Status Reason:
+#### Status Reason:
 
 Changes primarily consist of QOL developments.
 
 ---
 
-Possible Status:
+#### Possible Status:
 
 - Active Development
 - Passive Development (strictly allows mostly minor changes)
@@ -40,7 +40,7 @@ Possible Status:
 
 ---
 
-Dispute Status:
+#### Dispute Status:
 
 If activity is not seen in this repository after 60 days, the project has gone on hiatus.
 
