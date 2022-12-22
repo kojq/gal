@@ -100,4 +100,4 @@ The license is subject to change at the discretion of [kojq](https://github.com/
 
 ## Accessibility
 
-This markdown file is meant to be practical, consistent, and comprehensive. Please reach out with an issue or via [Community](#community) for any suggestions.
+This markdown file is meant to be practical, consistent, and comprehensive. Please reach out with an issue or via [Community](#community) for suggestions.
