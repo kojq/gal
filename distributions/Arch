@@ -23,7 +23,7 @@ paru -Syu --noconfirm apple-fonts ttf-ms-win11-auto
 # tools
 sudo pacman -Syu --noconfirm bluez bluez-utils cups cups-pdf fwupd
 sudo pacman -Syu --noconfirm ffmpeg fzf git helix imagemagick
-paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin game-devices-udev
+paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin game-devices-udev distrobox gdm-settings
 
 # enable services
 sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
