@@ -10,7 +10,7 @@ sudo zypper ar -f https://download.nvidia.com/opensuse/tumbleweed NVIDIA
 sudo transactional-update -n -c pkg in x11-video-nvidiaG06 nvidia-glG06
 
 # tools
-sudo transactional-update -n -c pkg in console git fzf helix ImageMagick ffmpeg steam-devices
+sudo transactional-update -n -c pkg in console ffmpeg fzf git helix ImageMagick steam-devices
 # sudo transactional-update -n -c pkg in virt-manager libvirt qemu libvirt-daemon-driver-qemu qemu-kvm
 # sudo systemctl enable --now libvirtd
 # from Arch: edk2-ovmf dnsmasq iptables-nft
