@@ -15,7 +15,7 @@ flatpak install flathub -y com.usebottles.bottles com.valvesoftware.Steam org.ry
 flatpak install flathub -y org.blender.Blender org.gimp.GIMP org.inkscape.Inkscape
 
 # GNOME tooling
-flatpak install flathub -y io.github.realmazharhussain.GdmSettings com.mattjakeman.ExtensionManager
+flatpak install flathub -y com.mattjakeman.ExtensionManager
 
 echo
 PS3="Enter a number: "
