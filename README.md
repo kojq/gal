@@ -12,6 +12,8 @@ Run the following command.
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
 
+Alternatively, fork or clone the repository to make changes, and run.
+
 ## Community
 
 Feel free to join the Discord server [here](https://example.com/). It does not currenly exist.
