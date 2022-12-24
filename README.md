@@ -1,5 +1,5 @@
-<div align="center">
-  <img src="LOGO.svg"/>
+<div align = "center">
+  <img src = "1537228771.svg" width = 240/>
 
 # Run
 </div>
