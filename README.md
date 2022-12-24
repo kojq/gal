@@ -94,7 +94,7 @@ The license is subject to change at the discretion of [kojq](https://github.com/
 
 ## Credits
 
-The *Magnolia grandiflora* SVG is under CC0. It is based on an SVG named *Magnolia flower flor*, uploaded on September 17, 2018, 11:59 p.m. by artist Betel Leclerc on Openclipart.
+The *Magnolia grandiflora* SVG is under CC0. It is based on the *[Magnolia flower flor](https://www.openclipart.org/detail/306895/magnolia-flower-flor)* SVG, [uploaded](https://www.openclipart.org/download/306895/1537228771.svg) on September 17, 2018, 11:59 p.m. by artist [Betel Leclerc](https://www.openclipart.org/artist/betelleclerc) on Openclipart.
 
 ## Accessibility
 
