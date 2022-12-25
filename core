@@ -8,8 +8,8 @@ flatpak install flathub -y io.github.celluloid_player.Celluloid com.github.rafos
 flatpak install flathub -y io.gitlab.librewolf-community org.mozilla.firefox com.brave.Browser org.libreoffice.LibreOffice org.qbittorrent.qBittorrent dev.lapce.lapce
 
 # games
-# NOTE: cemu and desmume are not included as they have no and outdated Flatpaks, respectively
-flatpak install flathub -y com.usebottles.bottles com.valvesoftware.Steam org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu
+# NOTE: there is currently no Cemu Flatpak
+flatpak install flathub -y com.usebottles.bottles com.valvesoftware.Steam org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu org.desmume.DeSmuME
 
 # graphics
 flatpak install flathub -y org.blender.Blender org.gimp.GIMP org.inkscape.Inkscape
