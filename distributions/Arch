@@ -35,13 +35,13 @@ warp-cli set-mode warp
 grep g14 /etc/pacman.conf || echo -e '\n[g14]\nSigLevel = DatabaseNever Optional TrustAll\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
 paru -Syu --noconfirm asusctl supergfxctl
 sudo systemctl enable --now power-profiles-daemon supergfxd
+supergfxctl -m integrated
 
 # installs Steam with NVIDIA and AMD utils
 # sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 # sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam
 
 # games
-# sudo pacman -Syu desmume
 # paru -Syu cemu cemu-bin
 
 # virtual machine
