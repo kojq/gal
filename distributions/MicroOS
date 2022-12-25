@@ -21,7 +21,7 @@ sudo transactional-update -n -c pkg in asusctl supergfxctl
 sudo systemctl enable --now power-profiles-daemon supergfxd
 
 # below is a WIP
-# desmume cemu jetbrains-fleet pandoc
+# jetbrains-fleet pandoc
 # noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra apple-fonts ttf-ms-win11-auto
 # fastfetch cloudflare-warp-bin ventoy-bin
 # sudo systemctl enable --now nftables warp-svc
