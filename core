@@ -3,7 +3,7 @@ cd ~
 
 # emulation
 # NOTE: Cemu Flatpak is under development
-flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu org.desmume.DeSmuME
+flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu org.desmume.DeSmuME net.kuribo64.melonDS
 
 # video
 flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.github.celluloid_player.Celluloid
