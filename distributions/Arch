@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 cd ~
 
+# enable GNOME Wayland due to proprietary NVIDIA drivers
+sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 # mount and unmount NTFS drives
 echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
 # enable parallel downloads
@@ -16,23 +18,18 @@ rm -rf paru-bin
 
 # fonts
 sudo pacman -Syu --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-paru -Syu --noconfirm apple-fonts ttf-ms-win11-auto
+paru -Syu --noconfirm ttf-ms-win11-auto apple-fonts
 
 # tools
 sudo pacman -Syu --noconfirm bluez bluez-utils cups cups-pdf fwupd
 sudo pacman -Syu --noconfirm ffmpeg fzf git helix imagemagick
-paru -Syu --noconfirm fastfetch cloudflare-warp-bin ventoy-bin game-devices-udev distrobox gdm-settings
+paru -Syu --noconfirm game-devices-udev distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings
 
 # enable services
 sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
-
-# waydroid
-paru -Syu --noconfirm waydroid
-sudo waydroid init -s GAPPS -f
-sudo systemctl enable --now waydroid-container
 
 # asus tools
 grep g14 /etc/pacman.conf || echo -e '\n[g14]\nSigLevel = DatabaseNever Optional TrustAll\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
@@ -59,6 +56,3 @@ supergfxctl -m integrated
 
 # kitty pcmanfm refind booster borg bupstash restic
 # fprintd btrbk kopia-bin vorta pika-backup backintime rog-control-center ulauncher tofi kickoff/wofi/fuzzel/bemenu
-
-# set ChangeFanProfile, fn+f5 to asusctl profile -n
-# set fn+f4, fn+f6, ROG Key, and ctrl+shift+delete
