@@ -29,6 +29,11 @@ yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
 
+# waydroid
+paru -Syu --noconfirm waydroid
+waydroid init -s GAPPS -f
+sudo systemctl enable --now waydroid-container
+
 # asus tools
 grep g14 /etc/pacman.conf || echo -e '\n[g14]\nSigLevel = DatabaseNever Optional TrustAll\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
 paru -Syu --noconfirm asusctl supergfxctl
