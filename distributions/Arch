@@ -31,7 +31,7 @@ warp-cli set-mode warp
 
 # waydroid
 paru -Syu --noconfirm waydroid
-waydroid init -s GAPPS -f
+sudo waydroid init -s GAPPS -f
 sudo systemctl enable --now waydroid-container
 
 # asus tools
