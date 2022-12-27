@@ -2,7 +2,7 @@
 cd ~
 
 # enable GNOME Wayland due to proprietary NVIDIA drivers
-sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+sudo touch /etc/udev/rules.d/61-gdm.rules
 # mount and unmount NTFS drives
 echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
 # enable parallel downloads
