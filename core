@@ -1,24 +1,27 @@
 #!/usr/bin/env sh
 cd ~
 
-# emulation
-# NOTE: Cemu Flatpak is under development
-flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu org.desmume.DeSmuME net.kuribo64.melonDS
-
-# video
-flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.github.celluloid_player.Celluloid
-
 # browser
-flatpak install flathub -y com.brave.Browser io.gitlab.librewolf-community org.mozilla.firefox
-
-# graphics
-flatpak install flathub -y org.blender.Blender org.inkscape.Inkscape org.gimp.GIMP
+flatpak install flathub -y com.brave.Browser org.mozilla.firefox
 
 # game
 flatpak install flathub -y com.usebottles.bottles com.valvesoftware.Steam
 
+# graphics
+flatpak install flathub -y org.blender.Blender org.inkscape.Inkscape org.gimp.GIMP
+
+# video
+flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.github.celluloid_player.Celluloid
+
+# text editing
+flatpak install flathub -y dev.lapce.lapce org.libreoffice.LibreOffice
+
+# emulation
+# NOTE: Cemu Flatpak is under development
+flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu org.desmume.DeSmuME net.kuribo64.melonDS
+
 # other
-flatpak install flathub -y dev.lapce.lapce org.libreoffice.LibreOffice org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager
+flatpak install flathub -y org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager
 
 clear
 PS3="Enter a number: "
