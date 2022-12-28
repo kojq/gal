@@ -2,7 +2,7 @@
 cd ~
 
 # browser
-flatpak install flathub -y com.brave.Browser org.mozilla.firefox
+flatpak install flathub -y org.mozilla.firefox com.brave.Browser
 
 # game
 flatpak install flathub -y com.usebottles.bottles com.valvesoftware.Steam
@@ -18,10 +18,10 @@ flatpak install flathub -y dev.lapce.lapce org.libreoffice.LibreOffice
 
 # emulation
 # NOTE: Cemu Flatpak is under development
-flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu org.desmume.DeSmuME net.kuribo64.melonDS
+flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
 
 # other
-flatpak install flathub -y org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager
+flatpak install flathub -y org.geogebra.GeoGebra org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager
 
 clear
 PS3="Enter a number: "
