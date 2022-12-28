@@ -47,8 +47,8 @@ The project should be archived if development has concluded. An issue can be ras
 ## TODO
 
 - General configuration issues
-  - IME (is too complex as I cannot find optimal package and configuration requirements)
-  - Hotspot (seems to have a bug and workarounds are unwieldy)
+  - IME (optimal configuration required)
+  - Hotspot (optimal configuration required)
   - When the Flatpak open in background notification is used to close the Flatpak, it will lead to constant and persistent crashes of the app
 - openSUSE MicroOS issues
   - Ensure btrfs compression, zram, and graphics drivers function
