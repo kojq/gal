@@ -35,7 +35,8 @@ warp-cli set-mode warp
 grep g14 /etc/pacman.conf || echo -e '\n[g14]\nSigLevel = DatabaseNever Optional TrustAll\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
 paru -Syu --noconfirm asusctl supergfxctl
 sudo systemctl enable --now power-profiles-daemon supergfxd
-sudo systemctl disable --now nvidia-powerd
+# strange behavior so it is commented for now
+# sudo systemctl disable --now nvidia-powerd
 
 # virtual machine
 # sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
