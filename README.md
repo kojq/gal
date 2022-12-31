@@ -69,6 +69,7 @@ Configure Linux post-installation for basic desktop usage. Currently, only Arch 
 
 - Packages are not ensured to install properly, so be sure to read output
 - Certain lines in the script are unique to certain hardware, so be sure to change those accordingly
+- For NVIDIA users, ensure installation of the `nvidia` package, and do `sudo systemctl disable --now nvidia-powerd` to ensure the dGPU can suspend, if desired.
 
 ## Features
 
