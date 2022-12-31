@@ -92,7 +92,7 @@ Disrespect is not tolerated. A contribution is welcome if it does not violate [L
 
 ## License
 
-The license is subject to change at the discretion of [kojq](https://github.com/kojq).
+Licensing is subject to change at the discretion of [kojq](https://github.com/kojq).
 
 ## Credits
 
