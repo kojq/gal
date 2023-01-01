@@ -49,17 +49,10 @@ The project should be archived if development has concluded. An issue can be ras
 - General configuration issues
   - IME (optimal configuration required)
   - Hotspot (optimal configuration required)
-  - When the Flatpak open in background notification is used to close the Flatpak, it will lead to constant and persistent crashes of the app
-- openSUSE MicroOS issues
+- openSUSE MicroOS issues (development on hold)
   - Ensure btrfs compression, zram, and graphics drivers function
-  - Procure system tools such as for acquiring fonts
   - Use Flatpak alternatives, as certain Flatpaks lack updates or upstream support
-  - Feature request
-    - openSUSE/zypper/issues/104
-  - Bugs (which are personally outstanding)
-    - https://bugzilla.opensuse.org/show_bug.cgi?id=1206462
-    - Selecting an option other than openSUSE MicroOS via GRUB, such as to multi-boot, and then restarting will cause rollback to a previous snapshot because the last boot is considered unsuccessful
-    - SELinux preventing snapshots due to default file context configuration
+  - Procure system tools such as for acquiring fonts
 
 ## About
 
