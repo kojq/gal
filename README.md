@@ -22,11 +22,11 @@ Feel free to join the Discord server [here](https://discord.gg/hgGxdbvC).
 
 #### Current Status
 
-Active Development
+Passive Development
 
 #### Status Reason
 
-Changes primarily consist of QOL developments.
+Changes primarily consist of trivial adjustments.
 
 #### Possible Status
 
