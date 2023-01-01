@@ -4,6 +4,10 @@
 # Run
 </div>
 
+## About
+
+Configure Linux post-installation for basic desktop usage. Currently, only Arch Linux and openSUSE MicroOS are supported.
+
 ## Usage
 
 Run the following command.
@@ -53,10 +57,6 @@ The project should be archived if development has concluded. An issue can be ras
   - Ensure btrfs compression, zram, and graphics drivers function
   - Use Flatpak alternatives, as certain Flatpaks lack updates or upstream support
   - Procure system tools such as for acquiring fonts
-
-## About
-
-Configure Linux post-installation for basic desktop usage. Currently, only Arch Linux and openSUSE MicroOS are supported.
 
 ## Warnings
 
