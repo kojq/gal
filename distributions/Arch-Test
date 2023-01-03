@@ -22,7 +22,7 @@ paru -Syu ttf-ms-win11-auto apple-fonts
 
 # tools
 sudo pacman -Syu bluez bluez-utils cups cups-pdf fwupd
-sudo pacman -Syu ffmpeg fzf git helix imagemagick
+sudo pacman -Syu fzf git helix imagemagick
 paru -Syu game-devices-udev distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings
 
 # enable services
