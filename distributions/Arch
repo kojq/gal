@@ -12,18 +12,18 @@ sudo sed -i 's/^#ParallelDownloads = 5$/ParallelDownloads = 36/' /etc/pacman.con
 sudo pacman -Syu --noconfirm --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
-yes | makepkg -si
+makepkg -si --noconfirm --needed
 cd ..
 rm -rf paru-bin
 
 # fonts
-sudo pacman -Syu --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-paru -Syu --noconfirm ttf-ms-win11-auto apple-fonts
+sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+paru -Syu --noconfirm --needed ttf-ms-win11-auto apple-fonts
 
 # tools
-sudo pacman -Syu --noconfirm bluez bluez-utils cups cups-pdf fwupd
-sudo pacman -Syu --noconfirm ffmpeg fzf git helix imagemagick
-paru -Syu --noconfirm game-devices-udev distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd
+sudo pacman -Syu --noconfirm --needed ffmpeg fzf git helix imagemagick
+paru -Syu --noconfirm --needed game-devices-udev distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings
 
 # enable services
 sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
@@ -33,7 +33,7 @@ warp-cli set-mode warp
 
 # ROG tools
 grep g14 /etc/pacman.conf || echo -e '\n[g14]\nSigLevel = DatabaseNever Optional TrustAll\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
-sudo pacman -Syu --noconfirm asusctl supergfxctl
+sudo pacman -Syu --noconfirm --needed asusctl supergfxctl
 sudo systemctl enable --now power-profiles-daemon supergfxd
 
 # virtual machine
