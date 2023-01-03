@@ -23,6 +23,10 @@ flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.c
 # other
 flatpak install flathub -y org.geogebra.GeoGebra org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager
 
+# org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
+# io.github.jliljebl.Flowblade org.shotcut.Shotcut org.openshot.OpenShot org.kde.kdenlive
+# org.kde.kolourpaint org.kde.kdiff3 org.kde.krita
+
 clear
 PS3="Enter a number: "
 select distro in Arch MicroOS
