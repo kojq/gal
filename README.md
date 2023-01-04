@@ -36,8 +36,8 @@ Changes primarily consist of trivial adjustments.
 
 - Active Development
 - Passive Development (strictly allows mostly minor changes)
-- Active Maintenance (strictly allows issues and pull requests)
-- Passive Maintenance (strictly considers issues and pull requests)
+- Active Maintenance (strictly allows mostly issues and pull requests)
+- Passive Maintenance (strictly considers mostly issues and pull requests)
 - Archived
 
 #### Dispute Status
