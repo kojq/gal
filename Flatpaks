@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-cd ~
-
 # browser
 flatpak install flathub -y org.mozilla.firefox com.brave.Browser
 
@@ -8,7 +5,7 @@ flatpak install flathub -y org.mozilla.firefox com.brave.Browser
 flatpak install flathub -y com.usebottles.bottles com.valvesoftware.Steam
 
 # graphics
-flatpak install flathub -y org.blender.Blender org.inkscape.Inkscape org.gimp.GIMP # org.kde.kolourpaint org.kde.krita
+flatpak install flathub -y org.blender.Blender org.inkscape.Inkscape org.gimp.GIMP # org.kde.krita org.kde.kolourpaint
 
 # video playing
 flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.github.celluloid_player.Celluloid
@@ -27,4 +24,4 @@ flatpak install flathub -y com.helix_editor.Helix dev.lapce.lapce org.libreoffic
 flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
 
 # other
-flatpak install flathub -y org.geogebra.GeoGebra org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager # org.kde.kdiff3
+flatpak install flathub -y org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager org.geogebra.GeoGebra
