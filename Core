@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-cd ~
-
 PS3="Enter a number: "
 select distro in Arch MicroOS
 do
