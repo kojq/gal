@@ -40,9 +40,8 @@ sudo systemctl enable --now power-profiles-daemon supergfxd
 # sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
 # sudo systemctl enable --now libvirtd
 
-# kitty pcmanfm refind booster borg bupstash restic
-# pandoc-bin jetbrains-fleet fprintd btrbk kopia-bin vorta pika-backup backintime ulauncher tofi kickoff/wofi/fuzzel/bemenu
-
-# installs Steam with NVIDIA and AMD utils
+# enable multilib
 # sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-# sudo pacman -Syu lib32-nvidia-utils lib32-vulkan-radeon steam
+
+# kitty pcmanfm refind booster borg bupstash restic
+# pandoc-bin fprintd jetbrains-fleet btrbk kopia-bin vorta pika-backup backintime ulauncher tofi kickoff/wofi/fuzzel/bemenu
