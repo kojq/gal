@@ -16,6 +16,9 @@ flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.
 # text editing
 flatpak install flathub -y com.helix_editor.Helix dev.lapce.lapce org.libreoffice.LibreOffice # org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
 
+# git
+# com.sublimemerge.App com.jetpackduba.Gitnuro io.github.shiftey.Desktop io.github.gitahead.GitAhead com.github.git_cola.git-cola com.axosoft.GitKraken com.syntevo.SmartGit com.github.Murmele.Gittyup
+
 # emulation
 # NOTE: Cemu Flatpak is under development
 flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
