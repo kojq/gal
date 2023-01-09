@@ -21,7 +21,7 @@ sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji
 paru -Syu --noconfirm --needed ttf-ms-win11-auto apple-fonts
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd sbctl
 sudo pacman -Syu --noconfirm --needed fzf git imagemagick podman
 paru -Syu --noconfirm --needed game-devices-udev distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings
 
