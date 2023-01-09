@@ -67,7 +67,7 @@ The project should be archived if development has concluded. An issue can be ras
 
 ## Features
 
-- Installs applications from Flathub
+- Installs applications from Flathub (if the `flatpak` package is already installed)
 - Installs fonts and tools from repositories
 - Enables core functions such as those found in DE settings
 
