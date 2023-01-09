@@ -53,8 +53,6 @@ The project should be archived if development has concluded. An issue can be ras
 - General configuration issues
   - IME (optimal configuration required)
   - Hotspot (optimal configuration required)
-- Arch Linux issues
-  - Secure Boot (use of sbctl planned)
 - openSUSE MicroOS issues (development on hold)
   - Ensure btrfs compression, zram, and graphics drivers function
   - Procure system tools such as for acquiring fonts
