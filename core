@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 cd ~
 
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/Flatpaks)
+sh <(curl https://raw.githubusercontent.com/kojq/run/main/Flatpaks) &
 PS3="Enter a number: "
 select distro in Arch MicroOS
 do
