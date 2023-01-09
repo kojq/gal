@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 cd ~
 
+sh <(curl https://raw.githubusercontent.com/kojq/run/main/Flatpaks)
 PS3="Enter a number: "
 select distro in Arch MicroOS
 do
@@ -8,28 +9,3 @@ do
     sh <(curl https://raw.githubusercontent.com/kojq/run/main/distributions/$distro)
     break
 done
-
-# browser
-flatpak install flathub -y org.mozilla.firefox com.brave.Browser
-
-# game
-flatpak install flathub -y com.usebottles.bottles com.valvesoftware.Steam
-
-# graphics
-flatpak install flathub -y org.blender.Blender org.inkscape.Inkscape org.gimp.GIMP # org.kde.kolourpaint org.kde.krita
-
-# video playing
-flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.github.celluloid_player.Celluloid
-
-# video recording
-# io.github.jliljebl.Flowblade org.shotcut.Shotcut org.openshot.OpenShot org.kde.kdenlive
-
-# text editing
-flatpak install flathub -y com.helix_editor.Helix dev.lapce.lapce org.libreoffice.LibreOffice # org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
-
-# emulation
-# NOTE: Cemu Flatpak is under development
-flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
-
-# other
-flatpak install flathub -y org.geogebra.GeoGebra org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager # org.kde.kdiff3
