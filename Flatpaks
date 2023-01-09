@@ -17,7 +17,7 @@ flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.
 flatpak install flathub -y com.helix_editor.Helix dev.lapce.lapce org.libreoffice.LibreOffice # org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
 
 # git
-# com.sublimemerge.App com.jetpackduba.Gitnuro io.github.shiftey.Desktop com.axosoft.GitKraken com.github.Murmele.Gittyup
+# com.sublimemerge.App com.jetpackduba.Gitnuro io.github.shiftey.Desktop com.github.Murmele.Gittyup
 
 # emulation
 # NOTE: Cemu Flatpak is under development
