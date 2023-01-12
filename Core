@@ -5,3 +5,4 @@ do
     break
 done
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/Flatpaks)
+gsettings set org.gnome.shell app-picker-layout "[]"
