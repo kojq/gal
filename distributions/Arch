@@ -5,10 +5,10 @@ cd ~
 sudo touch /etc/udev/rules.d/61-gdm.rules
 # enable recognition of NTFS drives
 echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
-# enable parallel downloads
-sudo sed -i 's/^#ParallelDownloads = 5$/ParallelDownloads = 20/' /etc/pacman.conf
+# configure pacman
 sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
 sudo sed -i 's/^#VerbosePkgLists$/VerbosePkgLists/' /etc/pacman.conf
+sudo sed -i 's/^#ParallelDownloads = 5$/ParallelDownloads = 20/' /etc/pacman.conf
 
 # AUR helper
 sudo pacman -Syu --noconfirm --needed base-devel
