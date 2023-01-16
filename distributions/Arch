@@ -22,8 +22,7 @@ paru -Syu --noconfirm --needed ttf-ms-win11-auto apple-fonts
 
 # tools
 sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd sbctl
-sudo pacman -Syu --noconfirm --needed fzf git imagemagick podman booster
-sudo pacman -Rns mkinitcpio
+sudo pacman -Syu --noconfirm --needed fzf git imagemagick podman
 paru -Syu --noconfirm --needed game-devices-udev distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings systemd-boot-pacman-hook
 
 # enable services
