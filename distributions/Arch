@@ -24,7 +24,7 @@ paru -Syu --noconfirm --needed ttf-ms-win11-auto apple-fonts
 sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd sbctl
 sudo pacman -Syu --noconfirm --needed fzf git imagemagick podman booster
 sudo pacman -Rns mkinitcpio
-paru -Syu --noconfirm --needed distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev
+paru -Syu --noconfirm --needed game-devices-udev distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings systemd-boot-pacman-hook
 
 # enable services
 sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
