@@ -22,8 +22,9 @@ paru -Syu --noconfirm --needed ttf-ms-win11-auto apple-fonts
 
 # tools
 sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd sbctl
-sudo pacman -Syu --noconfirm --needed fzf git imagemagick podman
-paru -Syu --noconfirm --needed game-devices-udev distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings
+sudo pacman -Syu --noconfirm --needed fzf git imagemagick podman booster
+sudo pacman -Rns mkinitcpio
+paru -Syu --noconfirm --needed distrobox fastfetch cloudflare-warp-bin ventoy-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev
 
 # enable services
 sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
@@ -43,5 +44,5 @@ sudo systemctl enable --now power-profiles-daemon supergfxd
 # enable multilib
 # sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
-# kitty pcmanfm refind booster borg bupstash restic
+# kitty pcmanfm refind borg bupstash restic
 # pandoc-bin fprintd jetbrains-fleet btrbk kopia-bin vorta pika-backup backintime ulauncher tofi kickoff/wofi/fuzzel/bemenu
