@@ -27,7 +27,7 @@ paru -Syu --noconfirm --needed game-devices-udev distrobox fastfetch cloudflare-
 
 # enable services
 sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
-y | warp-cli register
+warp-cli register
 warp-cli set-families-mode malware
 
 # ROG tools
