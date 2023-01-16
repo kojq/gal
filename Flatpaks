@@ -2,7 +2,7 @@
 flatpak install flathub -y org.mozilla.firefox com.brave.Browser
 
 # game
-flatpak install flathub -y com.usebottles.bottles com.valvesoftware.Steam
+flatpak install flathub -y com.usebottles.bottles
 
 # graphics
 flatpak install flathub -y org.blender.Blender org.inkscape.Inkscape org.gimp.GIMP # org.kde.krita org.kde.kolourpaint
