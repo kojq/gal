@@ -32,7 +32,7 @@ warp-cli set-families-mode malware
 warp-cli set-mode warp
 
 # ROG tools
-grep g14 /etc/pacman.conf || echo -e '\n[g14]\nSigLevel = DatabaseNever Optional TrustAll\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
+grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
 sudo pacman -Syu --noconfirm --needed asusctl supergfxctl
 sudo systemctl enable --now power-profiles-daemon supergfxd
 
