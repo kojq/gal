@@ -51,11 +51,14 @@ The project should be archived if development has concluded. An issue can be ras
 ## TODO
 
 - General configuration issues
-  - IME (optimal configuration required)
-  - Hotspot (optimal configuration required)
-- openSUSE MicroOS issues (development on hold)
-  - Ensure btrfs compression, zram, and graphics drivers function
-  - Procure system tools such as for acquiring fonts
+  - Snapshots
+  - Hotspot
+  - IME
+- openSUSE MicroOS issues
+  - Procure system packages
+  - Graphics drivers
+  - btrfs compression
+  - zram
 
 ## Warnings
 
