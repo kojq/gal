@@ -32,6 +32,7 @@ paru -Syu --noconfirm --needed game-devices-udev distrobox fastfetch cloudflare-
 sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
 yes | warp-cli register
 warp-cli set-families-mode malware
+warp-cli set-mode warp
 
 # ROG tools
 grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
