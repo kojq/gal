@@ -1,5 +1,5 @@
 # browser
-flatpak install flathub -y com.brave.Browser org.mozilla.firefox
+flatpak install flathub -y org.mozilla.firefox com.brave.Browser
 
 # game
 flatpak install flathub -y com.usebottles.bottles
@@ -19,9 +19,9 @@ flatpak install flathub -y com.helix_editor.Helix dev.lapce.lapce org.libreoffic
 # git
 # com.jetpackduba.Gitnuro com.github.Murmele.Gittyup com.sublimemerge.App io.github.shiftey.Desktop
 
+# other
+flatpak install flathub -y org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager org.geogebra.GeoGebra app.drey.Dialect
+
 # emulation
 # NOTE: Cemu Flatpak is under development
-flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
-
-# other
-flatpak install flathub -y org.qbittorrent.qBittorrent com.mattjakeman.ExtensionManager org.geogebra.GeoGebra
+# flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
