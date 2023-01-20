@@ -23,7 +23,7 @@ flatpak install flathub -y com.helix_editor.Helix dev.lapce.lapce org.libreoffic
 flatpak install flathub -y org.geogebra.GeoGebra se.sjoerd.DatMan
 
 # other
-flatpak install flathub -y org.qbittorrent.qBittorrent app.drey.Dialect com.mattjakeman.ExtensionManager com.adrienplazas.Metronome io.gitlab.cyberphantom52.sudoku_solver
+flatpak install flathub -y org.qbittorrent.qBittorrent app.drey.Dialect com.mattjakeman.ExtensionManager io.gitlab.cyberphantom52.sudoku_solver
 
 # emulation
 # NOTE: Cemu Flatpak is under development
