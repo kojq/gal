@@ -34,7 +34,7 @@ warp-cli set-mode warp
 
 # enable recognition of NTFS drives
 # echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
-# sudo pacman -Syu --noconfirm --needed ntfs-3g
+# sudo pacman -Syu --noconfirm --needed ntfsprogs-ntfs3 ntfs-3g
 
 # ROG tools
 # sudo pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
