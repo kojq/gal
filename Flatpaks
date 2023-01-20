@@ -27,4 +27,4 @@ flatpak install flathub -y org.qbittorrent.qBittorrent app.drey.Dialect com.matt
 
 # emulation
 # NOTE: Cemu Flatpak is under development
-# flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
+flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
