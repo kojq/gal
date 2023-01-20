@@ -54,6 +54,7 @@ The project should be archived if development has concluded. An issue can be ras
   - Snapshots
   - Hotspot
   - IME
+  - Mount NTFS
 - openSUSE MicroOS issues
   - Procure system packages
   - Graphics drivers
