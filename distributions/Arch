@@ -31,7 +31,7 @@ warp-cli set-families-mode malware
 
 # enable GNOME Wayland due to proprietary NVIDIA drivers
 sudo touch /etc/udev/rules.d/61-gdm.rules
-# mask nvidia-powerd laptop battery
+# mask nvidia-powerd for less energy usage
 sudo systemctl mask --now nvidia-powerd
 
 # enable recognition of NTFS drives
