@@ -63,9 +63,9 @@ The project should be archived if development has concluded. An issue can be ras
 
 ## Warnings
 
-- Packages are not ensured to install properly, so be sure to read output
-- Certain lines in the script are unique to certain hardware, so be sure to change those accordingly
-- For NVIDIA users, ensure installation of the `nvidia` package, and do `sudo systemctl mask --now nvidia-powerd` to ensure the dGPU can suspend, if desired.
+- For Arch Linux, install drivers before running
+- For other distributions, remove NVIDIA drivers if the hardware will not be present
+- Read output because packages may not install properly due to issues such as that from upstream
 
 ## Features
 
