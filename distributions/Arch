@@ -20,8 +20,8 @@ sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git imagemagick podman sbctl
-paru -Syu --noconfirm --needed cloudflare-warp-bin distrobox fastfetch game-devices-udev gdm-settings pacman-cleanup-hook systemd-boot-pacman-hook ventoy-bin
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf distrobox fwupd fzf git imagemagick podman sbctl
+paru -Syu --noconfirm --needed cloudflare-warp-bin fastfetch game-devices-udev gdm-settings pacman-cleanup-hook systemd-boot-pacman-hook ventoy-bin
 
 # services
 sudo systemctl enable --now nftables bluetooth warp-svc cups.socket
