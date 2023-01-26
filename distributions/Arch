@@ -29,6 +29,10 @@ yes | warp-cli register
 warp-cli set-mode warp
 warp-cli set-families-mode malware
 
+# enable GNOME Wayland due to proprietary NVIDIA drivers
+sudo touch /etc/udev/rules.d/61-gdm.rules
+# mask nvidia-powerd for less energy usage
+sudo systemctl mask --now nvidia-powerd
 # enable recognition of NTFS drives
 # echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
 # sudo pacman -Syu --noconfirm --needed ntfsprogs-ntfs3 ntfs-3g
