@@ -63,9 +63,9 @@ The project should be archived if development has concluded. An issue can be ras
 
 ## Warnings
 
+- Read output because packages may not install due to upstream issues
 - For Arch Linux, install drivers before running
-- For other distributions, remove NVIDIA drivers if the hardware will not be present
-- Read output because packages may not install properly due to issues such as that from upstream
+- For other distributions, remove drivers for hardware that will not be present on the system
 
 ## Features
 
