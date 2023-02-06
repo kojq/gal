@@ -1,30 +1,30 @@
 # browser
 flatpak install flathub -y org.mozilla.firefox com.brave.Browser
 
-# game
-flatpak install flathub -y com.usebottles.bottles
-
-# graphics
-flatpak install flathub -y org.blender.Blender org.inkscape.Inkscape org.gimp.GIMP # org.kde.krita org.kde.kolourpaint
-
-# video playing
-flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.github.celluloid_player.Celluloid
-
-# video recording
-# io.github.jliljebl.Flowblade org.shotcut.Shotcut org.openshot.OpenShot org.kde.kdenlive
-
-# text editing
-flatpak install flathub -y dev.lapce.lapce org.libreoffice.LibreOffice com.helix_editor.Helix # app.gummi.gummi org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
-
-# git
-# com.jetpackduba.Gitnuro com.github.Murmele.Gittyup com.sublimemerge.App io.github.shiftey.Desktop
+# software
+flatpak install flathub -y com.usebottles.bottles org.qbittorrent.qBittorrent
 
 # mathematics
 flatpak install flathub -y org.geogebra.GeoGebra se.sjoerd.DatMan
 
-# other
-flatpak install flathub -y org.qbittorrent.qBittorrent app.drey.Dialect com.mattjakeman.ExtensionManager
+# graphics
+flatpak install flathub -y org.blender.Blender org.inkscape.Inkscape org.gimp.GIMP org.kde.krita
+
+# video
+flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.github.celluloid_player.Celluloid
+
+# video editing
+# flatpak install flathub -y org.shotcut.Shotcut org.openshot.OpenShot io.github.jliljebl.Flowblade org.kde.kdenlive
+
+# text editing
+flatpak install flathub -y org.libreoffice.LibreOffice dev.lapce.lapce # app.gummi.gummi org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
+
+# git
+# flatpak install flathub -y com.jetpackduba.Gitnuro com.github.Murmele.Gittyup com.sublimemerge.App io.github.shiftey.Desktop
 
 # emulation
 # NOTE: Cemu Flatpak is under development
 flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
+
+# gnome
+flatpak install flathub -y app.drey.Dialect com.mattjakeman.ExtensionManager
