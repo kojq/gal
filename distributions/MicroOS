@@ -11,15 +11,15 @@ sudo zypper ar -f https://download.nvidia.com/opensuse/tumbleweed NVIDIA
 sudo transactional-update -n -c pkg in x11-video-nvidiaG06 nvidia-glG06
 
 # tools
-sudo transactional-update -n -c pkg in console fzf git ImageMagick steam-devices
+sudo transactional-update -n -c pkg in console fzf git helix ImageMagick steam-devices
 # sudo transactional-update -n -c pkg in virt-manager libvirt qemu libvirt-daemon-driver-qemu qemu-kvm
 # sudo systemctl enable --now libvirtd
 # from Arch: edk2-ovmf dnsmasq iptables-nft
 
 # asus tools
-sudo zypper ar -f https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/ asus-linux
-sudo transactional-update -n -c pkg in asusctl supergfxctl
-sudo systemctl enable --now power-profiles-daemon supergfxd
+# sudo zypper ar -f https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/ asus-linux
+# sudo transactional-update -n -c pkg in asusctl supergfxctl
+# sudo systemctl enable --now power-profiles-daemon supergfxd
 
 # below is a WIP
 # jetbrains-fleet pandoc
