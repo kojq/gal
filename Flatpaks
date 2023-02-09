@@ -24,7 +24,7 @@ flatpak install flathub -y org.libreoffice.LibreOffice dev.lapce.lapce # app.gum
 
 # emulation
 # NOTE: Cemu Flatpak is under development
-flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS org.desmume.DeSmuME
+flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS
 
 # gnome
 flatpak install flathub -y app.drey.Dialect com.mattjakeman.ExtensionManager
