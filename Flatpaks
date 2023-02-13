@@ -1,14 +1,14 @@
 # browser
-flatpak install flathub -y org.mozilla.firefox com.brave.Browser
+flatpak install flathub -y com.brave.Browser
 
 # software
 flatpak install flathub -y com.usebottles.bottles org.qbittorrent.qBittorrent
 
 # mathematics
-flatpak install flathub -y org.geogebra.GeoGebra se.sjoerd.DatMan
+flatpak install flathub -y se.sjoerd.DatMan
 
 # graphics
-flatpak install flathub -y org.blender.Blender org.inkscape.Inkscape org.gimp.GIMP org.kde.krita
+flatpak install flathub -y org.kde.krita
 
 # video
 flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.github.celluloid_player.Celluloid
@@ -17,7 +17,7 @@ flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.
 # flatpak install flathub -y org.shotcut.Shotcut org.openshot.OpenShot io.github.jliljebl.Flowblade org.kde.kdenlive
 
 # text editing
-flatpak install flathub -y org.libreoffice.LibreOffice dev.lapce.lapce # app.gummi.gummi org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
+flatpak install flathub -y org.libreoffice.LibreOffice # app.gummi.gummi org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
 
 # git
 # flatpak install flathub -y com.jetpackduba.Gitnuro com.github.Murmele.Gittyup com.sublimemerge.App io.github.shiftey.Desktop
@@ -27,4 +27,4 @@ flatpak install flathub -y org.libreoffice.LibreOffice dev.lapce.lapce # app.gum
 flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS
 
 # gnome
-flatpak install flathub -y app.drey.Dialect com.mattjakeman.ExtensionManager
+flatpak install flathub -y app.drey.Dialect
