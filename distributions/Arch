@@ -23,6 +23,9 @@ paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick podman sbctl # distrobox
 paru -Syu --noconfirm --needed cloudflare-warp-bin fastfetch game-devices-udev gdm-settings systemd-boot-pacman-hook ventoy-bin
 
+# applications
+sudo pacman -Syu --noconfirm --needed blender firefox geogebra gimp inkscape lapce
+
 # services
 sudo systemctl enable --now bluetooth cups.socket nftables warp-svc
 yes | warp-cli register
