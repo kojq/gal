@@ -4,5 +4,4 @@ do
     sh <(curl https://raw.githubusercontent.com/kojq/run/main/distributions/$distro)
     break
 done
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/Flatpaks)
 gsettings reset org.gnome.shell app-picker-layout
