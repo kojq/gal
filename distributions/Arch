@@ -24,7 +24,7 @@ sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf 
 paru -Syu --noconfirm --needed cloudflare-warp-bin fastfetch game-devices-udev gdm-settings systemd-boot-pacman-hook ventoy-bin
 
 # applications
-sudo pacman -Syu --noconfirm --needed firefox geogebra inkscape lapce # blender gimp krita glide mpv celluloid transmission-gtk qbittorrent translate-shell
+sudo pacman -Syu --noconfirm --needed firefox geogebra inkscape lapce # blender gimp krita glide mpv celluloid transmission-gtk qbittorrent translate-shell libreoffice-fresh obs-studio
 
 # services
 sudo systemctl enable --now bluetooth cups.socket nftables warp-svc
