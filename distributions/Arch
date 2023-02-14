@@ -17,10 +17,10 @@ rm -rf paru-bin
 
 # fonts
 sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
+paru -Syu --noconfirm --needed ttf-ms-win11-auto # apple-fonts
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick podman sbctl # distrobox
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick sbctl # distrobox podman
 paru -Syu --noconfirm --needed cloudflare-warp-bin systemd-boot-pacman-hook # fastfetch ventoy-bin game-devices-udev gdm-settings
 
 # applications
@@ -35,7 +35,6 @@ warp-cli set-families-mode malware
 
 # configuration due to NVIDIA drivers
 sudo touch /etc/udev/rules.d/61-gdm.rules
-sudo systemctl mask --now nvidia-powerd
 
 # enable recognition of NTFS drives
 # echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
