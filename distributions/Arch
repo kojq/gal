@@ -17,21 +17,22 @@ rm -rf paru-bin
 
 # fonts
 sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-paru -Syu --noconfirm --needed ttf-ms-win11-auto # apple-fonts
+paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # tools
 sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick sbctl # distrobox podman
 paru -Syu --noconfirm --needed cloudflare-warp-bin systemd-boot-pacman-hook # fastfetch ventoy-bin game-devices-udev gdm-settings
 
 # applications
-sudo pacman -Syu --noconfirm --needed firefox geogebra inkscape lapce # blender gimp krita glide mpv celluloid transmission-gtk qbittorrent translate-shell
+sudo pacman -Syu --noconfirm --needed firefox inkscape lapce # blender gimp krita glide mpv celluloid transmission-gtk qbittorrent translate-shell
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en # obs-studio
+sudo pacman -Syu --noconfirm --needed geogebra
 
 # services
 sudo systemctl enable --now bluetooth cups.socket nftables warp-svc
 yes | warp-cli register
-warp-cli set-mode warp
 warp-cli set-families-mode malware
+warp-cli set-mode warp
 
 # configuration due to NVIDIA drivers
 sudo touch /etc/udev/rules.d/61-gdm.rules
