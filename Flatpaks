@@ -2,16 +2,13 @@
 flatpak install flathub -y com.brave.Browser
 
 # software
-flatpak install flathub -y com.usebottles.bottles org.qbittorrent.qBittorrent
+flatpak install flathub -y com.usebottles.bottles org.qbittorrent.qBittorrent # transmission
 
 # mathematics
 flatpak install flathub -y se.sjoerd.DatMan
 
-# graphics
-flatpak install flathub -y org.kde.krita
-
 # video
-flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper io.github.celluloid_player.Celluloid
+flatpak install flathub -y com.obsproject.Studio com.github.rafostar.Clapper
 
 # video editing
 # flatpak install flathub -y org.shotcut.Shotcut org.openshot.OpenShot io.github.jliljebl.Flowblade org.kde.kdenlive
