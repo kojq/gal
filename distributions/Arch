@@ -25,8 +25,7 @@ paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pac
 
 # applications
 sudo pacman -Syu --noconfirm --needed firefox-developer-edition inkscape lapce # blender gimp krita celluloid glide mpv qbittorrent transmission-gtk translate-shell
-sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en # obs-studio
-sudo pacman -Syu --noconfirm --needed geogebra
+sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en # obs-studio geogebra
 
 # services
 sudo systemctl enable --now bluetooth cups.socket nftables warp-svc
