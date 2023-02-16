@@ -13,6 +13,3 @@ flatpak install flathub -y org.ryujinx.Ryujinx org.citra_emu.citra net.kuribo64.
 
 # gnome
 flatpak install flathub -y se.sjoerd.Graphs app.drey.Dialect
-
-# git
-# flatpak install flathub -y com.jetpackduba.Gitnuro com.github.Murmele.Gittyup com.sublimemerge.App io.github.shiftey.Desktop
