@@ -4,18 +4,15 @@ flatpak install flathub -y com.brave.Browser
 # software
 flatpak install flathub -y com.usebottles.bottles
 
-# video
-flatpak install flathub -y com.github.rafostar.Clapper
-
 # video editing
 # flatpak install flathub -y org.shotcut.Shotcut org.openshot.OpenShot io.github.jliljebl.Flowblade org.kde.kdenlive
 
 # text editing
-# app.gummi.gummi org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
+# flatpak install flathub -y app.gummi.gummi org.cvfosammmm.Setzer org.texstudio.TeXstudio org.tug.texworks
 
 # emulation
 # NOTE: Cemu Flatpak is under development
-flatpak install flathub -y org.ryujinx.Ryujinx org.yuzu_emu.yuzu org.citra_emu.citra org.DolphinEmu.dolphin-emu net.kuribo64.melonDS
+flatpak install flathub -y org.ryujinx.Ryujinx org.citra_emu.citra net.kuribo64.melonDS
 
 # gnome
 flatpak install flathub -y se.sjoerd.Graphs app.drey.Dialect
