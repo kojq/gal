@@ -24,7 +24,7 @@ sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf 
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # fastfetch game-devices-udev ventoy-bin
 
 # applications
-sudo pacman -Syu --noconfirm --needed firefox-developer-edition geogebra inkscape lapce # blender gimp krita celluloid glide mpv qbittorrent transmission-gtk translate-shell
+sudo pacman -Syu --noconfirm --needed blender firefox-developer-edition geogebra inkscape lapce mpv # gimp krita qbittorrent transmission-gtk translate-shell
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en # obs-studio
 
 # services
