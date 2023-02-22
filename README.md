@@ -13,7 +13,7 @@ Configure Linux post-installation for basic desktop usage. Currently, only Arch 
 Run the following command.
 
 ```
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/Core)
+sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
 
 Alternatively, fork or clone the repository to make changes, and run.
