@@ -1,15 +1,2 @@
-# browser
-flatpak install flathub -y com.brave.Browser
-
 # software
-flatpak install flathub -y com.usebottles.bottles
-
-# video editing
-# flatpak install flathub -y org.shotcut.Shotcut org.openshot.OpenShot io.github.jliljebl.Flowblade org.kde.kdenlive
-
-# emulation
-# NOTE: Cemu Flatpak is under development
-flatpak install flathub -y org.ryujinx.Ryujinx org.citra_emu.citra net.kuribo64.melonDS
-
-# gnome
-flatpak install flathub -y se.sjoerd.Graphs app.drey.Dialect
+flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
