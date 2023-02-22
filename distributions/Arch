@@ -29,6 +29,7 @@ sudo pacman -Syu --noconfirm --needed gnome-latex hunspell hunspell-en_us hyphen
 # sudo pacman -Syu --noconfirm --needed shotcut openshot flowblade kdenlive # ordered by perceived quality
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin ticemu
 # paru -Syu --noconfirm --needed gittyup sublime-merge
+# flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
 
 # services
 sudo systemctl enable --now bluetooth cups.socket nftables warp-svc
