@@ -1,7 +1,63 @@
-PS3="Enter a number: "
-select distro in Arch MicroOS
-do
-    sh <(curl https://raw.githubusercontent.com/kojq/run/main/distributions/$distro)
-    break
-done
+cd ~
+
+# pacman configuration
+sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
+sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
+sudo sed -i 's/^#VerbosePkgLists$/VerbosePkgLists/' /etc/pacman.conf
+sudo sed -i 's/^#ParallelDownloads = 5$/ParallelDownloads = 20/' /etc/pacman.conf
+
+# AUR helper
+sudo pacman -Syu --noconfirm --needed base-devel
+git clone https://aur.archlinux.org/paru-bin.git
+cd paru-bin
+makepkg -si --noconfirm --needed
+cd ..
+rm -rf paru-bin
+
+# fonts
+sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
+
+# tools
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick sbctl # distrobox podman
+paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # fastfetch game-devices-udev ventoy-bin
+
+# applications
+sudo pacman -Syu --noconfirm --needed blender dolphin-emu firefox-developer-edition geogebra gimp inkscape krita lapce mpv qbittorrent yuzu # brave
+sudo pacman -Syu --noconfirm --needed gnome-latex hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland texstudio
+# sudo pacman -Syu --noconfirm --needed shotcut openshot flowblade kdenlive # ordered by perceived quality
+# paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin ticemu
+# paru -Syu --noconfirm --needed gittyup sublime-merge
+# flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
+
+# services
+sudo systemctl enable --now bluetooth cups.socket nftables warp-svc
+yes | warp-cli register
+warp-cli set-families-mode malware
+warp-cli set-mode warp
+
 gsettings reset org.gnome.shell app-picker-layout
+
+# configuration due to NVIDIA drivers
+sudo touch /etc/udev/rules.d/61-gdm.rules
+
+# enable recognition of NTFS drives
+# echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
+# sudo pacman -Syu --noconfirm --needed ntfsprogs-ntfs3 ntfs-3g
+
+# ROG tools
+# sudo pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+# sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+# grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
+# sudo pacman -Syu --noconfirm --needed asusctl
+# sudo systemctl enable --now power-profiles-daemon
+
+# virtual machine
+# sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
+# sudo systemctl enable --now libvirtd
+
+# enable multilib
+# sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+
+# kitty pcmanfm refind borg bupstash restic
+# pandoc-bin fprintd jetbrains-fleet btrbk kopia-bin vorta pika-backup backintime ulauncher tofi kickoff/wofi/fuzzel/bemenu
