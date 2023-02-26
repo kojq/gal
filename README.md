@@ -50,11 +50,13 @@ The project should be archived if development has concluded. An issue can be ras
 
 ## TODO
 
-- General configuration issues
-  - Snapshots
-  - Hotspot
-  - IME
-  - Mount NTFS
+- Incorporate archinstall
+- Rework archinstall decisions
+- Analyze https://wiki.archlinux.org/title/List_of_applications
+- Implement btrfs snapshots
+- Hotspot
+- IME
+- Mount NTFS
 
 ## Warnings
 
