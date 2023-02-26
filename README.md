@@ -6,7 +6,7 @@
 
 ## About
 
-Configure Linux post-installation for basic desktop usage. Currently, only Arch Linux and openSUSE MicroOS are supported.
+Install Arch Linux with the GNOME desktop environment and select packages.
 
 ## Usage
 
@@ -55,17 +55,11 @@ The project should be archived if development has concluded. An issue can be ras
   - Hotspot
   - IME
   - Mount NTFS
-- openSUSE MicroOS issues
-  - Procure system packages
-  - Graphics drivers
-  - btrfs compression
-  - zram
 
 ## Warnings
 
 - Read output because packages may not install due to upstream issues
-- For Arch Linux, install drivers before running
-- For other distributions, remove drivers for hardware that will not be present on the system
+- Install drivers, preferably before running, if desired
 
 ## Features
 
