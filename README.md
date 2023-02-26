@@ -20,7 +20,7 @@ Alternatively, fork or clone the repository to make changes, and run.
 
 ## Community
 
-Feel free to join the Discord server [here](https://discord.gg/peezNh4pS4).
+Feel free to [join the Discord server](https://discord.gg/peezNh4pS4).
 
 ## Activity
 
