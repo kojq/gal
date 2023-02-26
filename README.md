@@ -6,7 +6,7 @@
 
 ## About
 
-Install Arch Linux with the GNOME desktop environment and select packages.
+Install Arch Linux with select packages and the GNOME desktop environment.
 
 ## Usage
 
