@@ -1,5 +1,3 @@
-cd ~
-
 # pacman configuration
 sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
 sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
@@ -19,11 +17,11 @@ sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick sbctl
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick sbctl # uutils-coreutils
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev ventoy-bin
 
 # applications
-sudo pacman -Syu --noconfirm --needed blender dolphin-emu firefox-developer-edition geogebra gimp inkscape krita lapce mpv qbittorrent yuzu
+sudo pacman -Syu --noconfirm --needed blender chromium dolphin-emu firefox-developer-edition geogebra gimp inkscape krita lapce mpv qbittorrent yuzu # bravium
 sudo pacman -Syu --noconfirm --needed gnome-latex hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland texstudio
 
 # sudo pacman -Syu --noconfirm --needed shotcut openshot flowblade kdenlive # ordered by perceived quality
