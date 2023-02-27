@@ -19,11 +19,11 @@ sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick sbctl # distrobox podman
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick sbctl
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # fastfetch game-devices-udev ventoy-bin
 
 # applications
-sudo pacman -Syu --noconfirm --needed blender dolphin-emu firefox-developer-edition geogebra gimp inkscape krita lapce mpv qbittorrent yuzu # brave
+sudo pacman -Syu --noconfirm --needed blender dolphin-emu firefox-developer-edition geogebra gimp inkscape krita lapce mpv qbittorrent yuzu
 sudo pacman -Syu --noconfirm --needed gnome-latex hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland texstudio
 # sudo pacman -Syu --noconfirm --needed shotcut openshot flowblade kdenlive # ordered by perceived quality
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin ticemu
