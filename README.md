@@ -16,6 +16,8 @@ Run the following command.
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
 
+If you desire [additional applications](https://wiki.archlinux.org/title/List_of_applications), enter the URI parameter (WIP).
+
 Alternatively, fork or clone the repository to make changes, and run.
 
 ## Community
