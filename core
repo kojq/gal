@@ -22,7 +22,7 @@ paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pac
 
 # applications
 sudo pacman -Syu --noconfirm --needed blender chromium dolphin-emu firefox-developer-edition geogebra gimp inkscape krita lapce mpv qbittorrent yuzu # bravium
-sudo pacman -Syu --noconfirm --needed gnome-latex hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland texstudio
+sudo pacman -Syu --noconfirm --needed gnome-latex hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland
 
 # sudo pacman -Syu --noconfirm --needed shotcut openshot flowblade kdenlive # ordered by perceived quality
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin ticemu
