@@ -2,7 +2,7 @@
 sudo sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
 sudo sed -i 's/^#\(ParallelDownloads = \)5$/\120/' /etc/pacman.conf
-
+grep nouveau /boot/loader/entries/*_linux.conf || echo 'modprobe.blacklist=nouveau ' | sudo tee -a /boot/loader/entries/*_linux.conf
 
 # AUR helper
 sudo pacman -Syu --noconfirm --needed base-devel
