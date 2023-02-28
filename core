@@ -23,9 +23,6 @@ paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pac
 sudo pacman -Syu --noconfirm --needed blender chromium dolphin-emu firefox-developer-edition geogebra gimp inkscape lapce mpv qbittorrent yuzu # bravium shotcut
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland tectonic
 
-# paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
-# flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
-
 # services
 sudo systemctl enable --now bluetooth cups.socket nftables warp-svc
 yes | warp-cli register
@@ -45,6 +42,11 @@ gsettings reset org.gnome.shell app-picker-layout
 # configuration due to NVIDIA drivers
 # sudo touch /etc/udev/rules.d/61-gdm.rules
 
+# paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
+# sudo pacman -Syu --noconfirm --needed pcmanfm booster refind borg bupstash restic pandoc-cli fprintd btrbk fuzzel bemenu
+# paru -Syu --noconfirm --needed jetbrains-fleet kopia-bin vorta pika-backup backintime ulauncher tofi kickoff wofi-hg
+# flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
+
 # enable recognition of NTFS drives
 # echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
 # sudo pacman -Syu --noconfirm --needed ntfs-3g
@@ -56,6 +58,3 @@ gsettings reset org.gnome.shell app-picker-layout
 
 # enable multilib
 # sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-
-# kitty pcmanfm refind borg bupstash restic
-# pandoc-bin fprintd jetbrains-fleet btrbk kopia-bin vorta pika-backup backintime ulauncher tofi kickoff/wofi/fuzzel/bemenu
