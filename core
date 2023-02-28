@@ -2,7 +2,6 @@
 sudo sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
 sudo sed -i 's/^#\(ParallelDownloads = \)5$/\120/' /etc/pacman.conf
-grep nouveau /boot/loader/entries/*_linux.conf || echo 'modprobe.blacklist=nouveau ' | sudo tee -a /boot/loader/entries/*_linux.conf
 
 # AUR helper
 sudo pacman -Syu --noconfirm --needed base-devel
@@ -12,12 +11,15 @@ makepkg -si --noconfirm --needed
 cd ..
 rm -rf paru-bin
 
+# desktop environment and drivers
+sudo pacman -Syu --noconfirm --needed gnome libva-mesa-driver mesa-vdpau vulkan-radeon
+
 # fonts
 sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git gnome imagemagick sbctl
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git imagemagick sbctl
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev ventoy-bin
 
 # applications
@@ -41,6 +43,7 @@ gsettings reset org.gnome.shell app-picker-layout
 
 # configuration due to NVIDIA drivers
 # sudo touch /etc/udev/rules.d/61-gdm.rules
+# grep nouveau /boot/loader/entries/*_linux.conf || echo 'modprobe.blacklist=nouveau ' | sudo tee -a /boot/loader/entries/*_linux.conf
 
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
 # sudo pacman -Syu --noconfirm --needed pcmanfm booster refind borg bupstash restic pandoc-cli fprintd btrbk fuzzel bemenu
