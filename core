@@ -33,6 +33,7 @@ sudo systemctl enable --now bluetooth cups.socket nftables warp-svc
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
+warp-cli connect
 
 # ROG tools
 sudo pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
