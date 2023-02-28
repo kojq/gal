@@ -16,16 +16,14 @@ sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick sbctl # uutils-coreutils
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix imagemagick sbctl
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev ventoy-bin
 
 # applications
-sudo pacman -Syu --noconfirm --needed blender chromium dolphin-emu firefox-developer-edition geogebra gimp inkscape lapce mpv qbittorrent yuzu # bravium
+sudo pacman -Syu --noconfirm --needed blender chromium dolphin-emu firefox-developer-edition geogebra gimp inkscape lapce mpv qbittorrent yuzu # bravium shotcut
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland tectonic
 
-# sudo pacman -Syu --noconfirm --needed flowblade openshot shotcut
-# paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin ticemu
-# paru -Syu --noconfirm --needed gittyup sublime-merge
+# paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
 # flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
 
 # services
@@ -49,7 +47,8 @@ gsettings reset org.gnome.shell app-picker-layout
 
 # enable recognition of NTFS drives
 # echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
-# sudo pacman -Syu --noconfirm --needed ntfsprogs-ntfs3 ntfs-3g
+# sudo pacman -Syu --noconfirm --needed ntfs-3g
+# paru -Syu --noconfirm --needed ntfsprogs-ntfs3
 
 # virtual machine
 # sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
