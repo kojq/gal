@@ -1,9 +1,7 @@
 # pacman configuration
 sudo sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
-sudo sed -i 's/^#ParallelDownloads = 5$/ParallelDownloads = 20/' /etc/pacman.conf
-# sudo sed -i '/^#ParallelDownloads/s/5/20/' /etc/pacman.conf
-# sudo sed -i '/^#ParallelDownloads/s/^#\(.*=\) 5$/\1 20/' /etc/pacman.conf
+sudo sed -i 's/^#\(ParallelDownloads = \)5$/\120/' /etc/pacman.conf
 
 # AUR helper
 sudo pacman -Syu --noconfirm --needed base-devel
