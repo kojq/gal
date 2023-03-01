@@ -12,14 +12,14 @@ cd ..
 rm -rf paru-bin
 
 # desktop environment and drivers
-sudo pacman -Syu --noconfirm --needed gnome libva-mesa-driver mesa-vdpau vulkan-radeon
+sudo pacman -Syu --noconfirm --needed gnome gnome-sound-recorder gnome-tweaks libva-mesa-driver mesa-vdpau vulkan-radeon # iwd wireless_tools smartmontools xdg-utils
 
 # fonts
 sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git imagemagick sbctl
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils cups cups-pdf fwupd fzf git helix htop imagemagick sbctl wget
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev ventoy-bin
 
 # applications
@@ -34,7 +34,7 @@ sudo pacman -Syu --noconfirm --needed asusctl
 sudo systemctl enable --now power-profiles-daemon
 
 # services
-sudo systemctl enable --now bluetooth cups.socket nftables warp-svc
+sudo systemctl enable --now bluetooth cups.socket gdm nftables warp-svc
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli set-mode warp
