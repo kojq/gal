@@ -10,7 +10,7 @@ Install Arch Linux with select packages and the GNOME desktop environment.
 
 ## Usage
 
-Run the following command.
+Run the following command. It can be run multiple times.
 
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
