@@ -42,7 +42,8 @@ warp-cli connect
 gsettings reset org.gnome.shell app-picker-layout
 
 # configuration due to NVIDIA drivers
-# sudo touch /etc/udev/rules.d/61-gdm.rules
+sudo touch /etc/udev/rules.d/61-gdm.rules
+
 # grep nouveau /boot/loader/entries/*_linux.conf || echo 'modprobe.blacklist=nouveau ' | sudo tee -a /boot/loader/entries/*_linux.conf
 
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
