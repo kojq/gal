@@ -44,8 +44,6 @@ gsettings reset org.gnome.shell app-picker-layout
 # configuration due to NVIDIA drivers
 sudo touch /etc/udev/rules.d/61-gdm.rules
 
-# grep nouveau /boot/loader/entries/*_linux.conf || echo 'modprobe.blacklist=nouveau ' | sudo tee -a /boot/loader/entries/*_linux.conf
-
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
 # sudo pacman -Syu --noconfirm --needed pcmanfm booster refind borg bupstash restic pandoc-cli fprintd btrbk fuzzel bemenu
 # paru -Syu --noconfirm --needed jetbrains-fleet kopia-bin vorta pika-backup backintime ulauncher tofi kickoff wofi-hg
