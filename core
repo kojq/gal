@@ -46,7 +46,7 @@ sudo touch /etc/udev/rules.d/61-gdm.rules
 
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
 # sudo pacman -Syu --noconfirm --needed pcmanfm booster refind borg bupstash restic pandoc-cli fprintd btrbk fuzzel bemenu
-# paru -Syu --noconfirm --needed jetbrains-fleet kopia-bin vorta pika-backup backintime ulauncher tofi kickoff wofi-hg
+# paru -Syu --noconfirm --needed jetbrains-fleet kopia-bin vorta pika-backup backintime
 # flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
 
 # enable recognition of NTFS drives
