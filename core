@@ -37,8 +37,7 @@ sudo pacman -Syu --noconfirm --needed asusctl
 sudo systemctl enable --now power-profiles-daemon
 
 # services
-SUDO_EDITOR=/usr/bin/helix
-export SUDO_EDITOR
+# grep helix ~/.bashrc || echo 'export EDITOR=/usr/bin/helix' | sudo tee -a ~/.bashrc
 sudo systemctl enable --now bluetooth cups.socket gdm nftables warp-svc
 yes | warp-cli register
 warp-cli set-families-mode malware
