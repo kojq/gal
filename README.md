@@ -61,6 +61,8 @@ The project should be archived if development has concluded. An issue can be ras
 
 ## Warnings
 
+- Before starting, set Secure Boot mode to Setup mode via firmware settings
+  - sbctl does not work with all hardware
 - Read output because packages may not install due to upstream issues
 - Install drivers, preferably before running, if desired
 
