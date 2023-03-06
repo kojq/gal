@@ -1,8 +1,8 @@
 # pacman configuration
 sudo sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
-sudo sed -i 's/^#\(ParallelDownloads = \)5$/\120/' /etc/pacman.conf
-# echo $((`nproc`-1))
+sudo sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
+
 # essentials
 sudo pacman -Syu --noconfirm --needed git gnome nvidia
 
@@ -38,6 +38,7 @@ sudo systemctl enable --now power-profiles-daemon
 
 # services
 SUDO_EDITOR=/usr/bin/helix
+export SUDO_EDITOR
 sudo systemctl enable --now bluetooth cups.socket gdm nftables warp-svc
 yes | warp-cli register
 warp-cli set-families-mode malware
