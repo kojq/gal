@@ -9,6 +9,10 @@ sudo pacman -Syu --noconfirm --needed git gnome nvidia
 # GNOME tools and drivers
 sudo pacman -Syu --noconfirm --needed gnome-sound-recorder gnome-tweaks libva-mesa-driver mesa-vdpau vulkan-radeon
 
+# WIP
+# baobab eog evince file-roller gdm gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-color-manager
+# gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs
+
 # AUR helper
 sudo pacman -Syu --noconfirm --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
