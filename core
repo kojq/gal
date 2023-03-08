@@ -7,13 +7,13 @@ sudo sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sudo pacman -Syu --noconfirm --needed gdm git iwd nvidia
 
 # GNOME tools and drivers
-sudo pacman -Syu --noconfirm --needed gnome-sound-recorder gnome-tweaks libva-mesa-driver mesa-vdpau vulkan-radeon
+sudo pacman -Syu --noconfirm --needed libva-mesa-driver mesa-vdpau vulkan-radeon
 
 # WIP
-# baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-color-manager
-# gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-photos gnome-system-monitor
-# gnome-text-editor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb nautilus
-# orca simple-scan sushi
+# baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks
+# gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-photos
+# gnome-sound-recorder gnome-system-monitor gnome-text-editor gnome-tweaks gnome-user-share gnome-weather
+# gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb nautilus orca simple-scan sushi
 
 # AUR helper
 sudo pacman -Syu --noconfirm --needed base-devel
