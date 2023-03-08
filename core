@@ -4,7 +4,7 @@ sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
 sudo sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
 # essentials
-sudo pacman -Syu --noconfirm --needed git gnome nvidia
+sudo pacman -Syu --noconfirm --needed gdm git iwd nvidia
 
 # GNOME tools and drivers
 sudo pacman -Syu --noconfirm --needed gnome-sound-recorder gnome-tweaks libva-mesa-driver mesa-vdpau vulkan-radeon
@@ -26,7 +26,7 @@ sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bluez-utils bottom cups cups-pdf fwupd helix imagemagick iwd sbctl skim smartmontools wget # fd uutils-coreutils
+sudo pacman -Syu --noconfirm --needed bluez bluez-utils bottom cups cups-pdf fwupd helix imagemagick sbctl skim smartmontools wget # fd uutils-coreutils
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev ventoy-bin
 
 # applications
