@@ -4,16 +4,16 @@ sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
 sudo sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
 # essentials
-sudo pacman -Syu --noconfirm --needed gdm git iwd nvidia
+sudo pacman -Syu --noconfirm --needed gdm git gnome-console iwd nvidia
 
-# GNOME tools and drivers
+# drivers
 sudo pacman -Syu --noconfirm --needed libva-mesa-driver mesa-vdpau vulkan-radeon
 
-# WIP
-# baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks
-# gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-photos
-# gnome-sound-recorder gnome-system-monitor gnome-text-editor gnome-tweaks gnome-user-share gnome-weather
-# gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb nautilus orca simple-scan sushi
+# GNOME tools
+sudo pacman -Syu --noconfirm --needed baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks
+sudo pacman -Syu --noconfirm --needed gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-photos
+sudo pacman -Syu --noconfirm --needed gnome-sound-recorder gnome-system-monitor gnome-text-editor gnome-tweaks gnome-user-share gnome-weather
+sudo pacman -Syu --noconfirm --needed gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb nautilus orca simple-scan sushi
 
 # AUR helper
 sudo pacman -Syu --noconfirm --needed base-devel
@@ -29,7 +29,7 @@ paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # tools
 sudo pacman -Syu --noconfirm --needed bluez bluez-utils bottom cups cups-pdf fwupd helix imagemagick sbctl skim smartmontools wget # fd uutils-coreutils
-paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev ventoy-bin
+paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook ventoy-bin # game-devices-udev
 
 # applications
 sudo pacman -Syu --noconfirm --needed blender chromium dolphin-emu firefox-developer-edition geogebra gimp inkscape lapce mpv qbittorrent yuzu # bravium shotcut
@@ -47,7 +47,6 @@ grep helix /etc/bash.bashrc || echo -e '\nexport EDITOR=/usr/bin/helix' | sudo t
 sudo systemctl enable --now bluetooth cups.socket gdm iwd nftables warp-svc
 yes | warp-cli register
 warp-cli set-families-mode malware
-warp-cli set-mode warp
 warp-cli connect
 gsettings reset org.gnome.shell app-picker-layout
 
@@ -60,6 +59,8 @@ sudo sbctl sign -s /boot/vmlinuz-linux
 
 # configuration due to NVIDIA drivers
 sudo touch /etc/udev/rules.d/61-gdm.rules
+
+
 
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
 # sudo pacman -Syu --noconfirm --needed pcmanfm booster refind borg bupstash restic pandoc-cli fprintd btrbk fuzzel bemenu
