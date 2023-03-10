@@ -6,7 +6,7 @@
 
 ## About
 
-Install Arch Linux with select packages and the GNOME desktop environment.
+Install Arch Linux with an ideal desktop experience.
 
 ## Usage
 
@@ -50,17 +50,9 @@ If activity is not seen in this repository after 90 days, the project has likely
 
 The project should be archived if development has concluded. An issue can be rasied to archive the repository in this case.
 
-## TODO
-
-- Incorporate archinstall
-- Rework archinstall decisions
-- Implement btrfs snapshots
-- Hotspot
-- IME
-- Mount NTFS
-
 ## Warnings
 
+- See https://github.com/kojq/run/issues/5 for the current TODO list
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - sbctl does not work with all hardware
 - Before starting, install desired drivers
@@ -75,7 +67,7 @@ The project should be archived if development has concluded. An issue can be ras
 ## Limitations
 
 - The premise will remain exactly as described in [About](#about)
-- Sensible suggestions to change the premise are welcome if assistance will be provided
+- Sensible suggestions to change the premise are welcome
 
 ## Build
 
