@@ -18,7 +18,7 @@ Run the following command. It can be run multiple times.
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
 
-If you desire [additional applications](https://wiki.archlinux.org/title/List_of_applications), enter the URI parameter (WIP).
+If you desire [additional applications](https://wiki.archlinux.org/title/List_of_applications), enter the URI parameter for the file containing the package names (this is a WIP that has not yet been implemented).
 
 Alternatively, fork or clone the repository to make changes, and run.
 
