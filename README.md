@@ -1,12 +1,13 @@
-<div align = "center">
-  <img src = "LOGO.svg" width = 240/>
+<div align = "center"><img src = "LOGO.svg" height = 180/>
 
 # Run
+
+This file is intended to be accessible, practical, consistent, and comprehensive. Please reach out with an issue or via [Community](#community) for suggestions.
 </div>
 
 ## Community
 
-Feel free to [join the Discord server](https://discord.gg/peezNh4pS4).
+Disrespect is not tolerated. Feel free to [join the Discord server](https://discord.gg/peezNh4pS4).
 
 ## Warnings
 
@@ -36,6 +37,14 @@ Alternatively, fork or clone the repository to make changes, and run.
 - Installs fonts, tools, and applications from repositories
 - Enables core functions such as those found in DE settings
 
+## Build
+
+There are no build instructions.
+
+## Credits
+
+The *Magnolia grandiflora* SVG is under CC0. It is based on the *[Magnolia flower flor](https://www.openclipart.org/detail/306895/magnolia-flower-flor)* SVG, [uploaded](https://www.openclipart.org/download/306895/1537228771.svg) on September 17, 2018, 11:59 p.m. by artist Betel Leclerc on Openclipart.
+
 ## Activity
 
 #### Current Status
@@ -62,27 +71,6 @@ If activity is not seen in this repository after 90 days, the project has likely
 
 The project should be archived if development has concluded. An issue can be rasied to archive the repository in this case.
 
-## Limitations
-
-- The premise will remain exactly as described in [About](#about)
-- Sensible suggestions to change the premise are welcome
-
-## Contribution
-
-Disrespect is not tolerated. A contribution is welcome if it does not violate [Limitations](#limitations).
-
 ## License
 
 Licensing is subject to change at the discretion of [kojq](https://github.com/kojq).
-
-## Accessibility
-
-This markdown file is meant to be practical, consistent, and comprehensive. Please reach out with an issue or via [Community](#community) for suggestions.
-
-## Build
-
-There are no build instructions.
-
-## Credits
-
-The *Magnolia grandiflora* SVG is under CC0. It is based on the *[Magnolia flower flor](https://www.openclipart.org/detail/306895/magnolia-flower-flor)* SVG, [uploaded](https://www.openclipart.org/download/306895/1537228771.svg) on September 17, 2018, 11:59 p.m. by artist Betel Leclerc on Openclipart.
