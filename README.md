@@ -10,6 +10,8 @@ Install Arch Linux with an ideal desktop experience.
 
 ## Usage
 
+The post-install script is gradually shifting premise to become an install script. However, it is currently still a post-install script where it is encouraged to read the script before running.
+
 Run the following command. It can be run multiple times.
 
 ```
