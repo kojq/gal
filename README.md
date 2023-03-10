@@ -4,6 +4,10 @@
 # Run
 </div>
 
+## Community
+
+Feel free to [join the Discord server](https://discord.gg/peezNh4pS4).
+
 ## About
 
 Install Arch Linux with an ideal desktop experience.
@@ -22,9 +26,19 @@ If you desire [additional applications](https://wiki.archlinux.org/title/List_of
 
 Alternatively, fork or clone the repository to make changes, and run.
 
-## Community
+## Warnings
 
-Feel free to [join the Discord server](https://discord.gg/peezNh4pS4).
+- See https://github.com/kojq/run/issues/5 for the current TODO list
+- Before starting, set Secure Boot mode to Setup mode via firmware settings
+  - sbctl does not work with all hardware
+- Before starting, install desired drivers
+  - AMD and NVIDIA drivers are included by default
+- Read output because packages may not install due to upstream issues
+
+## Features
+
+- Installs fonts, tools, and applications from repositories
+- Enables core functions such as those found in DE settings
 
 ## Activity
 
@@ -52,28 +66,10 @@ If activity is not seen in this repository after 90 days, the project has likely
 
 The project should be archived if development has concluded. An issue can be rasied to archive the repository in this case.
 
-## Warnings
-
-- See https://github.com/kojq/run/issues/5 for the current TODO list
-- Before starting, set Secure Boot mode to Setup mode via firmware settings
-  - sbctl does not work with all hardware
-- Before starting, install desired drivers
-  - AMD and NVIDIA drivers are included by default
-- Read output because packages may not install due to upstream issues
-
-## Features
-
-- Installs fonts, tools, and applications from repositories
-- Enables core functions such as those found in DE settings
-
 ## Limitations
 
 - The premise will remain exactly as described in [About](#about)
 - Sensible suggestions to change the premise are welcome
-
-## Build
-
-There are no build instructions.
 
 ## Contribution
 
@@ -83,10 +79,14 @@ Disrespect is not tolerated. A contribution is welcome if it does not violate [L
 
 Licensing is subject to change at the discretion of [kojq](https://github.com/kojq).
 
-## Credits
-
-The *Magnolia grandiflora* SVG is under CC0. It is based on the *[Magnolia flower flor](https://www.openclipart.org/detail/306895/magnolia-flower-flor)* SVG, [uploaded](https://www.openclipart.org/download/306895/1537228771.svg) on September 17, 2018, 11:59 p.m. by artist Betel Leclerc on Openclipart.
-
 ## Accessibility
 
 This markdown file is meant to be practical, consistent, and comprehensive. Please reach out with an issue or via [Community](#community) for suggestions.
+
+## Build
+
+There are no build instructions.
+
+## Credits
+
+The *Magnolia grandiflora* SVG is under CC0. It is based on the *[Magnolia flower flor](https://www.openclipart.org/detail/306895/magnolia-flower-flor)* SVG, [uploaded](https://www.openclipart.org/download/306895/1537228771.svg) on September 17, 2018, 11:59 p.m. by artist Betel Leclerc on Openclipart.
