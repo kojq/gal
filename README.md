@@ -11,7 +11,6 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 ## Warnings
 
-- See https://github.com/kojq/run/issues/5 for the current TODO list
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - sbctl does not work with all hardware
 - Before starting, install desired drivers
