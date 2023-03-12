@@ -36,11 +36,11 @@ sudo pacman -Syu --noconfirm --needed blender chromium dolphin-emu firefox-devel
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland tectonic
 
 # ROG tools
-# sudo pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-# sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-# grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
-# sudo pacman -Syu --noconfirm --needed asusctl
-# sudo systemctl enable --now power-profiles-daemon
+sudo pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
+sudo pacman -Syu --noconfirm --needed asusctl
+sudo systemctl enable --now power-profiles-daemon
 
 # services
 grep helix /etc/bash.bashrc || echo -e '\nexport EDITOR=/usr/bin/helix' | sudo tee -a /etc/bash.bashrc
