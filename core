@@ -9,12 +9,6 @@ sudo pacman -Syu --noconfirm --needed gdm git gnome-console iwd nvidia
 # drivers
 sudo pacman -Syu --noconfirm --needed libva-mesa-driver mesa-vdpau vulkan-radeon
 
-# GNOME tools
-sudo pacman -Syu --noconfirm --needed baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks
-sudo pacman -Syu --noconfirm --needed gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-photos
-sudo pacman -Syu --noconfirm --needed gnome-sound-recorder gnome-system-monitor gnome-text-editor gnome-tweaks gnome-user-share gnome-weather
-sudo pacman -Syu --noconfirm --needed gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb nautilus orca simple-scan sushi
-
 # AUR helper
 sudo pacman -Syu --noconfirm --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
@@ -26,6 +20,12 @@ rm -rf paru-bin
 # fonts
 sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
+
+# GNOME tools
+sudo pacman -Syu --noconfirm --needed baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks
+sudo pacman -Syu --noconfirm --needed gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-photos
+sudo pacman -Syu --noconfirm --needed gnome-sound-recorder gnome-system-monitor gnome-text-editor gnome-tweaks gnome-user-share gnome-weather
+sudo pacman -Syu --noconfirm --needed gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb nautilus orca simple-scan sushi
 
 # tools
 sudo pacman -Syu --noconfirm --needed bluez bluez-utils bottom cups cups-pdf fwupd helix imagemagick sbctl skim smartmontools wget # fd uutils-coreutils
