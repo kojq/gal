@@ -32,7 +32,7 @@ sudo pacman -Syu --noconfirm --needed bluez bluez-utils bottom cups cups-pdf fwu
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook ventoy-bin # game-devices-udev
 
 # applications
-sudo pacman -Syu --noconfirm --needed blender chromium dolphin-emu firefox-developer-edition geogebra gimp inkscape lapce mpv qbittorrent yuzu # bravium shotcut
+sudo pacman -Syu --noconfirm --needed blender chromium firefox-developer-edition geogebra gimp inkscape lapce mpv qbittorrent # bravium dolphin-emu shotcut yuzu
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland tectonic
 
 # ROG tools
@@ -48,7 +48,6 @@ sudo systemctl enable --now bluetooth cups.socket gdm iwd nftables warp-svc
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli connect
-gsettings reset org.gnome.shell app-picker-layout
 
 # enable Secure Boot
 sudo sbctl create-keys
@@ -59,6 +58,9 @@ sudo sbctl sign -s /boot/vmlinuz-linux
 
 # configuration due to NVIDIA drivers
 sudo touch /etc/udev/rules.d/61-gdm.rules
+
+# organize applications
+gsettings reset org.gnome.shell app-picker-layout
 
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
 # sudo pacman -Syu --noconfirm --needed pcmanfm booster refind borg bupstash restic pandoc-cli fprintd btrbk fuzzel bemenu
