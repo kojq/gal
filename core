@@ -4,7 +4,7 @@ sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
 sudo sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
 # essentials
-sudo pacman -Syu --noconfirm --needed gdm git gnome-console iwd nvidia
+sudo pacman -Syu --noconfirm --needed gdm git gnome-console networkmanager nvidia
 
 # drivers
 sudo pacman -Syu --noconfirm --needed libva-mesa-driver mesa-vdpau vulkan-radeon
@@ -44,7 +44,7 @@ sudo systemctl enable --now power-profiles-daemon
 
 # services
 grep helix /etc/bash.bashrc || echo -e '\nexport EDITOR=/usr/bin/helix' | sudo tee -a /etc/bash.bashrc
-sudo systemctl enable --now bluetooth cups.socket gdm iwd nftables warp-svc
+sudo systemctl enable --now bluetooth cups.socket gdm NetworkManager nftables warp-svc
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli connect
