@@ -11,15 +11,15 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 ## Warnings
 
+- Read output because packages may not install due to upstream issues
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - sbctl does not work with all hardware
 - Before starting, install desired drivers
   - AMD and NVIDIA drivers are included by default
-- Read output because packages may not install due to upstream issues
 
 ## Usage
 
-The post-install script is gradually shifting premise to become an install script. However, it is currently still a post-install script where it is encouraged to read the script before running.
+The post-install script is planned to become an install script. However, it is still a post-install script, so it is encouraged to read it before running.
 
 Run the following command. It can be run multiple times.
 
@@ -27,7 +27,7 @@ Run the following command. It can be run multiple times.
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
 
-If you desire [additional applications](https://wiki.archlinux.org/title/List_of_applications), enter the URI parameter for the file containing the package names (this is a WIP that has not yet been implemented).
+To install [additional applications](https://wiki.archlinux.org/title/List_of_applications), enter the URI parameter for the file containing the package names (this is a WIP that has not yet been implemented).
 
 Alternatively, fork or clone the repository to make changes, and run.
 
