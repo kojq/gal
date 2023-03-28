@@ -32,7 +32,7 @@ sudo pacman -Syu --noconfirm --needed bluez bluez-utils bottom cups cups-pdf fwu
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook ventoy-bin # game-devices-udev
 
 # applications
-sudo pacman -Syu --noconfirm --needed blender chromium firefox-developer-edition geogebra gimp inkscape lapce mpv qbittorrent # dolphin-emu shotcut yuzu
+sudo pacman -Syu --noconfirm --needed blender chromium firefox-developer-edition gimp inkscape lapce mpv qbittorrent # dolphin-emu geogebra shotcut yuzu
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland tectonic
 
 # ROG tools
