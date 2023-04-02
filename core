@@ -3,9 +3,12 @@ sudo sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
 sudo sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
-# essentials
-sudo pacman -Syu --noconfirm --needed gdm git gnome-console networkmanager nvidia reflector
+# reflector
+sudo pacman -Syu --noconfirm --needed reflector
 sudo systemctl start reflector
+
+# essentials
+sudo pacman -Syu --noconfirm --needed gdm git gnome-console networkmanager nvidia
 
 # drivers
 sudo pacman -Syu --noconfirm --needed libva-mesa-driver mesa-vdpau vulkan-radeon
@@ -23,10 +26,9 @@ sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # GNOME tools
-sudo pacman -Syu --noconfirm --needed baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-characters gnome-clocks
-sudo pacman -Syu --noconfirm --needed gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder
-sudo pacman -Syu --noconfirm --needed gnome-system-monitor gnome-user-share gnome-weather
-sudo pacman -Syu --noconfirm --needed gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb nautilus simple-scan
+sudo pacman -Syu --noconfirm --needed baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-characters gnome-clocks gnome-control-center
+sudo pacman -Syu --noconfirm --needed gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-user-share
+sudo pacman -Syu --noconfirm --needed gnome-weather gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb nautilus simple-scan
 
 # tools
 sudo pacman -Syu --noconfirm --needed bluez bluez-utils bottom cups cups-pdf fwupd helix imagemagick sbctl skim smartmontools wget # fd iwd uutils-coreutils
@@ -36,21 +38,12 @@ paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pac
 sudo pacman -Syu --noconfirm --needed blender firefox-developer-edition gimp inkscape lapce mpv qbittorrent # dolphin-emu geogebra shotcut yuzu
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland tectonic
 
-# ROG tools
-sudo pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
-sudo pacman -Syu --noconfirm --needed asusctl
-sudo systemctl enable --now power-profiles-daemon
-
 # services
 grep helix /etc/bash.bashrc || echo -e '\nexport EDITOR=/usr/bin/helix' | sudo tee -a /etc/bash.bashrc
 sudo systemctl enable --now bluetooth cups.socket gdm NetworkManager nftables warp-svc
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli connect
-yes|paru -Scc
-paru -Syyuu
 
 # enable Secure Boot
 sudo sbctl create-keys
@@ -59,16 +52,24 @@ sudo sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sudo sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sudo sbctl sign -s /boot/vmlinuz-linux
 
+# ROG tools
+sudo pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
+sudo pacman -Syu --noconfirm --needed asusctl
+sudo systemctl enable --now power-profiles-daemon
+
 # configuration due to NVIDIA drivers
 sudo touch /etc/udev/rules.d/61-gdm.rules
 
-# organize applications
-# gsettings reset org.gnome.shell app-picker-layout
-
+# install applications
 # paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
 # sudo pacman -Syu --noconfirm --needed pcmanfm booster refind borg bupstash restic pandoc-cli fprintd btrbk fuzzel bemenu
 # paru -Syu --noconfirm --needed jetbrains-fleet kopia-bin vorta pika-backup backintime
 # flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
+
+# organize applications
+# gsettings reset org.gnome.shell app-picker-layout
 
 # enable recognition of NTFS drives
 # echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
