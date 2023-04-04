@@ -38,6 +38,9 @@ paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pac
 sudo pacman -Syu --noconfirm --needed blender firefox-developer-edition gimp inkscape lapce mpv qbittorrent # dolphin-emu geogebra shotcut yuzu
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland tectonic
 
+# organize applications
+gsettings reset org.gnome.shell app-picker-layout
+
 # services
 grep helix /etc/bash.bashrc || echo -e '\nexport EDITOR=/usr/bin/helix' | sudo tee -a /etc/bash.bashrc
 sudo systemctl enable --now bluetooth cups.socket gdm NetworkManager nftables warp-svc
@@ -67,9 +70,6 @@ sudo touch /etc/udev/rules.d/61-gdm.rules
 # sudo pacman -Syu --noconfirm --needed pcmanfm booster refind borg bupstash restic pandoc-cli fprintd btrbk fuzzel bemenu
 # paru -Syu --noconfirm --needed jetbrains-fleet kopia-bin vorta pika-backup backintime
 # flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
-
-# organize applications
-# gsettings reset org.gnome.shell app-picker-layout
 
 # enable recognition of NTFS drives
 # echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
