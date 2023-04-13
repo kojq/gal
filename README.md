@@ -9,6 +9,10 @@ This file is intended to be accessible, practical, consistent, and comprehensive
 
 Disrespect is not tolerated. Feel free to [join the Discord server](https://discord.gg/peezNh4pS4).
 
+## License
+
+Licensing is subject to change at the discretion of [kojq](https://github.com/kojq).
+
 ## Warnings
 
 - Read output because packages may not install due to upstream issues
@@ -69,7 +73,3 @@ If activity is not seen in this repository after 60 days, the project has gone o
 If activity is not seen in this repository after 90 days, the project has likely concluded.
 
 The project should be archived if development has concluded. An issue can be rasied to archive the repository in this case.
-
-## License
-
-Licensing is subject to change at the discretion of [kojq](https://github.com/kojq).
