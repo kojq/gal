@@ -26,7 +26,7 @@ sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji
 paru -Syu --noconfirm --needed apple-fonts ttf-ms-win11-auto
 
 # GNOME tools
-sudo pacman -Syu --noconfirm --needed baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-characters gnome-clocks gnome-disk-utility
+sudo pacman -Syu --noconfirm --needed baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-disk-utility
 sudo pacman -Syu --noconfirm --needed gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-tweaks gnome-user-share gnome-weather
 sudo pacman -Syu --noconfirm --needed gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb malcontent nautilus simple-scan xdg-desktop-portal-gnome
 
@@ -35,7 +35,7 @@ sudo pacman -Syu --noconfirm --needed bluez bluez-utils bottom cups cups-pdf fwu
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook ventoy-bin # game-devices-udev
 
 # applications
-sudo pacman -Syu --noconfirm --needed blender firefox-developer-edition gimp inkscape lapce mpv qbittorrent # dolphin-emu geogebra opentoonz pencil2d shotcut synfigstudio yuzu
+sudo pacman -Syu --noconfirm --needed blender firefox-developer-edition inkscape lapce mpv qbittorrent # dolphin-emu geogebra gimp opentoonz pencil2d shotcut synfigstudio yuzu
 sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland tectonic
 
 # organize applications
