@@ -15,11 +15,10 @@ Licensing is subject to change at the discretion of [kojq](https://github.com/ko
 
 ## Warnings
 
+- Packages will not be installed for undetected hardware
 - Read output because packages may not install due to upstream issues
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - sbctl does not work with all hardware
-- Before starting, install desired drivers
-  - AMD and NVIDIA drivers are included by default
 
 ## Usage
 
@@ -46,7 +45,7 @@ There are no build instructions.
 
 ## Credits
 
-The *Magnolia grandiflora* SVG is under CC0. It is based on the *[Magnolia flower flor](https://www.openclipart.org/detail/306895/magnolia-flower-flor)* SVG, [uploaded](https://www.openclipart.org/download/306895/1537228771.svg) on September 17, 2018, 11:59 p.m. by artist Betel Leclerc on Openclipart.
+The Magnolia grandiflora SVG is under CC0. It is based on the [Magnolia flower flor](https://openclipart.org/detail/306895/magnolia-flower-flor) SVG, [uploaded](https://openclipart.org/download/306895/1537228771.svg) on September 17, 2018, 11:59 p.m. by artist Betel Leclerc on Openclipart.
 
 ## Activity
 
@@ -56,7 +55,7 @@ Passive Development
 
 #### Status Reason
 
-Changes primarily consist of trivial adjustments.
+Changes are primarily trivial.
 
 #### Possible Status
 
