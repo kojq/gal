@@ -2,7 +2,7 @@
 
 # Run
 
-This file is intended to be accessible, practical, consistent, and comprehensive. Please reach out with an issue or via [Community](#community) for suggestions.
+This file is intended to be accessible, practical, consistent, and comprehensive. Please reach out for suggestions.
 </div>
 
 ## Community
@@ -22,22 +22,17 @@ Licensing is subject to change at the discretion of [kojq](https://github.com/ko
 
 ## Usage
 
-The post-install script is planned to become an install script. However, it is still a post-install script, so it is encouraged to read it before running.
-
 Run the following command. It can be run multiple times.
 
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
 
-To install [additional applications](https://wiki.archlinux.org/title/List_of_applications), enter the URI parameter for the file containing the package names (this is a WIP that has not yet been implemented).
-
-Alternatively, fork or clone the repository to make changes, and run.
-
 ## Features
 
-- Installs fonts, tools, and applications from repositories
-- Enables core functions such as those found in DE settings
+- Install Arch Linux
+- Include fonts, tools, and applications from repositories
+- Enable services and functions
 
 ## Build
 
@@ -49,26 +44,8 @@ The Magnolia grandiflora SVG is under CC0. It is based on the [Magnolia flower f
 
 ## Activity
 
-#### Current Status
+- [x] Development (mostly commits)
+- [ ] Maintenance (mostly issues and pull requests)
+- [ ] Archived (no updates such as for security)
 
-Passive Development
-
-#### Status Reason
-
-Changes are primarily trivial.
-
-#### Possible Status
-
-- Active Development
-- Passive Development (strictly allows mostly minor changes)
-- Active Maintenance (strictly allows mostly issues and pull requests)
-- Passive Maintenance (strictly considers mostly issues and pull requests)
-- Archived
-
-#### Dispute Status
-
-If activity is not seen in this repository after 60 days, the project has gone on hiatus.
-
-If activity is not seen in this repository after 90 days, the project has likely concluded.
-
-The project should be archived if development has concluded. An issue can be rasied to archive the repository in this case.
+An issue can be rasied to archive the repository after 40 days of inactivity.
