@@ -1,4 +1,4 @@
-<div align = "center"><img src = "LOGO.svg" height = 180/>
+<div align="center"><img src="LOGO.svg" height=180/>
 
 # Run
 
@@ -45,7 +45,7 @@ The Magnolia grandiflora SVG is under CC0. It is based on the [Magnolia flower f
 ## Activity
 
 - [x] Development (mostly commits)
-- [ ] Maintenance (mostly issues and pull requests)
+- [ ] Maintenance (mostly issues and requests)
 - [ ] Archived (no updates such as for security)
 
 An issue can be rasied to archive the repository after 40 days of inactivity.
