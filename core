@@ -30,7 +30,7 @@ sudo pacman -Syu --noconfirm --needed gnome-font-viewer gnome-keyring gnome-logs
 sudo pacman -Syu --noconfirm --needed gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb malcontent nautilus simple-scan xdg-desktop-portal-gnome
 
 # tools
-sudo pacman -Syu --noconfirm --needed bluez bottom cups cups-pdf fwupd helix imagemagick sbctl skim smartmontools # fd iwd uutils-coreutils
+sudo pacman -Syu --noconfirm --needed bluez bottom cups cups-pdf fwupd helix imagemagick sbctl skim # fd iwd uutils-coreutils
 paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev ventoy-bin
 
 # applications
