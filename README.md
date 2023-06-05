@@ -1,8 +1,9 @@
-<div align="center"><img src="LOGO.svg" height=180/>
+<div align="center">
+  <img src="LOGO.svg" height=180/>
 
-# Run
+  # Run
 
-This file is intended to be accessible, practical, consistent, and comprehensive. Please reach out for suggestions.
+  This file is intended to be accessible, practical, consistent, and comprehensive. Please reach out for suggestions.
 </div>
 
 ## Community
