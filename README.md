@@ -16,10 +16,12 @@ Licensing is subject to change at the discretion of [kojq](https://github.com/ko
 
 ## Warnings
 
-- Packages will not be installed for undetected hardware
-- Read output because packages may not install due to upstream issues
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - sbctl does not work with all hardware
+- AMD and NVIDIA drivers are present while Intel drivers are not present
+  - Only Wayland and 64-bit applications are supported
+- Packages will not be installed for undetected hardware
+- Read output because packages may not install due to upstream issues
 
 ## Usage
 
