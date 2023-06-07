@@ -25,7 +25,7 @@ Licensing is subject to change at the discretion of [kojq](https://github.com/ko
 
 ## Usage
 
-Run the following command. It can be run multiple times.
+Run the following command.
 
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
