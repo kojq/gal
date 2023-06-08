@@ -6,8 +6,12 @@ The latest version will be supported with security updates until the repository 
 
 ## Reporting a Vulnerability
 
-Contact us through a community platform.
+A security vulnerability is a weakness that enables attackers to compromise confidentiality, integrity, and availability.
+
+Private vulnerability reporting is enabled for the repository.
+
+If that is not possible to use, contact us through a community platform.
 
 If that is not possible, create an issue to indicate severity, and prepare for further action.
 
-When prompted, state the vulnerability, how to exploit the vulnerability, and where the vulnerability is located in source code.
+If your report is not private, only when prompted, state the class of vulnerability, the vulnerability, how to exploit the vulnerability, and where the vulnerability is located in source code.
