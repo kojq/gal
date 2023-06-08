@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The latest version will be supported with security updates until the repository is archived.
+Only the latest version will be supported with security updates until the repository is archived.
 
 ## Reporting a Vulnerability
 
