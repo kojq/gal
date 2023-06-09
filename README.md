@@ -10,10 +10,6 @@
 
 Disrespect is not tolerated. Feel free to [join the Discord server](https://discord.gg/peezNh4pS4).
 
-## License
-
-Licensing is subject to change at the discretion of [kojq](https://github.com/kojq).
-
 ## Warnings
 
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
