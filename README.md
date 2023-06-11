@@ -14,9 +14,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - sbctl does not work with all hardware
-- AMD and NVIDIA drivers are present while Intel drivers are not present
-  - Only Wayland and 64-bit applications are supported
-- Packages will not be installed for undetected hardware
+- Defaults include Wayland and 64-bit applications
 - Read output because packages may not install due to upstream issues
 
 ## Usage
@@ -24,7 +22,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 Run the following command.
 
 ```
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
+curl https://raw.githubusercontent.com/kojq/run/main/core|sh
 ```
 
 ## Features
