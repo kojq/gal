@@ -79,6 +79,10 @@ exit
 EOF
 
 lsblk
+ping -c 3 1.1.1.1
+
+# umount -R /mnt
+# reboot
 
 #passwd
 #useradd -m -G wheel red
@@ -102,8 +106,6 @@ lsblk
 # sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 #sbctl sign -s /boot/vmlinuz-linux
 
-# umount -R /mnt
-# reboot
 # timedatectl zramctl systemctl status /dev/zram0 afterwards
 # ROG tools
 # pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
