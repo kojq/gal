@@ -63,40 +63,38 @@ Description = Updating rEFInd on ESP
 When=PostTransaction
 Exec=/usr/bin/refind-install" > /etc/pacman.d/hooks/refind.hook
 
-passwd
-useradd -m -G wheel red
-passwd red
-
-systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd warp-svc
-# systemctl enable --user pipewire-pulse.service
-
 # pacman configuration
 sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 # sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
-git clone https://aur.archlinux.org/paru-bin.git
-cd paru-bin
-makepkg -si
-cd ..
-rm -rf paru-bin
-paru -Syu cloudflare-warp-bin gdm-settings
-
-# services
 echo export EDITOR=/usr/bin/helix >> /etc/bash.bashrc
-yes | warp-cli register
-warp-cli set-families-mode malware
-warp-cli connect
+touch /etc/udev/rules.d/61-gdm.rules
+
+systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd warp-svc
+# systemctl enable --user pipewire-pulse.service
+
+#passwd
+#useradd -m -G wheel red
+#passwd red
+
+#git clone https://aur.archlinux.org/paru-bin.git
+#cd paru-bin
+#makepkg -si
+#cd ..
+#rm -rf paru-bin
+#paru -Syu cloudflare-warp-bin gdm-settings
+
+#yes | warp-cli register
+#warp-cli set-families-mode malware
+#warp-cli connect
 
 # enable Secure Boot
-sbctl create-keys
-sbctl enroll-keys -m
-sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+#sbctl create-keys
+#sbctl enroll-keys -m
+#sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 # sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux
-
-# configuration due to NVIDIA drivers
-touch /etc/udev/rules.d/61-gdm.rules
+#sbctl sign -s /boot/vmlinuz-linux
 
 # exit
 # EOF
