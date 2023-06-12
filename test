@@ -84,7 +84,7 @@ refind-install
 exit
 EOF
 
-# umount -R /mnt
+umount -R /mnt
 # reboot
 
 #git clone https://aur.archlinux.org/paru-bin.git
