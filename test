@@ -36,7 +36,7 @@ mount -o noatime,compress=zstd,subvol=home /dev/sda2 /mnt/home
 mkdir /mnt/.snapshots
 mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 
-pacstrap -Ki /mnt base base-devel booster gdm gnome-console gnome-control-center linux linux-firmware refind reflector sbctl zram-generator
+pacstrap -Ki /mnt base base-devel booster cups gdm gnome-console gnome-control-center nftables linux linux-firmware refind reflector sbctl zram-generator
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
@@ -72,8 +72,8 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 echo export EDITOR=/usr/bin/helix >> /etc/bash.bashrc
 touch /etc/udev/rules.d/61-gdm.rules
 
-systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd warp-svc
-# systemctl enable --user pipewire-pulse.service
+systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
+# systemctl enable warp-svc && systemctl enable --user pipewire-pulse.service
 
 passwd
 useradd -m -G wheel red
