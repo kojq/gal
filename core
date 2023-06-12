@@ -1,12 +1,12 @@
 timedatectl set-ntp true
 
-# Partition the disk with parted
+# Create partitions
 parted /dev/sda mklabel gpt
 parted /dev/sda mkpart ESP fat32 1MiB 513MiB
 parted /dev/sda set 1 esp on
 parted /dev/sda mkpart MAIN btrfs 513MiB 100%
 
-# Format the partitions
+# Format partitions
 mkfs.fat -F32 /dev/sda1
 mkfs.btrfs -f /dev/sda2
 
@@ -48,7 +48,7 @@ sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 
-echo rem > /etc/hostname
+echo arch > /etc/hostname
 echo "127.0.0.1 localhost
 ::1 localhost
 127.0.1.1 arch.localdomain arch" > /etc/hosts
@@ -75,15 +75,17 @@ touch /etc/udev/rules.d/61-gdm.rules
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
 # systemctl enable warp-svc && systemctl enable --user pipewire-pulse.service
 
-passwd
-useradd -m -G wheel red
-passwd red
+read -s -p "Set a password for the root user: " root_password
+echo "root:$root_password" | chpasswd
+
+read -p "Enter the username for the additional user: " username
+useradd -m -G wheel "$username"
+
+read -s -p "Set a password for the additional user account: " user_password
+echo "$username:$user_password" | chpasswd
 
 refind-install
-
-exit
 EOF
-
 umount -R /mnt
 # reboot
 
