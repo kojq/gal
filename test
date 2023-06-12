@@ -90,7 +90,6 @@ echo "$username:$user_password" | chpasswd
 
 mkinitcpio -p linux
 refind-install
-exit
 EOF
 
 umount -R /mnt
