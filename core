@@ -2,7 +2,7 @@ timedatectl set-ntp true
 
 # Partition the disk with parted
 yes|parted /dev/sda mklabel gpt
-parted /dev/sda mkpart ESP fat32 1MiB 512MiB
+parted /dev/sda mkpart ESP fat32 0% 512MiB
 parted /dev/sda set 1 esp on
 parted /dev/sda mkpart primary 512MiB 100%
 
