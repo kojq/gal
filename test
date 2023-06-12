@@ -83,7 +83,7 @@ rm -rf paru-bin
 paru -Syu cloudflare-warp-bin gdm-settings
 
 # services
-echo 'export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
+echo export EDITOR=/usr/bin/helix >> /etc/bash.bashrc
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli connect
