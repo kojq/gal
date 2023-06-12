@@ -1,6 +1,6 @@
 timedatectl set-ntp true
 
-wipefs -af /dev/sda
+wipefs -a -f /dev/sda
 
 # Partition the disk with parted
 parted /dev/sda mklabel gpt
