@@ -2,9 +2,9 @@ timedatectl set-ntp true
 
 # Partition the disk with parted
 parted /dev/sda mklabel gpt
-parted /dev/sda mkpart primary 1MiB 513MiB
+parted /dev/sda mkpart ESP fat32 1MiB 513MiB
 parted /dev/sda set 1 esp on
-parted /dev/sda mkpart primary 513MiB 100%
+parted /dev/sda mkpart MAIN btrfs 513MiB 100%
 
 # Format the partitions
 mkfs.fat -F32 /dev/sda1
@@ -14,9 +14,9 @@ mkfs.btrfs -f /dev/sda2
 mount /dev/sda2 /mnt
 
 # Create subvolumes
-btrfs subvolume create /mnt/root
-btrfs subvolume create /mnt/home
-btrfs subvolume create /mnt/snapshots
+btrfs su c /mnt/root
+btrfs su c /mnt/home
+btrfs su c /mnt/snapshots
 
 # Unmount the root partition
 umount /mnt
