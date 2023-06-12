@@ -1,5 +1,7 @@
 timedatectl set-ntp true
 
+wipefs -a /dev/sda
+
 # Partition the disk with parted
 parted /dev/sda mklabel gpt
 parted /dev/sda mkpart primary 1MiB 513MiB
