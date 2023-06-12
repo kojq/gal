@@ -1,7 +1,5 @@
 timedatectl set-ntp true
 
-wipefs -a -f /dev/sda
-
 # Partition the disk with parted
 parted /dev/sda mklabel gpt
 parted /dev/sda mkpart primary 1MiB 513MiB
@@ -10,7 +8,7 @@ parted /dev/sda mkpart primary 513MiB 100%
 
 # Format the partitions
 mkfs.fat -F32 /dev/sda1
-mkfs.btrfs /dev/sda2
+mkfs.btrfs -f /dev/sda2
 
 # Mount the root partition
 mount /dev/sda2 /mnt
