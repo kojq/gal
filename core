@@ -27,9 +27,17 @@ umount /mnt
 # Mount the root subvolume
 mount -o noatime,compress=zstd,subvol=root /dev/sda2 /mnt
 
-# Create and mount the boot partition
-mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot
+# Mount the home subvolume
+mkdir /mnt/home
+mount -o noatime,compress=zstd,subvol=home /dev/sda2 /mnt/home
+
+# Mount the snapshots subvolume
+mkdir /mnt/.snapshots
+mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
+
+# Mount the ESP partition
+mkdir /mnt/efi
+mount /dev/sda1 /mnt/efi
 
 # Mount the home subvolume
 mkdir /mnt/home
