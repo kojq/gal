@@ -3,7 +3,7 @@ set -e
 timedatectl set-ntp true
 
 # Create partitions
-parted /dev/sda mklabel gpt
+parted -s /dev/sda mklabel gpt
 parted /dev/sda mkpart ESP fat32 1MiB 513MiB
 parted /dev/sda set 1 esp on
 parted /dev/sda mkpart MAIN btrfs 513MiB 100%
@@ -41,7 +41,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 pacstrap -Ki /mnt base base-devel mkinitcpio cups gdm gnome-console gnome-control-center networkmanager nftables linux linux-firmware refind reflector sbctl zram-generator
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt <<EOF
+arch-chroot /mnt /bin/bash <<EOF
 
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock -w -u
