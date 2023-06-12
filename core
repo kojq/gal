@@ -39,14 +39,6 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 mkdir /mnt/efi
 mount /dev/sda1 /mnt/efi
 
-# Mount the home subvolume
-mkdir /mnt/home
-mount -o noatime,compress=zstd,subvol=home /dev/sda2 /mnt/home
-
-# Mount the snapshots subvolume
-mkdir /mnt/.snapshots
-mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
-
 pacstrap -Ki /mnt amd-ucode aria2 baobab base base-devel booster bottom btrfs-progs cups distrobox eog espeak-ng evince firefox firefox-ublock-origin fprintd fwupd gdm git gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en imagemagick inkscape intel-media-driver intel-ucode lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware mesa mesa-vdpau mpv mythes-en nautilus networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia obs-studio orca pipewire pipewire-jack podman qt6-wayland refind reflector sbctl simple-scan skim tectonic vulkan-intel vulkan-radeon wireplumber xdg-desktop-portal-gnome zram-generator
 genfstab -U /mnt >> /mnt/etc/fstab
 
