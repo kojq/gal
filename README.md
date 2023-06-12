@@ -23,7 +23,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 After booting the live environment and connecting to the Internet, run the following command.
 
 ```
-curl https://raw.githubusercontent.com/kojq/run/main/core|sh
+sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
 ```
 
 ## Features
