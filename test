@@ -88,7 +88,6 @@ useradd -m -G wheel "$username"
 read -s -p "Set a password for the additional user account: " user_password
 echo "$username:$user_password" | chpasswd
 
-mkinitcpio -p linux
 refind-install
 EOF
 
