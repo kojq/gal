@@ -36,7 +36,7 @@ mount -o noatime,compress=zstd,subvol=home /dev/sda2 /mnt/home
 mkdir /mnt/.snapshots
 mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 
-pacstrap -Ki /mnt base base-devel booster cups gdm gnome-console gnome-control-center nftables linux linux-firmware refind reflector sbctl zram-generator
+pacstrap -Ki /mnt base base-devel booster cups gdm gnome-console gnome-control-center networkmanager nftables linux linux-firmware refind reflector sbctl zram-generator
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
