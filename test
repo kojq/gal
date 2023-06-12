@@ -1,5 +1,6 @@
 #!/bin/sh
 set -e
+
 timedatectl set-ntp true
 
 # Create partitions
@@ -41,7 +42,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 pacstrap -Ki /mnt base base-devel mkinitcpio cups gdm gnome-console gnome-control-center networkmanager nftables linux linux-firmware refind reflector sbctl zram-generator
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt /bin/bash <<EOF
+arch-chroot /mnt /bin/sh <<EOF
 
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock -w -u
