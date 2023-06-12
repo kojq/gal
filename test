@@ -79,6 +79,8 @@ passwd
 useradd -m -G wheel red
 passwd red
 
+refind-install
+
 exit
 EOF
 
