@@ -74,6 +74,11 @@ touch /etc/udev/rules.d/61-gdm.rules
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd warp-svc
 # systemctl enable --user pipewire-pulse.service
 
+exit
+EOF
+
+lsblk
+
 #passwd
 #useradd -m -G wheel red
 #passwd red
@@ -96,8 +101,6 @@ systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.tim
 # sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 #sbctl sign -s /boot/vmlinuz-linux
 
-# exit
-# EOF
 # umount -R /mnt
 # reboot
 # timedatectl zramctl systemctl status /dev/zram0 afterwards
