@@ -1,83 +1,111 @@
+timedatectl set-ntp true
+
+# Partition the disk with parted
+parted /dev/sda mklabel gpt
+parted /dev/sda mkpart primary 1MiB 512MiB
+parted /dev/sda set 1 esp on
+parted /dev/sda mkpart primary 512MiB 100%
+
+# Format the partitions
+mkfs.fat -F32 /dev/sda1
+mkfs.btrfs /dev/sda2
+
+# Mount the root partition
+mount /dev/sda2 /mnt
+
+# Create subvolumes
+btrfs subvolume create /mnt/root
+btrfs subvolume create /mnt/home
+btrfs subvolume create /mnt/snapshots
+
+# Unmount the root partition
+umount /mnt
+
+# Mount the root subvolume
+mount -o noatime,compress=zstd,subvol=root /dev/sda2 /mnt
+# fix: rw,relatime,ssd,discard=async,space_cache=v2,subvolid=256,subvol=/@
+
+# Create and mount the boot partition
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+
+# Mount the home subvolume
+mkdir /mnt/home
+mount -o noatime,compress=zstd,subvol=home /dev/sda2 /mnt/home
+
+# Mount the snapshots subvolume
+mkdir /mnt/.snapshots
+mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
+
+pacstrap -Ki /mnt amd-ucode aria2 baobab base base-devel booster bottom btrfs-progs cups eog espeak-ng evince firefox firefox-ublock-origin fprintd fwupd gdm git gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en imagemagick inkscape intel-media-driver intel-ucode lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware mesa mesa-vdpau mpv mythes-en nautilus networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia obs-studio orca pipewire podman qt6-wayland refind reflector sbctl simple-scan skim tectonic vulkan-intel vulkan-radeon wireplumber xdg-desktop-portal-gnome zram-generator
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
+
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+hwclock -w -u
+
+sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
+locale-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+
+echo rem > /etc/hostname
+echo "127.0.0.1 localhost
+::1 localhost
+127.0.1.1 arch.localdomain arch" > /etc/hosts
+
+echo "[Trigger]
+Operation=Upgrade
+Type=Package
+Target=refind
+
+[Action]
+Description = Updating rEFInd on ESP
+When=PostTransaction
+Exec=/usr/bin/refind-install" > /etc/pacman.d/hooks/refind.hook
+
+passwd
+useradd -m -G wheel red
+passwd red
+
+systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd warp-svc
+# systemctl enable --user pipewire-pulse.service
+# fix: alsa jack pulse
+
 # pacman configuration
-sudo sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
-# sudo sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
-sudo sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
+sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
+# sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
+sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
-# reflector
-sudo pacman -Syu --noconfirm --needed reflector
-sudo systemctl start reflector
-
-# essentials
-sudo pacman -Syu --noconfirm --needed gdm git gnome-console gnome-control-center networkmanager nvidia
-
-# drivers
-sudo pacman -Syu --noconfirm --needed libva-mesa-driver mesa-vdpau vulkan-radeon
-
-# AUR helper
-sudo pacman -Syu --noconfirm --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
-makepkg -si --noconfirm --needed
+makepkg -si
 cd ..
 rm -rf paru-bin
-
-# fonts
-sudo pacman -Syu --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
-
-# GNOME tools
-sudo pacman -Syu --noconfirm --needed baobab eog evince file-roller gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-disk-utility
-sudo pacman -Syu --noconfirm --needed gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-tweaks gnome-user-share gnome-weather
-sudo pacman -Syu --noconfirm --needed gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb malcontent nautilus simple-scan xdg-desktop-portal-gnome
-
-# tools
-sudo pacman -Syu --noconfirm --needed bluez bottom cups cups-pdf fwupd helix imagemagick sbctl skim # fd iwd uutils-coreutils
-paru -Syu --noconfirm --needed cloudflare-warp-bin gdm-settings systemd-boot-pacman-hook # game-devices-udev ventoy-bin
-
-# applications
-sudo pacman -Syu --noconfirm --needed blender firefox-developer-edition inkscape lapce mpv qbittorrent # dolphin-emu geogebra gimp opentoonz pencil2d shotcut synfigstudio yuzu
-sudo pacman -Syu --noconfirm --needed hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en obs-studio qt6-wayland tectonic
-
-# organize applications
-gsettings reset org.gnome.shell app-picker-layout
+paru -Syu cloudflare-warp-bin gdm-settings
 
 # services
-grep helix /etc/bash.bashrc || echo -e '\nexport EDITOR=/usr/bin/helix' | sudo tee -a /etc/bash.bashrc
-sudo systemctl enable --now bluetooth cups.socket gdm NetworkManager nftables warp-svc
+echo 'export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 yes | warp-cli register
 warp-cli set-families-mode malware
 warp-cli connect
 
 # enable Secure Boot
-sudo sbctl create-keys
-sudo sbctl enroll-keys -m
-sudo sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
-sudo sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sudo sbctl sign -s /boot/vmlinuz-linux
+sbctl create-keys
+sbctl enroll-keys -m
+sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+# sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+sbctl sign -s /boot/vmlinuz-linux
 
 # configuration due to NVIDIA drivers
-sudo touch /etc/udev/rules.d/61-gdm.rules
+touch /etc/udev/rules.d/61-gdm.rules
 
+# exit
+# umount -R /mnt
+# reboot
+# timedatectl zramctl systemctl status /dev/zram0 afterwards
 # ROG tools
-# sudo pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-# sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+# pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+# pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 # grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
-# sudo pacman -Syu --noconfirm --needed asusctl
-# sudo systemctl enable --now power-profiles-daemon
-
-# install applications
-# paru -Syu --noconfirm --needed cemu-bin citra-qt-bin melonds-bin ryujinx-bin sublime-merge ticemu
-# sudo pacman -Syu --noconfirm --needed pcmanfm booster refind borg bupstash restic pandoc-cli fprintd btrbk fuzzel bemenu
-# paru -Syu --noconfirm --needed jetbrains-fleet kopia-bin vorta pika-backup backintime
-# flatpak install flathub -y com.usebottles.bottles se.sjoerd.Graphs app.drey.Dialect
-
-# enable recognition of NTFS drives
-# echo 'SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"' | sudo tee /etc/udev/rules.d/ntfs3_by_default.rules
-# sudo pacman -Syu --noconfirm --needed ntfs-3g
-# paru -Syu --noconfirm --needed ntfsprogs-ntfs3
-
-# virtual machine
-# sudo pacman -Syu virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq iptables-nft
-# sudo systemctl enable --now libvirtd
-
-# enable multilib
-# sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+# pacman -Syu --noconfirm --needed asusctl
+# systemctl enable --now power-profiles-daemon
