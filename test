@@ -36,7 +36,7 @@ mount -o noatime,compress=zstd,subvol=home /dev/sda2 /mnt/home
 mkdir /mnt/.snapshots
 mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 
-pacstrap -Ki /mnt base base-devel booster gdm linux linux-firmware refind reflector sbctl zram-generator
+pacstrap -Ki /mnt base base-devel booster gdm gnome-console gnome-control-center linux linux-firmware refind reflector sbctl zram-generator
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
@@ -75,18 +75,15 @@ touch /etc/udev/rules.d/61-gdm.rules
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd warp-svc
 # systemctl enable --user pipewire-pulse.service
 
+passwd
+useradd -m -G wheel red
+passwd red
+
 exit
 EOF
 
-lsblk
-ping -c 3 1.1.1.1
-
 # umount -R /mnt
 # reboot
-
-#passwd
-#useradd -m -G wheel red
-#passwd red
 
 #git clone https://aur.archlinux.org/paru-bin.git
 #cd paru-bin
