@@ -12,6 +12,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 ## Warnings
 
+- For safety, read the file before executing it
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - sbctl does not work with all hardware
 - Defaults include Wayland and 64-bit applications
