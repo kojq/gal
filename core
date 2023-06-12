@@ -72,8 +72,8 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 echo export EDITOR=/usr/bin/helix >> /etc/bash.bashrc
 touch /etc/udev/rules.d/61-gdm.rules
 
-systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd warp-svc
-# systemctl enable --user pipewire-pulse.service
+systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
+# systemctl enable warp-svc && systemctl enable --user pipewire-pulse.service
 
 passwd
 useradd -m -G wheel red
