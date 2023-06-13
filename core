@@ -57,17 +57,6 @@ echo "127.0.0.1 localhost
 ::1 localhost
 127.0.1.1 arch.localdomain arch" > /etc/hosts
 
-mkdir /etc/pacman.d/hooks/
-echo "[Trigger]
-Operation=Upgrade
-Type=Package
-Target=refind
-
-[Action]
-Description = Updating rEFInd on ESP
-When=PostTransaction
-Exec=/usr/bin/refind-install" > /etc/pacman.d/hooks/refind.hook
-
 sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
@@ -86,10 +75,22 @@ useradd -mG wheel "$username"
 read -s -p "Set a password for the additional user account: " user_password
 echo "$username:$user_password" | chpasswd
 
+mkdir /etc/pacman.d/hooks/
+echo "[Trigger]
+Operation=Upgrade
+Type=Package
+Target=refind
+
+[Action]
+Description = Updating rEFInd on ESP
+When=PostTransaction
+Exec=/usr/bin/refind-install" > /etc/pacman.d/hooks/refind.hook
+
 refind-install
+
 EOF
 
-umount -R /mnt
+# umount -R /mnt
 # reboot
 
 #git clone https://aur.archlinux.org/paru-bin.git
