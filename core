@@ -7,7 +7,7 @@ timedatectl set-ntp true
 parted -s /dev/sda mklabel gpt
 parted /dev/sda mkpart ESP fat32 1MiB 513MiB
 parted /dev/sda set 1 esp on
-parted /dev/sda mkpart MAIN btrfs 513MiB 100%
+parted /dev/sda mkpart ARCH btrfs 513MiB 100%
 
 # Format partitions
 mkfs.fat -F32 /dev/sda1
