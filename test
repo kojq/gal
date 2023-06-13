@@ -94,9 +94,8 @@ echo 'title Arch Linux with booster
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH rw' > /boot/loader/entries/booster.conf
 
-booster build booster-linux.img
 bootctl install
 
 EOF
