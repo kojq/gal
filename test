@@ -76,6 +76,7 @@ echo $username:$password | chpasswd
 echo root:$root_password | chpasswd
 
 mkdir /etc/pacman.d/hooks/
+
 echo '[Trigger]
 Type = Package
 Operation = Upgrade
@@ -87,11 +88,12 @@ When = PostTransaction
 Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/95-systemd-boot.hook
 
 mkdir -p /efi/loader/entries/
+
 echo 'title Arch Linux with booster
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH rw' > /efi/loader/entries/booster.conf
+options root=PARTLABEL=ARCH rw' > /efi/loader/entries/arch.conf
 
 bootctl install
 
