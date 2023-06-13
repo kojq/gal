@@ -7,7 +7,7 @@ timedatectl set-ntp true
 parted -s /dev/sda mklabel gpt
 parted /dev/sda mkpart ESP fat32 1MiB 513MiB
 parted /dev/sda set 1 esp on
-parted /dev/sda mkpart MAIN btrfs 513MiB 100%
+parted /dev/sda mkpart ARCH btrfs 513MiB 100%
 
 # Format partitions
 mkfs.fat -F32 /dev/sda1
@@ -39,7 +39,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 mkdir /mnt/efi
 mount /dev/sda1 /mnt/efi
 
-pacstrap -Ki /mnt base base-devel mkinitcpio cups gdm gnome-console gnome-control-center networkmanager nftables linux linux-firmware refind reflector sbctl zram-generator
+pacstrap -Ki /mnt base base-devel mkinitcpio cups gdm gnome-console gnome-control-center networkmanager nftables linux linux-firmware reflector sbctl zram-generator
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt /bin/sh <<EOF
@@ -58,16 +58,22 @@ echo "127.0.0.1 localhost
 
 mkdir /etc/pacman.d/hooks/
 echo "[Trigger]
-Operation=Upgrade
-Type=Package
-Target=refind
+Type = Package
+Operation = Upgrade
+Target = systemd
 
 [Action]
-Description = Updating rEFInd on ESP
-When=PostTransaction
-Exec=/usr/bin/refind-install" > /etc/pacman.d/hooks/refind.hook
+Description = Gracefully upgrading systemd-boot...
+When = PostTransaction
+Exec = /usr/bin/systemctl restart systemd-boot-update" > /etc/pacman.d/hooks/95-systemd-boot.hook
 
-# pacman configuration
+mkdir /efi/loader/entries/
+echo "title Arch Linux with booster
+linux /vmlinuz-linux
+initrd /intel-ucode.img
+initrd /booster-linux.img
+options root=PARTLABEL=ARCH rw" > /efi/loader/entries/booster.conf
+
 sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 # sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
@@ -89,7 +95,7 @@ useradd -m -G wheel "$username"
 read -s -p "Set a password for the additional user account: " user_password
 echo "$username:$user_password" | chpasswd
 
-refind-install
+bootctl install
 EOF
 
 umount -R /mnt
