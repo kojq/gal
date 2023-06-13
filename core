@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+# Set account credentials
+read -p "Set the account username: " username
+read -s -p "Set the account password: " password
+read -s -p "Set the root password: " root_password
+
 # Synchronize the system clock
 timedatectl set-ntp true
 
@@ -53,9 +58,9 @@ locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 echo arch > /etc/hostname
-echo "127.0.0.1 localhost
+echo '127.0.0.1 localhost
 ::1 localhost
-127.0.1.1 arch.localdomain arch" > /etc/hosts
+127.0.1.1 arch.localdomain arch' > /etc/hosts
 
 sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
@@ -66,17 +71,13 @@ touch /etc/udev/rules.d/61-gdm.rules
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
 # systemctl enable warp-svc && systemctl enable --user pipewire-pulse.service
 
-read -s -p "Set a password for the root user: " root_password
-echo "root:$root_password" | chpasswd
-
-read -p "Enter the username for the additional user: " username
-useradd -mG wheel "$username"
-
-read -s -p "Set a password for the additional user account: " user_password
-echo "$username:$user_password" | chpasswd
+useradd -mG wheel $username
+echo $username:$password | chpasswd
+echo root:$root_password | chpasswd
 
 mkdir /etc/pacman.d/hooks/
-echo "[Trigger]
+
+echo '[Trigger]
 Operation=Upgrade
 Type=Package
 Target=refind
@@ -84,7 +85,7 @@ Target=refind
 [Action]
 Description = Updating rEFInd on ESP
 When=PostTransaction
-Exec=/usr/bin/refind-install" > /etc/pacman.d/hooks/refind.hook
+Exec=/usr/bin/refind-install' > /etc/pacman.d/hooks/refind.hook
 
 refind-install
 
