@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-root_password=$1
-username=$2
-user_password=$3
+read -p "Set the account username: " username
+read -s -p "Set the account password: " password
+read -s -p "Set the root password: " root_password
 
 # Synchronize the system clock
 timedatectl set-ntp true
@@ -70,9 +70,9 @@ touch /etc/udev/rules.d/61-gdm.rules
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
 # systemctl enable warp-svc && systemctl enable --user pipewire-pulse.service
 
-echo $root_password | passwd
 useradd -mG wheel $username
-echo $username:$user_password | passwd
+echo $username:$password | chpasswd
+echo $root_password | chpasswd
 
 mkdir /etc/pacman.d/hooks/
 echo '[Trigger]
