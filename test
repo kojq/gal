@@ -42,10 +42,11 @@ mkdir /mnt/.snapshots
 mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 
 # Mount the ESP partition
-mkdir /mnt/efi
-mount /dev/sda1 /mnt/efi
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
 
 pacstrap -Ki /mnt base base-devel booster cups gdm gnome-console gnome-control-center networkmanager nftables linux linux-firmware reflector sbctl zram-generator
+
 genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt /bin/sh <<EOF
@@ -87,14 +88,15 @@ Description = Gracefully upgrading systemd-boot...
 When = PostTransaction
 Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/95-systemd-boot.hook
 
-mkdir -p /efi/loader/entries/
+mkdir -p /boot/loader/entries/
 
 echo 'title Arch Linux with booster
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH rw' > /efi/loader/entries/arch.conf
+options root=PARTLABEL=ARCH rw' > /boot/loader/entries/arch.conf
 
+booster build booster-linux.img
 bootctl install
 
 EOF
