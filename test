@@ -45,7 +45,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
-pacstrap -Ki /mnt base base-devel booster cups gdm gnome-console gnome-control-center intel-ucode networkmanager nftables linux linux-firmware reflector sbctl zram-generator
+pacstrap -Ki /mnt base base-devel mkinitcpio cups gdm gnome-console gnome-control-center intel-ucode networkmanager nftables linux linux-firmware reflector sbctl zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -90,11 +90,11 @@ Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/95-
 
 mkdir -p /boot/loader/entries/
 
-echo 'title Arch Linux with booster
+echo 'title Arch Linux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
-initrd /booster-linux.img
-options root=PARTLABEL=ARCH rw' > /boot/loader/entries/booster.conf
+initrd /initramfs-linux.img
+options root=PARTLABEL=ARCH rw' > /boot/loader/entries/arch.conf
 
 bootctl install
 
