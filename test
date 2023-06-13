@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+root_password=$1
+username=$2
+user_password=$3
+
 # Synchronize the system clock
 timedatectl set-ntp true
 
@@ -53,9 +57,9 @@ locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 echo arch > /etc/hostname
-echo "127.0.0.1 localhost
+echo '127.0.0.1 localhost
 ::1 localhost
-127.0.1.1 arch.localdomain arch" > /etc/hosts
+127.0.1.1 arch.localdomain arch' > /etc/hosts
 
 sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
@@ -66,20 +70,12 @@ touch /etc/udev/rules.d/61-gdm.rules
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
 # systemctl enable warp-svc && systemctl enable --user pipewire-pulse.service
 
-read -p "Set a password for the root user: " root_password
-echo $root_password | passwd --stdin
-
-read -p "Enter the username for the additional user: " username
-useradd -mG wheel "$username"
-
-read -p "Set a password for the additional user account: " user_password
-echo "$username:$root_password | passwd --stdin
-
-read -p "Set a password for the additional user account: " user_password
-echo "$username:$user_password" | chpasswd
+echo $root_password | passwd
+useradd -mG wheel $username
+echo $username:$user_password | passwd
 
 mkdir /etc/pacman.d/hooks/
-echo "[Trigger]
+echo '[Trigger]
 Type = Package
 Operation = Upgrade
 Target = systemd
@@ -87,14 +83,14 @@ Target = systemd
 [Action]
 Description = Gracefully upgrading systemd-boot...
 When = PostTransaction
-Exec = /usr/bin/systemctl restart systemd-boot-update" > /etc/pacman.d/hooks/95-systemd-boot.hook
+Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/95-systemd-boot.hook
 
 mkdir -p /efi/loader/entries/
-echo "title Arch Linux with booster
+echo 'title Arch Linux with booster
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH rw" > /efi/loader/entries/booster.conf
+options root=PARTLABEL=ARCH rw' > /efi/loader/entries/booster.conf
 
 bootctl install
 
