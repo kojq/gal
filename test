@@ -67,7 +67,7 @@ Description = Gracefully upgrading systemd-boot...
 When = PostTransaction
 Exec = /usr/bin/systemctl restart systemd-boot-update" > /etc/pacman.d/hooks/95-systemd-boot.hook
 
-mkdir /efi/loader/entries/
+mkdir -p /efi/loader/entries/
 echo "title Arch Linux with booster
 linux /vmlinuz-linux
 initrd /intel-ucode.img
@@ -84,7 +84,7 @@ touch /etc/udev/rules.d/61-gdm.rules
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
 # systemctl enable warp-svc && systemctl enable --user pipewire-pulse.service
 
-passwd
+passwd --stdin root
 
 read -s -p "Set a password for the root user: " root_password
 echo "root:$root_password" | chpasswd
