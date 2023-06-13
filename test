@@ -72,7 +72,7 @@ echo "title Arch Linux with booster
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH rw" > /efi/loader/entries/booster.conf
+options root=PARTLABEL=ARCH rw" > /efi/loader/entries/arch.conf
 
 sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 # sed -i 's/^#NoProgressBar$/ILoveCandy/' /etc/pacman.conf
@@ -84,15 +84,16 @@ touch /etc/udev/rules.d/61-gdm.rules
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
 # systemctl enable warp-svc && systemctl enable --user pipewire-pulse.service
 
-passwd --stdin root
-
-read -s -p "Set a password for the root user: " root_password
-echo "root:$root_password" | chpasswd
+read -p "Set a password for the root user: " root_password
+echo $root_password | passwd --stdin
 
 read -p "Enter the username for the additional user: " username
 useradd -m -G wheel "$username"
 
-read -s -p "Set a password for the additional user account: " user_password
+read -p "Set a password for the additional user account: " user_password
+echo "$username:$root_password | passwd --stdin
+
+read -p "Set a password for the additional user account: " user_password
 echo "$username:$user_password" | chpasswd
 
 bootctl install
