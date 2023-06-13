@@ -75,7 +75,7 @@ systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.tim
 useradd -mG wheel $username
 echo $username:$password | chpasswd
 echo root:$root_password | chpasswd
-echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/owner
+echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/owners
 
 mkdir /etc/pacman.d/hooks/
 
