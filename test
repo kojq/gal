@@ -45,7 +45,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
-pacstrap -Ki /mnt base base-devel mkinitcpio cups gdm gnome-console gnome-control-center intel-ucode networkmanager nftables linux linux-firmware reflector sbctl zram-generator
+pacstrap -Ki /mnt base base-devel booster cups gdm gnome-console gnome-control-center intel-ucode networkmanager nftables linux linux-firmware reflector sbctl zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -66,15 +66,16 @@ echo '127.0.0.1 localhost
 sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
-echo export EDITOR=/usr/bin/helix >> /etc/bash.bashrc
+echo '
+export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 touch /etc/udev/rules.d/61-gdm.rules
 
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
-# systemctl enable warp-svc && systemctl enable --user pipewire-pulse.service
 
 useradd -mG wheel $username
 echo $username:$password | chpasswd
 echo root:$root_password | chpasswd
+echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/owner
 
 mkdir /etc/pacman.d/hooks/
 
@@ -88,43 +89,41 @@ Description = Gracefully upgrading systemd-boot...
 When = PostTransaction
 Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/95-systemd-boot.hook
 
-mkdir -p /boot/loader/entries/
+mkdir /boot/loader/entries/
 
 echo 'title Arch Linux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
-initrd /initramfs-linux.img
+initrd /booster-linux.img
 options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
 
 bootctl install
+
+echo '[zram0]
+zram-size = ram / 2
+compression-algorithm = zstd
+swap-priority = 100
+fs-type = swap' > /etc/systemd/zram-generator.conf
+systemctl start systemd-zram-setup@zram0
+
+sbctl create-keys
+sbctl enroll-keys -m
+sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+sbctl sign -s /boot/vmlinuz-linux
 
 EOF
 
 # umount -R /mnt
 # reboot
 
-#git clone https://aur.archlinux.org/paru-bin.git
-#cd paru-bin
-#makepkg -si
-#cd ..
-#rm -rf paru-bin
-#paru -Syu cloudflare-warp-bin gdm-settings
-
-#yes | warp-cli register
+#paru -Syu cloudflare-warp-bin
+#yes|warp-cli register
 #warp-cli set-families-mode malware
 #warp-cli connect
-
-# enable Secure Boot
-#sbctl create-keys
-#sbctl enroll-keys -m
-#sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
-# sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-#sbctl sign -s /boot/vmlinuz-linux
-
-# timedatectl zramctl systemctl status /dev/zram0 afterwards
-# ROG tools
-# pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-# pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-# grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
-# pacman -Syu --noconfirm --needed asusctl
-# systemctl enable --now power-profiles-daemon
+#systemctl enable warp-svc
+#pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+#pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+#grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
+#pacman -Syu --noconfirm --needed asusctl
+#systemctl enable --now power-profiles-daemon
