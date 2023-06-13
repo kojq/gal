@@ -46,7 +46,7 @@ genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt /bin/sh <<EOF
 
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
-hwclock -w -u
+hwclock -wu
 
 sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
 locale-gen
@@ -81,7 +81,7 @@ read -s -p "Set a password for the root user: " root_password
 echo "root:$root_password" | chpasswd
 
 read -p "Enter the username for the additional user: " username
-useradd -m -G wheel "$username"
+useradd -mG wheel "$username"
 
 read -s -p "Set a password for the additional user account: " user_password
 echo "$username:$user_password" | chpasswd
