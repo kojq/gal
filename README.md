@@ -12,6 +12,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 ## Warnings
 
+- AMD is assumed for nvme0n1 while Intel is assumed for sda
 - For safety, read the file before executing it
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - sbctl does not work with all hardware
