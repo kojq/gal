@@ -12,14 +12,11 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 ## Warnings
 
-- AMD is assumed for nvme0n1 while Intel is assumed for sda
-  - This was a personal preference
-- For safety, read the file before executing it
+- For safety, read the file before execution
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
-  - Not all hardware works with sbctl
-- Defaults include GUID Partition Table, Wayland, and 64-bit applications
+- Defaults include GUID Partition Table, 64-bit applications, and Wayland
   - While not the latest technologies, these have been best supported
-- Read output because packages may not install due to upstream issues
+- Read output as packages may not install due to upstream issues
 
 ## Usage
 
