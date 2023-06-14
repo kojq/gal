@@ -68,7 +68,10 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
 echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
 touch /etc/udev/rules.d/61-gdm.rules
 
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
@@ -90,7 +93,7 @@ Description = Gracefully upgrading systemd-boot...
 When = PostTransaction
 Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/95-systemd-boot.hook
 
-mkdir /boot/loader/entries/
+mkdir -p /boot/loader/entries/
 
 echo 'title Arch Linux
 linux /vmlinuz-linux
