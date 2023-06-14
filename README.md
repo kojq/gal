@@ -20,10 +20,13 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 ## Usage
 
-After booting the live environment and connecting to the Internet, run the following command.
+Boot into the live environment, and connect to the Internet.
 
+The following command is preferred if you SSH and have only one physical disk in the system.
+
+For other cases, replace `$(lsblk -o NAME --nodeps|tail -1)` with the file name you want to use from the repository.
 ```
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/core)
+sh <(curl https://raw.githubusercontent.com/kojq/run/main/$(lsblk -o NAME --nodeps|tail -1))
 ```
 
 ## Features
