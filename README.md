@@ -16,7 +16,8 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 - For safety, read the file before executing it
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - sbctl does not work with all hardware
-- Defaults include Wayland and 64-bit applications
+- Defaults include GUID Partition Table, Wayland, and 64-bit applications
+  - while not the latest technologies, these have been best supported
 - Read output because packages may not install due to upstream issues
 
 ## Usage
