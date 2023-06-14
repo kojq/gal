@@ -25,9 +25,9 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 Boot into the live environment, and connect to the Internet.
 
-The following command is preferred if you SSH and have only one physical disk in the system.
+The following command is preferred for SSH and when only one disk is present in the system.
 
-For other cases, replace `$(lsblk -do NAME|tail -1)` with the file name you want to use from the repository.
+For other cases, replace `$(lsblk -do NAME|tail -1)` with the file name to use from the repository.
 
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/$(lsblk -do NAME|tail -1))
