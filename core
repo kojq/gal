@@ -116,17 +116,22 @@ EOF
 umount -R /mnt
 reboot
 
+# Features I have not had the opportunity to include:
+
+#dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
 #git clone https://aur.archlinux.org/paru-bin.git
 #cd paru-bin
 #makepkg -si
 #cd ..
 #rm -rf paru-bin
-#dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
 #paru -Syu cloudflare-warp-bin
 #yes|warp-cli register
 #warp-cli set-families-mode malware
 #warp-cli connect
-#systemctl enable warp-svc
+#systemctl enable --now warp-svc
+
 #pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 #pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 #grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
