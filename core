@@ -67,7 +67,6 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
 echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
-touch /etc/udev/rules.d/61-gdm.rules
 
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
 
@@ -110,6 +109,8 @@ sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sbctl sign -s /boot/vmlinuz-linux
+
+touch /etc/udev/rules.d/61-gdm.rules
 
 EOF
 
