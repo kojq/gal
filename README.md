@@ -13,6 +13,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 ## Warnings
 
 - AMD is assumed for nvme0n1 while Intel is assumed for sda
+  - This was a personal preference
 - For safety, read the file before executing it
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
   - Not all hardware works with sbctl
@@ -26,9 +27,10 @@ Boot into the live environment, and connect to the Internet.
 
 The following command is preferred if you SSH and have only one physical disk in the system.
 
-For other cases, replace `$(lsblk -o NAME --nodeps|tail -1)` with the file name you want to use from the repository.
+For other cases, replace `$(lsblk -do NAME|tail -1)` with the file name you want to use from the repository.
+
 ```
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/$(lsblk -o NAME --nodeps|tail -1))
+sh <(curl https://raw.githubusercontent.com/kojq/run/main/$(lsblk -do NAME|tail -1))
 ```
 
 ## Features
