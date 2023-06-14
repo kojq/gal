@@ -15,9 +15,9 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 - AMD is assumed for nvme0n1 while Intel is assumed for sda
 - For safety, read the file before executing it
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
-  - sbctl does not work with all hardware
+  - Not all hardware works with sbctl
 - Defaults include GUID Partition Table, Wayland, and 64-bit applications
-  - while not the latest technologies, these have been best supported
+  - While not the latest technologies, these have been best supported
 - Read output because packages may not install due to upstream issues
 
 ## Usage
@@ -43,7 +43,11 @@ There are no build instructions.
 
 ## Credits
 
-The Magnolia grandiflora SVG is under CC0. It is based on the [Magnolia flower flor](https://openclipart.org/detail/306895/magnolia-flower-flor) SVG, [uploaded](https://openclipart.org/download/306895/1537228771.svg) on September 17, 2018, 11:59 p.m. by artist Betel Leclerc on Openclipart.
+The Magnolia grandiflora SVG is under CC0.
+
+It is based on the [Magnolia flower flor](https://openclipart.org/detail/306895/magnolia-flower-flor) SVG.
+
+Betel Leclerc [uploaded](https://openclipart.org/download/306895/1537228771.svg) it September 17, 2018, 11:59 p.m. on Openclipart.
 
 ## Activity
 
