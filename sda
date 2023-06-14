@@ -3,8 +3,8 @@ set -e
 
 # Set account credentials
 read -p "Set the account username: " username
-read -s -p "Set the account password: " password
-read -s -p "Set the root password: " root_password
+read -sp "Set the account password: " password
+read -sp "Set the root password: " root_password
 
 # Synchronize the system clock
 timedatectl set-ntp true
