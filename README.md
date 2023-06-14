@@ -15,19 +15,14 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 - For safety, read the file before execution
 - Before starting, set Secure Boot mode to Setup mode via firmware settings
 - Defaults include GUID Partition Table, 64-bit applications, and Wayland
-  - While not the latest technologies, these have been best supported
 - Read output as packages may not install due to upstream issues
 
 ## Usage
 
-Boot into the live environment, and connect to the Internet.
-
-The following command is preferred for SSH and when only one disk is present in the system.
-
-For other cases, replace `$(lsblk -do NAME|tail -1)` with the file name to use from the repository.
+Boot into the live environment, connect to the Internet, and run following command.
 
 ```
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/$(lsblk -do NAME|tail -1))
+sh <(curl https://raw.githubusercontent.com/kojq/run/main/install)
 ```
 
 ## Features
