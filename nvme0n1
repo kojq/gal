@@ -45,8 +45,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
-pacstrap -Ki /mnt base base-devel booster cups gdm gnome-console gnome-control-center intel-ucode networkmanager nftables linux linux-firmware reflector sbctl zram-generator
-
+pacstrap -Ki /mnt amd-ucode aria2 baobab base base-devel booster bottom btrfs-progs cups distrobox eog espeak-ng evince firefox firefox-ublock-origin fprintd fwupd gdm git gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en imagemagick inkscape intel-media-driver intel-ucode lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware mesa mesa-vdpau mpv mythes-en nautilus networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia obs-studio orca pipewire pipewire-jack podman qt6-wayland refind reflector sbctl simple-scan skim tectonic vulkan-intel vulkan-radeon wireplumber xdg-desktop-portal-gnome zram-generator
 genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt /bin/sh <<EOF
@@ -68,8 +67,6 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
 echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
-
-touch /etc/udev/rules.d/61-gdm.rules
 
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
 
@@ -113,17 +110,29 @@ sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sbctl sign -s /boot/vmlinuz-linux
 
+touch /etc/udev/rules.d/61-gdm.rules
+
 EOF
 
-# umount -R /mnt
-# reboot
+umount -R /mnt
+reboot
+
+# Features I have not had the opportunity to include:
 
 #dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
+#git clone https://aur.archlinux.org/paru-bin.git
+#cd paru-bin
+#makepkg -si
+#cd ..
+#rm -rf paru-bin
+
 #paru -Syu cloudflare-warp-bin
 #yes|warp-cli register
 #warp-cli set-families-mode malware
 #warp-cli connect
-#systemctl enable warp-svc
+#systemctl enable --now warp-svc
+
 #pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 #pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 #grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
