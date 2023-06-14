@@ -93,6 +93,7 @@ mkdir -p /boot/loader/entries/
 echo 'title Arch Linux
 linux /vmlinuz-linux
 initrd /amd-ucode.img
+initrd /intel-ucode.img
 initrd /booster-linux.img
 options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
 
