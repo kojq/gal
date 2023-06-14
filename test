@@ -69,11 +69,6 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 
-export XDG_RUNTIME_DIR=/run/user/0
-dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-export XDG_RUNTIME_DIR=/run/user/1000
-dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-
 touch /etc/udev/rules.d/61-gdm.rules
 
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
@@ -123,6 +118,7 @@ EOF
 # umount -R /mnt
 # reboot
 
+#dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 #paru -Syu cloudflare-warp-bin
 #yes|warp-cli register
 #warp-cli set-families-mode malware
