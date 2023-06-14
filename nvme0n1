@@ -10,17 +10,17 @@ read -s -p "Set the root password: " root_password
 timedatectl set-ntp true
 
 # Create partitions
-parted -s /dev/sda mklabel gpt
-parted /dev/sda mkpart ESP fat32 1MiB 513MiB
-parted /dev/sda set 1 esp on
-parted /dev/sda mkpart ARCH btrfs 513MiB 100%
+parted -s /dev/nvme0n1 mklabel gpt
+parted /dev/nvme0n1 mkpart ESP fat32 1MiB 513MiB
+parted /dev/nvme0n1 set 1 esp on
+parted /dev/nvme0n1 mkpart ARCH btrfs 513MiB 100%
 
 # Format partitions
-mkfs.fat -F32 /dev/sda1
-mkfs.btrfs -f /dev/sda2
+mkfs.fat -F32 /dev/nvme0n1p1
+mkfs.btrfs -f /dev/nvme0n1p2
 
 # Mount the root partition
-mount /dev/sda2 /mnt
+mount /dev/nvme0n1p2 /mnt
 
 # Create subvolumes
 btrfs su c /mnt/root
@@ -31,19 +31,19 @@ btrfs su c /mnt/snapshots
 umount /mnt
 
 # Mount the root subvolume
-mount -o noatime,compress=zstd,subvol=root /dev/sda2 /mnt
+mount -o noatime,compress=zstd,subvol=root /dev/nvme0n1p2 /mnt
 
 # Mount the home subvolume
 mkdir /mnt/home
-mount -o noatime,compress=zstd,subvol=home /dev/sda2 /mnt/home
+mount -o noatime,compress=zstd,subvol=home /dev/nvme0n1p2 /mnt/home
 
 # Mount the snapshots subvolume
 mkdir /mnt/.snapshots
-mount -o noatime,compress=zstd,subvol=snapshots /dev/sda2 /mnt/.snapshots
+mount -o noatime,compress=zstd,subvol=snapshots /dev/nvme0n1p2 /mnt/.snapshots
 
 # Mount the ESP partition
 mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot
 
 pacstrap -Ki /mnt amd-ucode aria2 baobab base base-devel booster bottom btrfs-progs cups distrobox eog espeak-ng evince firefox firefox-ublock-origin fprintd fwupd gdm git gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en imagemagick inkscape intel-media-driver intel-ucode lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware mesa mesa-vdpau mpv mythes-en nautilus networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia obs-studio orca pipewire pipewire-jack podman qt6-wayland refind reflector sbctl simple-scan skim tectonic vulkan-intel vulkan-radeon wireplumber xdg-desktop-portal-gnome zram-generator
 genfstab -U /mnt > /mnt/etc/fstab
@@ -91,7 +91,7 @@ mkdir -p /boot/loader/entries/
 
 echo 'title Arch Linux
 linux /vmlinuz-linux
-initrd /intel-ucode.img
+initrd /amd-ucode.img
 initrd /booster-linux.img
 options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
 
