@@ -39,9 +39,7 @@ There are no build instructions.
 
 The Magnolia grandiflora SVG is under CC0.
 
-It is based on the [Magnolia flower flor](https://openclipart.org/detail/306895/magnolia-flower-flor) SVG.
-
-Betel Leclerc [uploaded](https://openclipart.org/download/306895/1537228771.svg) it September 17, 2018, 11:59 p.m. on Openclipart.
+Betel Leclerc [uploaded](https://openclipart.org/download/306895/1537228771.svg) the [Magnolia flower flor](https://openclipart.org/detail/306895/magnolia-flower-flor) SVG on September 17, 2018, 11:59 p.m. to Openclipart.
 
 ## Activity
 
