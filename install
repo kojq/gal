@@ -3,7 +3,8 @@ set -e
 
 # Determine the disk to install upon
 disk=$(lsblk -do NAME | tail -1)
-read -p 'Press enter to use '$disk'; otherwise, state the disk name: ' disk
+read -p 'Press enter to use '$disk'; otherwise, state the disk name: ' new_disk
+disk=${new_disk:-$disk}
 [[ $disk =~ [0-9]$ ]] && convention=p
 
 # Set account credentials
