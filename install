@@ -75,14 +75,19 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 
+echo '
+GTK_IM_MODULE=ibus
+QT_IM_MODULE=ibus
+XMODIFIERS=@im=ibus' > /etc/environment
+
 systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
 
 useradd -mG wheel $username
 echo $username:$password | chpasswd
 echo root:$root_password | chpasswd
-echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/owners
+echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 
-mkdir /etc/pacman.d/hooks/
+mkdir /etc/pacman.d/hooks
 
 echo '[Trigger]
 Type = Package
@@ -94,7 +99,7 @@ Description = Gracefully upgrading systemd-boot...
 When = PostTransaction
 Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/95-systemd-boot.hook
 
-mkdir -p /boot/loader/entries/
+mkdir -p /boot/loader/entries
 
 echo 'title Arch Linux
 linux /vmlinuz-linux
