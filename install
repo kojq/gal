@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-# Determine the disk to install upon
+# Determine disk to install upon
 disk=$(lsblk -do NAME | tail -1)
 read -p 'Press enter to use '$disk'; otherwise, state the disk name: ' new_disk
 disk=${new_disk:-$disk}
@@ -12,7 +12,7 @@ read -p 'Set the account username: ' username
 read -sp 'Set the account password: ' password
 read -sp 'Set the root password: ' root_password
 
-# Synchronize the system clock
+# Synchronize system clock
 timedatectl set-ntp true
 
 # Create partitions
@@ -25,7 +25,7 @@ parted /dev/$disk mkpart ARCH btrfs 513MiB 100%
 mkfs.fat -F32 /dev/$disk$convention'1'
 mkfs.btrfs -f /dev/$disk$convention'2'
 
-# Mount the root partition
+# Mount root partition
 mount /dev/$disk$convention'2' /mnt
 
 # Create subvolumes
@@ -33,21 +33,21 @@ btrfs su c /mnt/root
 btrfs su c /mnt/home
 btrfs su c /mnt/snapshots
 
-# Unmount the root partition
+# Unmount root partition
 umount /mnt
 
-# Mount the root subvolume
+# Mount root subvolume
 mount -o noatime,compress=zstd,subvol=root /dev/$disk$convention'2' /mnt
 
-# Mount the home subvolume
+# Mount home subvolume
 mkdir /mnt/home
 mount -o noatime,compress=zstd,subvol=home /dev/$disk$convention'2' /mnt/home
 
-# Mount the snapshots subvolume
+# Mount snapshots subvolume
 mkdir /mnt/.snapshots
 mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$convention'2' /mnt/.snapshots
 
-# Mount the ESP partition
+# Mount ESP partition
 mkdir /mnt/boot
 mount /dev/$disk$convention'1' /mnt/boot
 
@@ -124,9 +124,3 @@ EOF
 
 umount -R /mnt
 reboot
-
-#pacman-key -r 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-#pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-#grep g14 /etc/pacman.conf || echo -e '\n[g14]\nServer = https://arch.asus-linux.org' | sudo tee -a /etc/pacman.conf
-#pacman -Syu --noconfirm --needed asusctl
-#systemctl enable --now power-profiles-daemon
