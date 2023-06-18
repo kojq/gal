@@ -1,19 +1,37 @@
 #!/bin/sh
 set -e
 
-# Determine disk to install upon
-echo
-disk=$(lsblk -do NAME -x SIZE | tail -1)
-read -p 'Press enter to use '$disk'; otherwise, state the disk name: ' new_disk
-disk=${new_disk:-$disk}
-[[ $disk =~ [0-9]$ ]] && convention=p
+# Set disk
+clear
+PS3='Set disk: '
+select disk in $(lsblk -do NAME -x SIZE | tac | head -n -1)
+do
+    if [[ -n $disk ]]; then
+        break
+    else
+        echo "Invalid selection. Try again."
+    fi
+done
+[[ $disk =~ [0-9]$ ]] && separator=p
 
 # Set account credentials
-read -p 'Set the account username: ' username
-read -sp 'Set the account password: ' password
+clear
+read -p 'Set account username: ' username
+read -sp 'Set account password: ' password
 echo
-read -sp 'Set the root password: ' root_password
-echo
+read -sp 'Set root password: ' root_password
+
+# Set timezone
+clear
+PS3='Set timezone: '
+select timezone in $(timedatectl list-timezones)
+do
+    if [[ -n $timezone ]]; then
+        break
+    else
+        echo "Invalid selection. Try again."
+    fi
+done
 
 # Synchronize system clock
 timedatectl set-ntp true
@@ -25,11 +43,11 @@ parted /dev/$disk set 1 esp on
 parted /dev/$disk mkpart ARCH btrfs 513MiB 100%
 
 # Format partitions
-mkfs.fat -F32 /dev/$disk$convention'1'
-mkfs.btrfs -f /dev/$disk$convention'2'
+mkfs.fat -F32 /dev/$disk$separator'1'
+mkfs.btrfs -f /dev/$disk$separator'2'
 
 # Mount root partition
-mount /dev/$disk$convention'2' /mnt
+mount /dev/$disk$separator'2' /mnt
 
 # Create subvolumes
 btrfs su c /mnt/root
@@ -40,19 +58,19 @@ btrfs su c /mnt/snapshots
 umount /mnt
 
 # Mount root subvolume
-mount -o noatime,compress=zstd,subvol=root /dev/$disk$convention'2' /mnt
+mount -o noatime,compress=zstd,subvol=root /dev/$disk$separator'2' /mnt
 
 # Mount home subvolume
 mkdir /mnt/home
-mount -o noatime,compress=zstd,subvol=home /dev/$disk$convention'2' /mnt/home
+mount -o noatime,compress=zstd,subvol=home /dev/$disk$separator'2' /mnt/home
 
 # Mount snapshots subvolume
 mkdir /mnt/.snapshots
-mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$convention'2' /mnt/.snapshots
+mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.snapshots
 
 # Mount ESP partition
 mkdir /mnt/boot
-mount /dev/$disk$convention'1' /mnt/boot
+mount /dev/$disk$separator'1' /mnt/boot
 
 pacstrap -Ki /mnt $(lspci | grep -q NVIDIA && nvidia) amd-ucode aria2 baobab base base-devel booster bottom btrfs-progs cups distrobox eog espeak-ng evince firefox firefox-ublock-origin fprintd fwupd gdm git gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en ibus ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey imagemagick intel-media-driver intel-ucode lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware malcontent mesa mesa-vdpau mpv mythes-en nautilus networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio orca pipewire pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland reflector sbctl simple-scan skim tectonic vulkan-intel vulkan-radeon wireplumber xdg-desktop-portal-gnome xdg-user-dirs-gtk zram-generator
 
@@ -60,7 +78,7 @@ genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt /bin/sh <<EOF
 
-ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+ln -s /usr/share/zoneinfo/$timezone /etc/localtime
 hwclock -wu
 
 sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
