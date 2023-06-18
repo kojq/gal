@@ -4,7 +4,7 @@ set -e
 # Set disk
 clear
 PS3='Set disk: '
-select disk in $(lsblk -do NAME -x SIZE | tac | head -n -1)
+select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
 do
     if [[ -n $disk ]]; then
         break
