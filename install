@@ -6,9 +6,7 @@ lspci | grep -q NVIDIA && nvidia=nvidia
 
 # Set disk
 clear
-
 echo WARNING: Back up data. The entire disk will be wiped.
-
 PS3='Set disk: '
 select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
 do
