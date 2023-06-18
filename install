@@ -10,7 +10,9 @@ disk=${new_disk:-$disk}
 # Set account credentials
 read -p 'Set the account username: ' username
 read -sp 'Set the account password: ' password
+echo
 read -sp 'Set the root password: ' root_password
+echo
 
 # Synchronize system clock
 timedatectl set-ntp true
