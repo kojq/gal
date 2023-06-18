@@ -5,7 +5,7 @@ set -e
 lspci | grep -q NVIDIA && nvidia_drivers=nvidia
 
 # Determine disk to install upon
-disk=$(lsblk -do NAME | tail -1)
+disk=$(lsblk -do NAME -x SIZE | tail -1)
 read -p 'Press enter to use '$disk'; otherwise, state the disk name: ' new_disk
 disk=${new_disk:-$disk}
 [[ $disk =~ [0-9]$ ]] && convention=p
