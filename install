@@ -14,7 +14,7 @@ do
 done
 [[ $disk =~ [0-9]$ ]] && separator=p
 
-# Set account credentials
+# Set credentials
 clear
 read -p 'Set account username: ' username
 read -sp 'Set account password: ' password
