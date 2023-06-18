@@ -2,6 +2,7 @@
 set -e
 
 # Determine disk to install upon
+echo
 disk=$(lsblk -do NAME -x SIZE | tail -1)
 read -p 'Press enter to use '$disk'; otherwise, state the disk name: ' new_disk
 disk=${new_disk:-$disk}
