@@ -2,17 +2,20 @@
 set -e
 
 # Detect NVIDIA
-nvidia=$(lspci | grep -q NVIDIA && nvidia)
+lspci | grep -q NVIDIA && nvidia=nvidia
 
 # Set disk
 clear
+
+echo WARNING: Back up data. The entire disk will be wiped.
+
 PS3='Set disk: '
 select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
 do
     if [[ -n $disk ]]; then
         break
     else
-        echo "Invalid selection. Try again."
+        echo Invalid selection. Try again.
     fi
 done
 [[ $disk =~ [0-9]$ ]] && separator=p
@@ -32,7 +35,7 @@ do
     if [[ -n $timezone ]]; then
         break
     else
-        echo "Invalid selection. Try again."
+        echo Invalid selection. Try again.
     fi
 done
 
