@@ -12,6 +12,4 @@ Private vulnerability reporting is enabled for the repository.
 
 If that is not possible to use, contact us through a community platform.
 
-If that is not possible, create an issue to indicate severity, and prepare for further action.
-
-If your report is not private, only when prompted, state the class of vulnerability, the vulnerability, how to exploit the vulnerability, and where the vulnerability is located in source code.
+If your report is not private, only when prompted, state the class of vulnerability, the vulnerability, how to exploit the vulnerability, and where the vulnerability is located in the source code.
