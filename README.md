@@ -12,7 +12,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 ## Usage
 
-Boot into the live environment, connect to the Internet, and run following command.
+Set Secure Boot mode to Setup mode via firmware settings, boot into the live environment, connect to the Internet, and run following command.
 
 ```
 sh <(curl https://raw.githubusercontent.com/kojq/run/main/install)
@@ -35,14 +35,6 @@ An issue can be rasied to archive the repository after 40 days of inactivity.
 ## Build
 
 There are no build instructions.
-
-## Warnings
-
-- For safety, read the file before execution
-- Know the disk to install upon
-- Before starting, set Secure Boot mode to Setup mode via firmware settings
-- Defaults include GUID Partition Table, 64-bit applications, and Wayland
-- Read output as packages may not install due to upstream issues
 
 ## Credits
 
