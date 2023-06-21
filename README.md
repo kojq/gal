@@ -1,7 +1,7 @@
 <div align=center>
   <img src=LOGO.svg height=140/>
 
-  # Get Arch
+  # Get Arch Linux
 
   Install Arch Linux with a favorable desktop experience.
 </div>
