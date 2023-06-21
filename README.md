@@ -1,22 +1,14 @@
 <div align=center>
-  <img src=LOGO.svg height=180/>
+  <img src=LOGO.svg height=140/>
 
-  # Run
+  # Get Arch
 
-  This file is intended to be accessible, practical, consistent, and comprehensive. Please reach out for suggestions.
+  Install Arch Linux with a favorable desktop experience.
 </div>
 
 ## Community
 
-Disrespect is not tolerated. Feel free to [join the Discord server](https://discord.gg/peezNh4pS4).
-
-## Warnings
-
-- For safety, read the file before execution
-- Know the disk to install upon
-- Before starting, set Secure Boot mode to Setup mode via firmware settings
-- Defaults include GUID Partition Table, 64-bit applications, and Wayland
-- Read output as packages may not install due to upstream issues
+Disrespect is not tolerated. Feel free to [join the Discord server](https://discord.com/invite/C6NdvU5bzN).
 
 ## Usage
 
@@ -32,20 +24,28 @@ sh <(curl https://raw.githubusercontent.com/kojq/run/main/install)
 - Include fonts, tools, and applications from repositories
 - Enable services and functions
 
+## Activity
+
+An issue can be rasied to archive the repository after 40 days of inactivity.
+
+- [x] Development (mostly commits)
+- [ ] Maintenance (mostly issues and requests)
+- [ ] Archived (no updates such as for security)
+
 ## Build
 
 There are no build instructions.
+
+## Warnings
+
+- For safety, read the file before execution
+- Know the disk to install upon
+- Before starting, set Secure Boot mode to Setup mode via firmware settings
+- Defaults include GUID Partition Table, 64-bit applications, and Wayland
+- Read output as packages may not install due to upstream issues
 
 ## Credits
 
 The Magnolia grandiflora SVG is under CC0.
 
 Betel Leclerc [uploaded](https://openclipart.org/download/306895/1537228771.svg) the [Magnolia flower flor](https://openclipart.org/detail/306895/magnolia-flower-flor) SVG on September 17, 2018, 11:59 p.m. to Openclipart.
-
-## Activity
-
-- [x] Development (mostly commits)
-- [ ] Maintenance (mostly issues and requests)
-- [ ] Archived (no updates such as for security)
-
-An issue can be rasied to archive the repository after 40 days of inactivity.
