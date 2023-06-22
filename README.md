@@ -26,8 +26,6 @@ bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
 
 ## Activity
 
-An issue can be rasied to archive the repository after 40 days of inactivity.
-
 - [x] Development (mostly commits)
 - [ ] Maintenance (mostly issues and requests)
 - [ ] Archived (no updates such as for security)
