@@ -34,7 +34,7 @@ bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
 
 There are no build instructions.
 
-## Credits
+## Attribution
 
 The Magnolia grandiflora SVG is under CC0.
 
