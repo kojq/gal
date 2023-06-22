@@ -15,7 +15,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 Set Secure Boot mode to Setup mode via firmware settings, boot into the live environment, connect to the Internet, and run following command.
 
 ```
-sh <(curl https://raw.githubusercontent.com/kojq/run/main/install)
+sh <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
 ```
 
 ## Features
