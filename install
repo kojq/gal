@@ -73,7 +73,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.sn
 mkdir /mnt/boot
 mount /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -Ki /mnt $(lspci | grep -q NVIDIA && echo nvidia) amd-ucode aria2 baobab base base-devel booster bottom btrfs-progs cups eog espeak-ng evince firefox firefox-ublock-origin fprintd fwupd gdm git gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en ibus ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey imagemagick intel-media-driver intel-ucode lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware malcontent mesa mesa-vdpau mpv mythes-en nautilus networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio orca pipewire pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland reflector sbctl simple-scan skim tectonic vulkan-intel vulkan-radeon wireplumber xdg-desktop-portal-gnome xdg-user-dirs-gtk zram-generator
+pacstrap -Ki /mnt $(lspci | grep -q NVIDIA && echo nvidia) amd-ucode aria2 baobab base base-devel booster bottom btrfs-progs cups eog espeak-ng evince firefox firefox-ublock-origin fprintd fwupd gdm git gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-keyring gnome-logs gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en ibus ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey imagemagick intel-media-driver intel-ucode lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware malcontent mesa mesa-vdpau mpv mythes-en nautilus networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio orca pipewire pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland reflector sbctl simple-scan skim systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-gnome xdg-user-dirs-gtk zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -108,6 +108,11 @@ useradd -mG wheel $username
 echo $username:$password | chpasswd
 echo root:$root_password | chpasswd
 echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
+
+yes | wgcf register
+wgcf generate
+cp wgcf-profile.conf /etc/wireguard
+rm -rf wgcf-account.toml wgcf-profile.conf
 
 mkdir /etc/pacman.d/hooks
 
