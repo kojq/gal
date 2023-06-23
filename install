@@ -107,12 +107,12 @@ echo $username:$password | chpasswd
 echo root:$root_password | chpasswd
 echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 
+systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-resolved systemd-timesyncd
+
 yes | wgcf register
 wgcf generate
 cp wgcf-profile.conf /etc/wireguard
-rm -rf wgcf-account.toml wgcf-profile.conf
-
-systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-resolved systemd-timesyncd
+rm -r wgcf-account.toml wgcf-profile.conf
 
 mkdir /etc/pacman.d/hooks
 
