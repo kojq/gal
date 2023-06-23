@@ -102,8 +102,6 @@ GTK_IM_MODULE=ibus
 QT_IM_MODULE=ibus
 XMODIFIERS=@im=ibus' >> /etc/environment
 
-systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-timesyncd
-
 useradd -mG wheel $username
 echo $username:$password | chpasswd
 echo root:$root_password | chpasswd
@@ -113,6 +111,8 @@ yes | wgcf register
 wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm -rf wgcf-account.toml wgcf-profile.conf
+
+systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-resolved systemd-timesyncd wireguard@wgcf-profile
 
 mkdir /etc/pacman.d/hooks
 
