@@ -112,7 +112,7 @@ wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm -rf wgcf-account.toml wgcf-profile.conf
 
-systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-resolved systemd-timesyncd wireguard@wgcf-profile
+systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-resolved systemd-timesyncd
 
 mkdir /etc/pacman.d/hooks
 
