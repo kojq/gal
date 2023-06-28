@@ -17,10 +17,8 @@ done
 
 # Set credentials
 clear
-read -p 'Set account username: ' username
-read -sp 'Set account password: ' password
-echo
-read -sp 'Set root password: ' root_password
+read -p 'Set username: ' username
+read -sp 'Set password: ' password
 
 # Set timezone
 clear
@@ -104,7 +102,6 @@ XMODIFIERS=@im=ibus' >> /etc/environment
 
 useradd -mG wheel $username
 echo $username:$password | chpasswd
-echo root:$root_password | chpasswd
 echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 
 yes | wgcf register
