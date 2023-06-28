@@ -85,9 +85,6 @@ locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 echo arch > /etc/hostname
-echo '127.0.0.1 localhost
-::1 localhost
-127.0.1.1 arch.localdomain arch' > /etc/hosts
 
 sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
