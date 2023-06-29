@@ -76,7 +76,7 @@ pacstrap -K /mnt $(lspci | grep -q NVIDIA && echo nvidia) amd-ucode aria2 baobab
 
 genfstab -U /mnt > /mnt/etc/fstab
 
-arch-chroot /mnt /bin/sh <<EOF
+arch-chroot /mnt /bin/bash <<EOF
 
 ln -s /usr/share/zoneinfo/$timezone /etc/localtime
 hwclock -wu
@@ -93,7 +93,7 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 
-useradd -mG wheel $username
+useradd -G wheel $username
 echo $username:$password | chpasswd
 echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 
@@ -141,8 +141,6 @@ sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sbctl sign -s /boot/vmlinuz-linux
 
 touch /etc/udev/rules.d/61-gdm.rules
-dconf write /org/gnome/desktop/peripherals/touchpad/disable-while-typing false
-dconf write /org/gnome/desktop/peripherals/touchpad/tap-to-click true
 
 EOF
 
