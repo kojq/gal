@@ -37,10 +37,10 @@ timedatectl set-ntp true
 
 # Create partitions
 parted -s /dev/$disk \
-  mklabel gpt \
-  mkpart ESP fat32 1MiB 513MiB \
-  set 1 esp on \
-  mkpart ARCH btrfs 513MiB 100%
+    mklabel gpt \
+    mkpart ESP fat32 1MiB 513MiB \
+    set 1 esp on \
+    mkpart ARCH btrfs 513MiB 100%
 
 # Format partitions
 mkfs.fat -F32 /dev/$disk$separator'1'
