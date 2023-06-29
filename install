@@ -141,7 +141,8 @@ sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sbctl sign -s /boot/vmlinuz-linux
 
 touch /etc/udev/rules.d/61-gdm.rules
-gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+dconf write /org/gnome/desktop/peripherals/touchpad/disable-while-typing false
+dconf write /org/gnome/desktop/peripherals/touchpad/tap-to-click true
 
 EOF
 
