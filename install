@@ -36,7 +36,7 @@ done
 timedatectl set-ntp true
 
 # Create partitions
-parted -s /dev/$disk mklabel gpt \
+parted -s /dev/$disk \
   mklabel gpt \
   mkpart ESP fat32 1MiB 513MiB \
   set 1 esp on \
