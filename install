@@ -15,11 +15,6 @@ do
 done
 [[ $disk =~ [0-9]$ ]] && separator=p
 
-# Set credentials
-clear
-read -p 'Set username: ' username
-read -sp 'Set password: ' password
-
 # Set timezone
 clear
 PS3='Set timezone: '
@@ -31,6 +26,11 @@ do
         echo Invalid selection. Try again.
     fi
 done
+
+# Set credentials
+clear
+read -p 'Set username: ' username
+read -sp 'Set password: ' password
 
 # Synchronize system clock
 timedatectl set-ntp true
@@ -132,7 +132,6 @@ zram-size = ram / 2
 compression-algorithm = zstd
 swap-priority = 100
 fs-type = swap' > /etc/systemd/zram-generator.conf
-systemctl start systemd-zram-setup@zram0
 
 sbctl create-keys
 sbctl enroll-keys -m
