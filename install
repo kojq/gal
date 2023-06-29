@@ -93,7 +93,7 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 
-useradd -G wheel $username
+useradd -mG wheel $username
 echo $username:$password | chpasswd
 echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 
