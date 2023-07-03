@@ -7,11 +7,11 @@ echo WARNING: Back up data. The entire disk will be wiped.
 PS3='Set disk: '
 select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
 do
-    if [[ -n $disk ]]; then
-        break
-    else
-        echo Invalid selection. Try again.
-    fi
+  if [[ -n $disk ]]; then
+    break
+  else
+    echo Invalid selection. Try again.
+  fi
 done
 [[ $disk =~ [0-9]$ ]] && separator=p
 
@@ -20,11 +20,11 @@ clear
 PS3='Set timezone: '
 select timezone in $(timedatectl list-timezones)
 do
-    if [[ -n $timezone ]]; then
-        break
-    else
-        echo Invalid selection. Try again.
-    fi
+  if [[ -n $timezone ]]; then
+    break
+  else
+    echo Invalid selection. Try again.
+  fi
 done
 
 # Set credentials
@@ -37,10 +37,10 @@ timedatectl set-ntp true
 
 # Create partitions
 parted -s /dev/$disk \
-    mklabel gpt \
-    mkpart ESP fat32 1MiB 513MiB \
-    set 1 esp on \
-    mkpart ARCH btrfs 513MiB 100%
+  mklabel gpt \
+  mkpart ESP fat32 1MiB 513MiB \
+  set 1 esp on \
+  mkpart ARCH btrfs 513MiB 100%
 
 # Format partitions
 mkfs.fat -F32 /dev/$disk$separator'1'
