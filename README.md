@@ -14,15 +14,15 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 Set Secure Boot mode to Setup mode via firmware settings, boot into the live environment, connect to the Internet, and run following command.
 
-```
+```ShellSession
 bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
 ```
 
 ## Features
 
 - Install Arch Linux
-- Include fonts, tools, and applications from repositories
-- Enable services and functions
+- Install all packages via pacstrap
+- Enable services and functionality
 
 ## Activity
 
