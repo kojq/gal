@@ -27,8 +27,8 @@ bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
 ## Features
 
 - Install Arch Linux
-- Install all packages via pacstrap
-- Enable services and functionalities
+  - Install all packages via pacstrap
+  - Enable services and functionalities
 
 ## Activity
 
