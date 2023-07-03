@@ -144,4 +144,4 @@ touch /etc/udev/rules.d/61-gdm.rules
 EOF
 
 umount -R /mnt
-reboot
+#reboot
