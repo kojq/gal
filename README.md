@@ -12,7 +12,13 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 ## Usage
 
-Set Secure Boot mode to Setup mode via firmware settings, boot into the live environment, connect to the Internet, and run following command.
+1. Set Secure Boot mode to Setup mode via firmware settings
+
+1. Boot into the live environment
+
+1. Connect to the Internet
+
+1. Run the following command
 
 ```ShellSession
 bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
@@ -22,7 +28,7 @@ bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
 
 - Install Arch Linux
 - Install all packages via pacstrap
-- Enable services and functionality
+- Enable services and functionalities
 
 ## Activity
 
