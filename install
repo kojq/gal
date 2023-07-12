@@ -125,7 +125,7 @@ Target = *
 [Action]
 Description = Gracefully cleaning package cache...
 When = PostTransaction
-Exec = /usr/bin/pacman -Scc --noconfirm' > /etc/pacman.d/hooks/2-package-cache.hook
+Exec = /usr/bin/bash -c "rm /var/cache/pacman/pkg/*"' > /etc/pacman.d/hooks/2-package-cache.hook
 
 mkdir -p /boot/loader/entries
 
