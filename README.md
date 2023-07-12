@@ -29,12 +29,6 @@ bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
 - Install all packages via pacstrap
 - Enable functionalities and services
 
-## Activity
-
-- [x] Development (mostly commits)
-- [ ] Maintenance (mostly issues and requests)
-- [ ] Archived (no updates such as for security)
-
 ## Build
 
 There are no build instructions.
