@@ -118,6 +118,7 @@ Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-s
 
 echo '[Trigger]
 Type = Package
+Operation = Install
 Operation = Upgrade
 Target = *
 
