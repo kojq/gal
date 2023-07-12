@@ -114,7 +114,17 @@ Target = systemd
 [Action]
 Description = Gracefully upgrading systemd-boot...
 When = PostTransaction
-Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/95-systemd-boot.hook
+Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-systemd-boot.hook
+
+echo '[Trigger]
+Type = Package
+Operation = Upgrade
+Target = *
+
+[Action]
+Description = Gracefully cleaning package cache...
+When = PostTransaction
+Exec = /usr/bin/pacman -Scc --noconfirm' > /etc/pacman.d/hooks/2-package-cache.hook
 
 mkdir -p /boot/loader/entries
 
