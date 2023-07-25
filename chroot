@@ -1,0 +1,30 @@
+#!/bin/bash
+set -e
+
+# Select disk
+clear
+echo WARNING: Back up data. The entire disk will be wiped.
+PS3='Set disk: '
+select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
+do
+  if [[ -n $disk ]]; then
+    break
+  else
+    echo Invalid selection. Try again.
+  fi
+done
+[[ $disk =~ [0-9]$ ]] && separator=p
+
+# Mount root subvolume
+mount -o noatime,compress=zstd,subvol=root /dev/$disk$separator'2' /mnt
+
+# Mount home subvolume
+mount -o noatime,compress=zstd,subvol=home /dev/$disk$separator'2' /mnt/home
+
+# Mount snapshots subvolume
+mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.snapshots
+
+# Mount ESP partition
+mount /dev/$disk$separator'1' /mnt/boot
+
+arch-chroot /mnt
