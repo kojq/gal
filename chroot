@@ -3,7 +3,7 @@ set -e
 
 # Select disk
 clear
-PS3='Set disk: '
+PS3='Select disk: '
 select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
 do
   if [[ -n $disk ]]; then
