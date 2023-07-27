@@ -72,7 +72,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.sn
 mkdir /mnt/boot
 mount /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt $(lspci | grep -q NVIDIA && echo nvidia) amd-ucode aria2 baobab base base-devel booster bottom btrfs-progs cups distrobox eog espeak-ng evince firefox firefox-ublock-origin fprintd fwupd gdm git gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-connections gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-logs gnome-remote-desktop gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey intel-media-driver intel-ucode lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware malcontent mesa-vdpau mpv mythes-en nautilus networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio orca pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland reflector sbctl simple-scan skim systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-gnome xdg-user-dirs-gtk zram-generator
+pacstrap -K /mnt amd-ucode aria2 baobab base base-devel booster bottom btrfs-progs cups distrobox eog espeak-ng evince firefox firefox-ublock-origin fprintd fwupd gdm git gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-connections gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-logs gnome-remote-desktop gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey intel-media-driver intel-ucode lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware malcontent mesa-vdpau mpv mythes-en nautilus networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio orca pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland reflector sbctl simple-scan skim systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-gnome xdg-user-dirs-gtk zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -102,7 +102,7 @@ wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 
-systemctl enable $(lspci | grep -q NVIDIA && echo nvidia-resume nvidia-suspend) bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
+systemctl enable bluetooth cups.socket gdm NetworkManager nftables reflector.timer systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
 
 mkdir /etc/pacman.d/hooks
 
