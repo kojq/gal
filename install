@@ -72,14 +72,14 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.sn
 mkdir /mnt/boot
 mount /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt amd-ucode aria2 base booster cups distrobox firefox firefox-ublock-origin fprintd fwupd fzf git helix hunspell hunspell-en_us hyphen hyphen-en intel-media-driver intel-ucode iwd libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware mesa-vdpau mpv mythes-en nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio opendoas pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland reflector sbctl systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber zellij zram-generator
+pacstrap -K /mnt amd-ucode aria2 base booster btrfs-progs cups distrobox firefox firefox-ublock-origin fprintd fwupd fzf git helix hunspell hunspell-en_us hyphen hyphen-en intel-media-driver intel-ucode iwd libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware mesa-vdpau mpv mythes-en nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio opendoas pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland reflector sbctl systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber zellij zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
 # prepare for river or hyprland
-# sudo pacman -Syu $(lspci | grep -q NVIDIA && echo nvidia) baobab base-devel bottom btrfs-progs eog espeak-ng evince gdm gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-connections gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-logs gnome-remote-desktop gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey lapce malcontent nautilus networkmanager orca simple-scan xdg-desktop-portal-gnome xdg-user-dirs-gtk
+# sudo pacman -Syu $(lspci | grep -q NVIDIA && echo nvidia) sddm kitty baobab bottom eog espeak-ng evince gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-connections gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-logs gnome-remote-desktop gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey lapce nautilus orca simple-scan xdg-desktop-portal-gnome xdg-user-dirs-gtk
 
 ln -s /usr/share/zoneinfo/$timezone /etc/localtime
 hwclock -wu
@@ -106,10 +106,6 @@ cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 
 systemctl enable bluetooth cups.socket iwd nftables reflector.timer systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
-
-# prepare for river or hyprland
-# systemctl enable $(lspci | grep -q NVIDIA && echo nvidia-resume nvidia-suspend) gdm NetworkManager
-# touch /etc/udev/rules.d/61-gdm.rules
 
 mkdir /etc/pacman.d/hooks
 
