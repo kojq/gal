@@ -78,8 +78,8 @@ genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
-# Preparatory work for moving to wlroots
-sudo pacman -Syu $(lspci | grep -q NVIDIA && echo nvidia) baobab base-devel bottom btrfs-progs eog espeak-ng evince gdm gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-connections gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-logs gnome-remote-desktop gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey lapce malcontent nautilus networkmanager orca simple-scan xdg-desktop-portal-gnome xdg-user-dirs-gtk
+# prepare for river or hyprland
+# sudo pacman -Syu $(lspci | grep -q NVIDIA && echo nvidia) baobab base-devel bottom btrfs-progs eog espeak-ng evince gdm gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-connections gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-logs gnome-remote-desktop gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey lapce malcontent nautilus networkmanager orca simple-scan xdg-desktop-portal-gnome xdg-user-dirs-gtk
 
 ln -s /usr/share/zoneinfo/$timezone /etc/localtime
 hwclock -wu
@@ -105,10 +105,11 @@ wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 
-systemctl enable bluetooth cups.socket nftables reflector.timer systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
+systemctl enable bluetooth cups.socket iwd nftables reflector.timer systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
 
-# Preparatory work for moving to wlroots
-systemctl enable $(lspci | grep -q NVIDIA && echo nvidia-resume nvidia-suspend) gdm NetworkManager
+# prepare for river or hyprland
+# systemctl enable $(lspci | grep -q NVIDIA && echo nvidia-resume nvidia-suspend) gdm NetworkManager
+# touch /etc/udev/rules.d/61-gdm.rules
 
 mkdir /etc/pacman.d/hooks
 
@@ -155,8 +156,6 @@ sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sbctl sign -s /boot/vmlinuz-linux
-
-touch /etc/udev/rules.d/61-gdm.rules
 
 EOF
 
