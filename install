@@ -78,9 +78,8 @@ genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
-# prepare for river or hyprland
 # pavucontrol alsa-utils grim slurp mpv vvave wlogout nm-applet wezterm
-# xdg-desktop-portal-hyprland brightnessctl bluez-utils polkit-kde-agent kitty bottom
+# xdg-desktop-portal-hyprland brightnessctl bluez-utils polkit-kde-agent kitty bottom fnott mako
 # $(lspci | grep -q NVIDIA && echo nvidia) sddm baobab bzip2 openssh krb5 eog espeak-ng evince gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-connections gnome-console gnome-control-center gnome-disk-utility gnome-font-viewer gnome-logs gnome-remote-desktop gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey lapce nautilus orca simple-scan xdg-user-dirs-gtk
 
 ln -s /usr/share/zoneinfo/$timezone /etc/localtime
@@ -101,6 +100,8 @@ export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 useradd -mG wheel $username
 echo $username:$password | chpasswd
 echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
+
+echo 'exec-once=/usr/lib/polkit-kde-authentication-agent-1' > ~/.config/hypr/hyprland.conf
 
 yes | wgcf register
 wgcf generate
