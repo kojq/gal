@@ -100,7 +100,8 @@ useradd -mG wheel $username
 echo $username:$password | chpasswd
 echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 
-echo 'exec-once=/usr/lib/polkit-kde-authentication-agent-1' > ~/.config/hypr/hyprland.conf
+echo '
+exec-once = /usr/lib/polkit-kde-authentication-agent-1 & mako & fnott' > ~/.config/hypr/hyprland.conf
 
 yes | wgcf register
 wgcf generate
