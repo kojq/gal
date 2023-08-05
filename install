@@ -72,15 +72,15 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.sn
 mkdir /mnt/boot
 mount /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt amd-ucode aria2 base bluez booster btrfs-progs cups distrobox firefox firefox-ublock-origin fprintd fwupd fzf git helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware mesa-vdpau mythes-en nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio opendoas pipewire-alsa pipewire-jack pipewire-pulse podman polkit-kde-agent qt6-wayland reflector sbctl sddm systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland zellij zram-generator bemenu bemenu-wayland
+pacstrap -K /mnt amd-ucode mpv aria2 base bluez booster btrfs-progs cups distrobox firefox firefox-ublock-origin fprintd fwupd fzf git helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware mesa-vdpau mythes-en nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra pipewire-alsa pipewire-jack pipewire-pulse podman polkit-kde-agent reflector sbctl sddm systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland zellij zram-generator bemenu bemenu-wayland j4-dmenu-desktop nemo
 
 genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
 # $(lspci | grep -q NVIDIA && echo nvidia)
-# j4-dmenu-desktop waylock swaylock waybar polybar
-# mpv zathura pavucontrol alsa-utils grim slurp vvave nm-applet wezterm brightnessctl bluez-utils blueman kitty bottom fnott mako
+# obs-studio opendoas qt6-wayland
+# waylock swaylock waybar polybar zathura pavucontrol alsa-utils grim slurp vvave nm-applet wezterm brightnessctl bluez-utils blueman kitty bottom fnott mako
 # baobab bzip2 openssh krb5 eog espeak-ng orca evince gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-connections
 # gnome-disk-utility gnome-remote-desktop gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google
 # gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey lapce nautilus simple-scan xdg-user-dirs-gtk
@@ -109,8 +109,10 @@ chmod -c 0400 /etc/doas.conf
 echo '[General]
 DisplayServer=wayland' > /etc/sddm.conf.d/1-wayland.conf
 
+# This does not work
 echo '
 exec-once = /usr/lib/polkit-kde-authentication-agent-1' >> ~/.config/hypr/hyprland.conf
+# j4-dmenu-desktop --dmenu='bemenu -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='termite'
 
 yes | wgcf register
 wgcf generate
