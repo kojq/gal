@@ -72,18 +72,16 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.sn
 mkdir /mnt/boot
 mount /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt amd-ucode aria2 base bluez booster btrfs-progs cups distrobox firefox firefox-ublock-origin fprintd fwupd fzf git helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mesa-vdpau mpv mythes-en nemo nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland zathura zellij zram-generator
+pacstrap -K /mnt amd-ucode aria2 base bemenu bemenu-wayland bluez booster btrfs-progs cups distrobox firefox firefox-ublock-origin fprintd fwupd fzf git helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mesa-vdpau mpv mythes-en nemo nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl swaylock systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland zathura zellij zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
 # report hyprland bugs: Firefox bookmarks bar and web portal bar do not render at fullscreen, and file manager to attach files is too big and thereby unusable
-# $(lspci | grep -q NVIDIA && echo nvidia)
-# sddm polkit-kde-agent bemenu bemenu-wayland j4-dmenu-desktop fuzzel obs-studio qt6-wayland opendoas
-# fnott mako waylock swaylock waybar polybar pavucontrol alsa-utils grim slurp vvave brightnessctl bluez-utils blueman kitty wezterm bottom lapce
-# openssh krb5 eog espeak-ng orca hyprpaper gnome-calculator gnome-calendar gnome-clocks gnome-weather simple-scan xdg-user-dirs-gtk
-# baobab gnome-disk-utility gnome-system-monitor gnome-sound-recorder gnome-connections gnome-remote-desktop gnome-user-share
+# $(lspci | grep -q NVIDIA && echo nvidia) polkit-kde-agent obs-studio qt6-wayland fnott mako waybar polybar brightnessctl kitty wezterm bottom lapce grim slurp
+# pavucontrol alsa-utils vvave bluez-utils blueman openssh krb5 eog espeak-ng orca hyprpaper gnome-calculator gnome-calendar gnome-clocks gnome-weather
+# simple-scan xdg-user-dirs-gtk baobab gnome-disk-utility gnome-system-monitor gnome-sound-recorder gnome-connections gnome-remote-desktop gnome-user-share
 # gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey
 
 ln -s /usr/share/zoneinfo/$timezone /etc/localtime
@@ -107,10 +105,9 @@ chmod -c 0400 /etc/doas.conf
 useradd -mG wheel $username
 echo $username:$password | chpasswd
 
-# This does not work
 # echo '
 # exec-once = /usr/lib/polkit-kde-authentication-agent-1' >> ~/.config/hypr/hyprland.conf
-# j4-dmenu-desktop --dmenu='bemenu -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='termite'
+# j4-dmenu-desktop --dmenu='bemenu -i'
 
 yes | wgcf register
 wgcf generate
