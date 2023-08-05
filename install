@@ -79,7 +79,8 @@ genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt <<EOF
 
 # $(lspci | grep -q NVIDIA && echo nvidia)
-# waylock swaylock waybar mpv zathura pavucontrol alsa-utils grim slurp vvave nm-applet wezterm brightnessctl bluez-utils blueman kitty bottom fnott mako
+# j4-dmenu-desktop waylock swaylock waybar polybar
+# mpv zathura pavucontrol alsa-utils grim slurp vvave nm-applet wezterm brightnessctl bluez-utils blueman kitty bottom fnott mako
 # baobab bzip2 openssh krb5 eog espeak-ng orca evince gnome-backgrounds gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-connections
 # gnome-disk-utility gnome-remote-desktop gnome-sound-recorder gnome-system-monitor gnome-user-share gnome-weather gvfs-afc gvfs-goa gvfs-google
 # gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey lapce nautilus simple-scan xdg-user-dirs-gtk
