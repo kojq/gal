@@ -72,7 +72,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.sn
 mkdir /mnt/boot
 mount /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt ly amd-ucode aria2 base bluez booster btrfs-progs cups distrobox firefox firefox-ublock-origin fprintd fwupd fzf git helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware mesa-vdpau mpv mythes-en nemo nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland zathura zellij zram-generator
+pacstrap -K /mnt amd-ucode aria2 base bluez booster btrfs-progs cups distrobox firefox firefox-ublock-origin fprintd fwupd fzf git helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mesa-vdpau mpv mythes-en nemo nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland zathura zellij zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
