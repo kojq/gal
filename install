@@ -69,7 +69,7 @@ arch-chroot /mnt <<EOF
 # report hyprland bugs: Firefox bookmarks bar and web portal bar do not render at fullscreen, and file manager to attach files is too big and thereby unusable
 # $(lspci | grep -q NVIDIA && echo nvidia) polkit-kde-agent obs-studio qt6-wayland fnott mako waybar polybar brightnessctl bottom lapce grim slurp
 # pavucontrol alsa-utils vvave bluez-utils blueman openssh krb5 eog espeak-ng orca hyprpaper gnome-calculator gnome-calendar gnome-clocks gnome-weather
-# simple-scan xdg-user-dirs-gtk baobab gnome-disk-utility gnome-system-monitor gnome-sound-recorder gnome-connections gnome-remote-desktop gnome-user-share
+# simple-scan xdg-user-dirs gnome-system-monitor gnome-sound-recorder gnome-connections gnome-remote-desktop gnome-user-share
 # gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey
 
 ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
