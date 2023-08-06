@@ -15,18 +15,6 @@ do
 done
 [[ $disk =~ [0-9]$ ]] && separator=p
 
-# Set timezone
-clear
-PS3='Set timezone: '
-select timezone in $(timedatectl list-timezones)
-do
-  if [[ -n $timezone ]]; then
-    break
-  else
-    echo Invalid selection. Try again.
-  fi
-done
-
 # Set credentials
 clear
 read -p 'Set username: ' username
@@ -84,7 +72,7 @@ arch-chroot /mnt <<EOF
 # simple-scan xdg-user-dirs-gtk baobab gnome-disk-utility gnome-system-monitor gnome-sound-recorder gnome-connections gnome-remote-desktop gnome-user-share
 # gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey
 
-ln -s /usr/share/zoneinfo/$timezone /etc/localtime
+ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 hwclock -wu
 
 sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
