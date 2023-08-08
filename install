@@ -91,7 +91,7 @@ echo permit :wheel > /etc/doas.conf
 chmod -c 0400 /etc/doas.conf
 # echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 
-useradd -mG wheel $username
+useradd -mG wheel,seat $username
 echo $username:$password | chpasswd
 
 # echo '
