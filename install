@@ -57,8 +57,8 @@ mkdir /mnt/.snapshots
 mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.snapshots
 
 # Mount ESP partition
-mkdir /mnt/boot
-mount /dev/$disk$separator'1' /mnt/boot
+mkdir /mnt/efi
+mount /dev/$disk$separator'1' /mnt/efi
 
 pacstrap -K /mnt $(lspci | grep -q NVIDIA && echo nvidia) amd-ucode aria2 base bemenu bemenu-wayland bluez booster brightnessctl btrfs-progs cups distrobox firefox firefox-ublock-origin foot fprintd fwupd fzf git helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode j4-dmenu-desktop libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mako mesa-vdpau mpv mythes-en nemo nemo-fileroller networkmanager nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl swaylock systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland zathura zellij zram-generator
 
@@ -128,14 +128,14 @@ Description = Removing package cache...
 When = PostTransaction
 Exec = /usr/bin/bash -c "rm /var/cache/pacman/pkg/*"' > /etc/pacman.d/hooks/2-package-cache.hook
 
-mkdir -p /boot/loader/entries
+mkdir -p /efi/loader/entries
 
 echo 'title Arch Linux
 linux /vmlinuz-linux
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /efi/loader/entries/arch.conf
 
 bootctl install
 
@@ -147,11 +147,11 @@ fs-type = swap' > /etc/systemd/zram-generator.conf
 
 sbctl create-keys
 sbctl enroll-keys -m
-sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
-sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux
+#sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+#sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+#sbctl sign -s /boot/vmlinuz-linux
 
-EOF
+#EOF
 
-umount -R /mnt
-reboot
+#umount -R /mnt
+#reboot
