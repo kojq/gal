@@ -66,11 +66,9 @@ genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
-# report hyprland bugs: Firefox bookmarks bar and web portal bar do not render at fullscreen, and file manager to attach files is too big and thereby unusable
-# polkit-kde-agent obs-studio qt6-wayland waybar polybar bottom lapce grim slurp
-# pavucontrol alsa-utils vvave bluez-utils blueman openssh krb5 eog espeak-ng orca hyprpaper gnome-calculator gnome-calendar gnome-clocks gnome-weather
-# simple-scan xdg-user-dirs gnome-system-monitor gnome-sound-recorder gnome-connections gnome-remote-desktop gnome-user-share
-# gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey
+# hyprpaper waybar polybar grim slurp bluez-utils blueman openssh krb5 eog lapce bottom gnome-system-monitor polkit-kde-agent obs-studio qt6-wayland
+# gnome-calculator gnome-calendar gnome-clocks gnome-weather gnome-sound-recorder gnome-connections gnome-remote-desktop gnome-user-share simple-scan
+# xdg-user-dirs gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey
 
 ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 hwclock -wu
