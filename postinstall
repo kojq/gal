@@ -1,4 +1,4 @@
-# Didn't figure out why these don't work in chroot
+# Didn't figure out why these don't work in the install script
 
 echo '[General]
 EnableNetworkConfiguration=true' > /etc/iwd/main.conf
