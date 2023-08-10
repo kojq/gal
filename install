@@ -148,6 +148,8 @@ sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sbctl sign -s /boot/vmlinuz-linux
 
+curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf > ~/.config/hypr/hyprland.conf
+
 EOF
 
 umount -R /mnt
