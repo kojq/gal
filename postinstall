@@ -1,0 +1,6 @@
+# Didn't figure out why these don't work in chroot
+
+echo '[General]
+EnableNetworkConfiguration=true' > /etc/iwd/main.conf
+
+curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf > ~/.config/hypr/hyprland.conf
