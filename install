@@ -6,7 +6,7 @@ clear
 echo WARNING: Back up data. The entire disk will be wiped.
 PS3='Set disk: '
 select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
-  do [[ -n $disk ]] && break || echo Invalid selection. Try again.
+do [[ -n $disk ]] && break || echo Invalid selection. Try again.
 done
 [[ $disk =~ [0-9]$ ]] && separator=p
 
@@ -19,11 +19,7 @@ read -sp 'Set password: ' password
 timedatectl set-ntp true
 
 # Create partitions
-parted -s /dev/$disk \
-  mklabel gpt \
-  mkpart ESP fat32 1MiB 513MiB \
-  set 1 esp on \
-  mkpart ARCH btrfs 513MiB 100%
+parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpart ARCH btrfs 513MiB 100%
 
 # Format partitions
 mkfs.fat -F32 /dev/$disk$separator'1'
@@ -80,12 +76,15 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 
+echo '[General]
+EnableNetworkConfiguration=true' > /etc/iwd/main.conf
+
+# echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 echo permit :wheel > /etc/doas.conf
 chmod -c 0400 /etc/doas.conf
-# echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
-
 useradd -mG wheel,seat $username
 echo $username:$password | chpasswd
+curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf > /home/$username/.config/hypr/hyprland.conf
 
 yes | wgcf register
 wgcf generate
