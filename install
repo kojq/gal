@@ -76,6 +76,11 @@ sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 
+mkdir /etc/iwd
+
+echo '[General]
+EnableNetworkConfiguration=true' > /etc/iwd/main.conf
+
 # echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 echo permit :wheel > /etc/doas.conf
 chmod -c 0400 /etc/doas.conf
