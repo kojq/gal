@@ -81,6 +81,7 @@ echo permit :wheel > /etc/doas.conf
 chmod -c 0400 /etc/doas.conf
 useradd -mG wheel,seat $username
 echo $username:$password | chpasswd
+curl -o ~/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf
 
 yes | wgcf register
 wgcf generate
