@@ -100,8 +100,8 @@ mkdir /etc/pacman.d/hooks
 
 echo '[Trigger]
 Type = Package
-Operation = Upgrade
 Target = systemd
+Operation = Upgrade
 
 [Action]
 Description = Upgrading systemd-boot...
@@ -110,9 +110,9 @@ Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-s
 
 echo '[Trigger]
 Type = Package
-Operation = Install
-Operation = Upgrade
 Target = *
+Operation = Upgrade
+Operation = Install
 
 [Action]
 Description = Removing package cache...
