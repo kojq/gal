@@ -57,10 +57,10 @@ genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
-# libqalculate grim slurp wf-recorder kooha gnome-sound-recorder obs-studio qt6-wayland
-# imv swayimg cliphist copyq wl-clipboard
-# eog gnome-system-monitor gnome-calendar gnome-clocks gnome-weather gnome-user-share
-# ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey simple-scan
+# grim slurp wf-recorder kooha gnome-sound-recorder obs-studio qt6-wayland
+# cliphist copyq wl-clipboard eog imv swayimg
+# gnome-system-monitor gnome-calendar gnome-clocks gnome-weather gnome-user-share
+# ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey simple-scan libqalculate
 
 ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 hwclock -wu
