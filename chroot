@@ -19,6 +19,6 @@ mount -o noatime,compress=zstd,subvol=home /dev/$disk$separator'2' /mnt/home
 mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.snapshots
 
 # Mount ESP partition
-mount /dev/$disk$separator'1' /mnt/boot
+mount -o fmask=0077,dmask=0077 /dev/$disk$separator'1' /mnt/boot
 
 arch-chroot /mnt
