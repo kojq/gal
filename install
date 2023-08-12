@@ -51,14 +51,14 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.sn
 mkdir /mnt/boot
 mount -o fmask=0077,dmask=0077 /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt $(lspci | grep -q NVIDIA && echo nvidia) amd-ucode aria2 base bemenu bemenu-wayland bluez booster brightnessctl btrfs-progs cups distrobox firefox firefox-ublock-origin foot fprintd fwupd fzf git gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mako mesa-vdpau mpv mythes-en nemo nemo-fileroller nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl swaylock systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zathura zellij zram-generator
+pacstrap -K /mnt $(lspci | grep -q NVIDIA && echo nvidia) amd-ucode aria2 base bemenu bemenu-wayland bluez booster bottom brightnessctl btrfs-progs cups distrobox firefox firefox-ublock-origin foot fprintd fwupd fzf git gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mako mesa-vdpau mpv mythes-en nemo nemo-fileroller nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl swaylock systemd-resolvconf tectonic vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zathura zellij zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
-# hyprpaper waybar polybar grim slurp bluez-utils blueman eog lapce bottom gnome-system-monitor polkit-kde-agent
-# gnome-calculator gnome-calendar gnome-clocks gnome-weather gnome-connections gnome-remote-desktop gnome-user-share simple-scan
+# hyprpaper waybar polybar grim slurp bluez-utils blueman eog gnome-system-monitor
+# libqalculate gnome-calendar gnome-clocks gnome-weather gnome-user-share simple-scan
 # gnome-sound-recorder obs-studio qt6-wayland ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey
 
 ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
