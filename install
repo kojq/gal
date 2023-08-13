@@ -57,7 +57,7 @@ genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
-# obs-studio qt6-wayland kooha wf-recorder grim slurp gnome-sound-recorder
+# obs-studio qt6-wayland kooha gst-plugins-good wf-recorder grim slurp gnome-sound-recorder
 # cliphist copyq wl-clipboard swayimg imv eog
 # gnome-system-monitor gnome-calendar gnome-clocks gnome-weather gnome-user-share
 # ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey simple-scan libqalculate
