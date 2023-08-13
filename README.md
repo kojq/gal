@@ -3,7 +3,7 @@
 
   # Get Arch Linux
 
-  Install Arch Linux with a favorable desktop experience.
+  Install Arch Linux with a favorable graphical experience.
 </div>
 
 ## Community
