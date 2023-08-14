@@ -78,19 +78,19 @@ echo '
 export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
 
 mkdir /etc/iwd
-
 echo '[General]
 EnableNetworkConfiguration=true' > /etc/iwd/main.conf
 
-# echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
+mkdir /etc/sudoers.d
+echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 
 echo permit :wheel > /etc/doas.conf
 chmod -c 0400 /etc/doas.conf
+
 useradd -mG wheel,seat $username
 echo $username:$password | chpasswd
 
 doas -u $username mkdir -p /home/$username/.config/hypr
-
 curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf
 
 yes | wgcf register
@@ -101,7 +101,6 @@ rm wgcf-account.toml wgcf-profile.conf
 systemctl enable bluetooth cups.socket iwd ly nftables reflector.timer seatd systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
 
 mkdir /etc/pacman.d/hooks
-
 echo '[Trigger]
 Type = Package
 Target = systemd
@@ -124,7 +123,6 @@ When = PostTransaction
 Exec = /usr/bin/bash -c "rm /var/cache/pacman/pkg/*"' > /etc/pacman.d/hooks/2-package-cache.hook
 
 mkdir -p /boot/loader/entries
-
 echo 'title Arch Linux
 linux /vmlinuz-linux
 initrd /amd-ucode.img
