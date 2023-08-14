@@ -92,6 +92,7 @@ echo $username:$password | chpasswd
 
 mkdir -p /home/$username/.config/hypr
 chown $username:$username /home/$username/.config
+chown $username:$username /home/$username/.config/hypr
 curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf
 
 yes | wgcf register
