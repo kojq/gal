@@ -90,7 +90,8 @@ chmod -c 0400 /etc/doas.conf
 useradd -mG wheel,seat $username
 echo $username:$password | chpasswd
 
-doas -u $username mkdir -p /home/$username/.config/hypr
+mkdir -p /home/$username/.config/hypr
+chown $username:$username /home/$username/.config
 curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf
 
 yes | wgcf register
@@ -146,7 +147,7 @@ sbctl sign -s /boot/vmlinuz-linux
 
 cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
 curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
-systemctl enable --now akb.service
+systemctl enable akb
 
 EOF
 
