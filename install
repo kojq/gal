@@ -51,7 +51,7 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.sn
 mkdir /mnt/boot
 mount -o fmask=0077,dmask=0077 /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt $(lspci | grep -q NVIDIA && echo nvidia) amd-ucode aria2 base base-devel bemenu bemenu-wayland bluez bluez-utils booster bottom brightnessctl btrfs-progs cliphist cups distrobox espeak-ng firefox firefox-ublock-origin foot fprintd fwupd fzf git grim gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mako mesa-vdpau mpv mythes-en nemo nemo-fileroller nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra openresolv pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl slurp speech-dispatcher swaybg swayimg swaylock tectonic vulkan-intel vulkan-radeon wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps zellij zram-generator
+pacstrap -K /mnt $(lspci | grep -q NVIDIA && echo nvidia) amd-ucode aria2 base bemenu bemenu-wayland bluez bluez-utils booster bottom brightnessctl btrfs-progs cliphist cups distrobox espeak-ng firefox firefox-ublock-origin foot fprintd fwupd fzf git grim gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop lapce libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mako mesa-vdpau mpv mythes-en nemo nemo-fileroller nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas openresolv pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl slurp speech-dispatcher swaybg swayimg swaylock tectonic vulkan-intel vulkan-radeon wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps zellij zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -81,8 +81,8 @@ EnableNetworkConfiguration=true' > /etc/iwd/main.conf
 mkdir /etc/sudoers.d
 echo $username 'ALL=(ALL) ALL' > /etc/sudoers.d/users
 
-# echo permit :wheel > /etc/doas.conf
-# chmod -c 0400 /etc/doas.conf
+echo permit :wheel > /etc/doas.conf
+chmod -c 0400 /etc/doas.conf
 
 useradd -mG wheel,seat $username
 echo $username:$password | chpasswd
@@ -136,14 +136,6 @@ sbctl sign -s /boot/vmlinuz-linux
 cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
 curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
 systemctl enable akb
-
-git clone https://aur.archlinux.org/paru-bin.git
-cd paru-bin
-makepkg -si
-cd ..
-rm -rf paru-bin
-
-# lspci | grep -q NVIDIA && paru -S --noconfirm nouveau-fw
 
 EOF
 
