@@ -137,6 +137,14 @@ cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
 curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
 systemctl enable akb
 
+git clone https://aur.archlinux.org/paru-bin.git
+cd paru-bin
+makepkg -si
+cd ..
+rm -rf paru-bin
+
+$(lspci | grep -q NVIDIA && paru -S nouveau-fw)
+
 EOF
 
 umount -R /mnt
