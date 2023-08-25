@@ -137,8 +137,6 @@ cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
 curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
 systemctl enable akb
 
-wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .15
-
 EOF
 
 umount -R /mnt
