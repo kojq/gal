@@ -24,6 +24,13 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
 ```
 
+Make adjustments after installing. Below are a few examples.
+
+- Connect to the Internet with `iwctl`
+- Change GPU for `wf-recorder` to `/dev/dri/renderD129` in `hyprland.conf`
+- Decrease microphone volume with `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .15`
+- Modify language or keyboard layout
+
 ## Features
 
 - Install all packages via pacstrap
