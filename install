@@ -93,6 +93,9 @@ chown $username:$username /home/$username/.config/hypr
 curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf
 chown $username:$username /home/$username/.config/hypr/hyprland.conf
 
+curl -o /home/$username/Pictures/Sakata.Gintoki.full.2608724.jpg https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/Sakata.Gintoki.full.2608724.jpg
+chown $username:$username /home/$username/Pictures/Sakata.Gintoki.full.2608724.jpg
+
 yes | wgcf register
 wgcf generate
 cp wgcf-profile.conf /etc/wireguard
