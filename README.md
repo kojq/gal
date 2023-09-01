@@ -29,6 +29,7 @@ Make adjustments after installing. Below are a few examples.
 - Connect to the Internet with `iwctl`
 - Decrease microphone volume with `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .15`
 - Modify language or keyboard layout
+- Set Nemo context menu terminal with `gsettings set org.cinnamon.desktop.default-applications.terminal exec foot`
 - Change GPU for `wf-recorder` to `/dev/dri/renderD129` in `hyprland.conf`
 
 ## Features
