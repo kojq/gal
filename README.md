@@ -27,7 +27,7 @@ bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
 Make adjustments after installing. Below are a few examples.
 
 - Connect to the Internet with `iwctl`
-- Decrease microphone volume with `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .15`
+- Decrease microphone volume with `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .4`
 - Modify language or keyboard layout
 - Change GPU for `wf-recorder` to `/dev/dri/renderD129` in `hyprland.conf`
 
