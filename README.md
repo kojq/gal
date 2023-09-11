@@ -29,7 +29,7 @@ Make adjustments after installing. Below are a few examples.
 - Connect to the Internet with `iwctl`
 - Decrease microphone volume with `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .4`
 - Modify language or keyboard layout
-- Change GPU for `wf-recorder` to `/dev/dri/renderD129` in `hyprland.conf`
+- Change GPU for `wf-recorder` to `/dev/dri/renderD129` in `~/.config/hypr/hyprland.conf`
 
 ## Features
 
