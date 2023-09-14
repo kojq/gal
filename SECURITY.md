@@ -6,7 +6,7 @@ Only the latest version will be supported with security updates until the reposi
 
 ## Reporting a Vulnerability
 
-A security vulnerability is a weakness that enables attackers to compromise confidentiality, integrity, and availability.
+A security vulnerability is a weakness in computational logic enabling attackers to compromise confidentiality, integrity, OR availability.
 
 Private vulnerability reporting is enabled for the repository.
 
