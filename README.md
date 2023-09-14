@@ -18,7 +18,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 1. Connect to the Internet
 
-1. Run the following command
+1. Run the following command:
 
 ```ShellSession
 bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
