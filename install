@@ -89,15 +89,11 @@ useradd -mG wheel,seat $username
 echo $username:$password | chpasswd
 
 mkdir -p /home/$username/.config/hypr
-chown $username:$username /home/$username/.config
-chown $username:$username /home/$username/.config/hypr
 curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf
-chown $username:$username /home/$username/.config/hypr/hyprland.conf
 
 mkdir /home/$username/Pictures
-chown $username:$username /home/$username/Pictures
-curl -o /home/$username/Pictures/Sakata.Gintoki.full.2608724.jpg https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/Sakata.Gintoki.full.2608724.jpg
-chown $username:$username /home/$username/Pictures/Sakata.Gintoki.full.2608724.jpg
+curl -o /home/$username/Pictures/wallpaper.jpg https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/Sakata.Gintoki.full.2608724.jpg
+chown -R $username:$username /home/$username/
 
 yes | wgcf register
 wgcf generate
