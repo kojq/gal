@@ -24,7 +24,8 @@ parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpar
 # Format partitions
 mkfs.fat -F32 /dev/$disk$separator'1'
 mkfs.btrfs -f /dev/$disk$separator'2'
-# mkfs.bcachefs --compression=zstd /dev/$disk$separator'2'
+
+# mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
 
 # Mount root partition
 mount /dev/$disk$separator'2' /mnt
