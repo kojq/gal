@@ -32,7 +32,6 @@ mount /dev/$disk$separator'2' /mnt
 
 # Create subvolumes
 btrfs su c /mnt/root
-btrfs su c /mnt/home
 btrfs su c /mnt/snapshots
 # bcachefs subvolume create /mnt/root
 
@@ -41,10 +40,6 @@ umount /mnt
 
 # Mount root subvolume
 mount -o noatime,compress=zstd,subvol=root /dev/$disk$separator'2' /mnt
-
-# Mount home subvolume
-mkdir /mnt/home
-mount -o noatime,compress=zstd,subvol=home /dev/$disk$separator'2' /mnt/home
 
 # Mount snapshots subvolume
 mkdir /mnt/.snapshots
