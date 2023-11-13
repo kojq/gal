@@ -18,7 +18,7 @@ read -sp 'Set password: ' password
 # Synchronize system clock
 timedatectl set-ntp true
 
-pacman -S --noconfirm bcachefs-tools
+pacman -Sy --noconfirm bcachefs-tools
 
 # Create partitions
 parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpart ARCH bcachefs 513MiB 100%
