@@ -39,12 +39,10 @@ mount -o umask=0077 /dev/$disk$separator'1' /mnt/boot
 
 pacman-key -r 3056513887B78AEB
 pacman-key --lsign-key 3056513887B78AEB
-pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-echo -e '\n[mesa-git]\nSigLevel = PackageOptional\nServer = https://pkgbuild.com/~lcarlier/$repo/$arch' >> /etc/pacman.conf
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf
 
-pacstrap -K /mnt amd-ucode aria2 base bcachefs-tools bemenu bemenu-wayland bluez bluez-utils booster bottom brightnessctl cliphist cups distrobox espeak-ng fastfetch fcitx5 firefox firefox-ublock-origin foot fprintd fwupd gitoxide gnome-disk-utility grim gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop libmythes libreoffice-fresh libva-mesa-driver linux-firmware linux-mainline ly mako mesa-git mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas openresolv pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl slurp speech-dispatcher swaybg swayimg swaylock typst vulkan-intel vulkan-radeon waybar wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zathura-cb zathura-djvu zathura-ps zellij zram-generator
+pacstrap -K /mnt amd-ucode aria2 base bcachefs-tools bemenu bemenu-wayland bluez bluez-utils booster bottom brightnessctl cliphist cups distrobox espeak-ng fastfetch fcitx5 firefox firefox-ublock-origin foot fprintd fwupd gitoxide gnome-disk-utility grim gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop libmythes libreoffice-fresh linux-firmware linux-mainline ly mako mesa-tkg-git mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas openresolv pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl slurp speech-dispatcher swaybg swayimg swaylock typst waybar wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zathura-cb zathura-djvu zathura-ps zellij zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -52,6 +50,7 @@ arch-chroot /mnt <<EOF
 
 # ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey
 # libqalculate nucleo simple-scan
+# vulkan-intel vulkan-radeon mesa-vdpau libva-mesa-driver
 
 ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 hwclock -wu
