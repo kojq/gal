@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+mount -o remount,size=4G /run/archiso/cowspace
+pacman -Sy wgcf
+yes | wgcf register
+wgcf generate
+cp wgcf-profile.conf /etc/wireguard
+rm wgcf-account.toml wgcf-profile.conf
+wq-quick up wgcf-profile
+
 # Select disk
 clear
 echo WARNING: Back up data. The entire disk will be wiped.
@@ -17,9 +25,6 @@ read -sp 'Set password: ' password
 
 # Synchronize system clock
 timedatectl set-ntp true
-
-# mount -o remount,size=8G /run/archiso/cowspace
-pacman -Sy --noconfirm bcachefs-tools
 
 # Create partitions
 parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpart ARCH 513MiB 100%
