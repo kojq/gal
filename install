@@ -2,7 +2,6 @@
 set -e
 
 mount -o remount,size=4G /run/archiso/cowspace
-pacman -Sy wgcf
 yes | wgcf register
 wgcf generate
 cp wgcf-profile.conf /etc/wireguard
