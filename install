@@ -18,39 +18,33 @@ read -sp 'Set password: ' password
 # Synchronize system clock
 timedatectl set-ntp true
 
+pacman -S --noconfirm bcachefs-tools
+
 # Create partitions
-parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpart ARCH btrfs 513MiB 100%
-# parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpart ARCH bcachefs 513MiB 100%
+parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpart ARCH bcachefs 513MiB 100%
 
 # Format partitions
 mkfs.fat -F32 /dev/$disk$separator'1'
-mkfs.btrfs -f /dev/$disk$separator'2'
-# mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
+mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
 
 # Mount root partition
-mount /dev/$disk$separator'2' /mnt
-# mount -t bcachefs -o noatime /dev/$disk$separator'2' /mnt
+mount -t bcachefs -o noatime /dev/$disk$separator'2' /mnt
 
 # Create subvolumes
-btrfs su c /mnt/root
-btrfs su c /mnt/snapshots
-# bcachefs subvolume create /mnt/root
-
-# Unmount root partition
-umount /mnt
-
-# Mount root subvolume
-mount -o noatime,compress=zstd,subvol=root /dev/$disk$separator'2' /mnt
-
-# Mount snapshots subvolume
-mkdir /mnt/.snapshots
-mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.snapshots
+bcachefs subvolume create /mnt/root
 
 # Mount ESP partition
 mkdir /mnt/boot
 mount -o umask=0077 /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt nvidia amd-ucode aria2 base bcachefs-tools bemenu bemenu-wayland bluez bluez-utils booster bottom brightnessctl cliphist cups distrobox espeak-ng fastfetch fcitx5 firefox firefox-ublock-origin foot fprintd fwupd gitoxide gnome-disk-utility grim gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mako mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas openresolv pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl slurp speech-dispatcher swaybg swayimg swaylock typst vulkan-intel vulkan-radeon waybar wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zathura-cb zathura-djvu zathura-ps zellij zram-generator
+pacman-key -r 3056513887B78AEB
+pacman-key --lsign-key 3056513887B78AEB
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+echo -e '\n[mesa-git]\nSigLevel = PackageOptional\nServer = https://pkgbuild.com/~lcarlier/$repo/$arch' >> /etc/pacman.conf
+echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf
+
+pacstrap -K /mnt amd-ucode aria2 base bcachefs-tools bemenu bemenu-wayland bluez bluez-utils booster bottom brightnessctl cliphist cups distrobox espeak-ng fastfetch fcitx5 firefox firefox-ublock-origin foot fprintd fwupd gitoxide gnome-disk-utility grim gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop libmythes libreoffice-fresh libva-mesa-driver linux-firmware linux-mainline ly mako mesa-git mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas openresolv pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl slurp speech-dispatcher swaybg swayimg swaylock typst vulkan-intel vulkan-radeon waybar wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zathura-cb zathura-djvu zathura-ps zellij zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -116,11 +110,11 @@ Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-s
 
 mkdir -p /boot/loader/entries
 echo 'title Arch Linux
-linux /vmlinuz-linux
+linux /vmlinuz-linux-mainline
 initrd /amd-ucode.img
 initrd /intel-ucode.img
-initrd /booster-linux.img
-options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
+initrd /booster-linux-mainline.img
+options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 bootctl install
 
@@ -134,16 +128,11 @@ sbctl create-keys
 sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux
+sbctl sign -s /boot/vmlinuz-linux-mainline
 
 cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
 curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
 systemctl enable akb
-
-# pacman-key -r 313F5ABD
-# pacman-key --lsign-key 313F5ABD
-# echo -e '\n[miffe]\nServer = https://arch.miffe.org/$arch/\n' >> /etc/pacman.conf
-# echo -e '\n[mesa-git]\nSigLevel = PackageOptional\nServer = https://pkgbuild.com/~lcarlier/$repo/$arch\n' >> /etc/pacman.conf
 
 EOF
 
