@@ -28,12 +28,8 @@ parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpar
 mkfs.fat -F32 /dev/$disk$separator'1'
 mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
 
-echo fatal_1
-
 # Mount root partition
-mount -t bcachefs -o noatime /dev/$disk$separator'2' /mnt
-
-echo fatal_2
+mount /dev/$disk$separator'2' /mnt
 
 # Create subvolume
 bcachefs subvolume create /mnt/root
