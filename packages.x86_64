@@ -1,6 +1,6 @@
+amd-ucode
 arch-install-scripts
 base
-base-devel
 bcachefs-tools
 cloud-init
 dhcpcd
@@ -9,6 +9,7 @@ espeak-ng
 grub
 helix
 hyperv
+intel-ucode
 iwd
 linux-firmware
 linux-git
