@@ -18,6 +18,7 @@ read -sp 'Set password: ' password
 # Synchronize system clock
 timedatectl set-ntp true
 
+mount -o remount,size=1G /run/archiso/cowspace
 pacman-key -r 3056513887B78AEB
 pacman-key --lsign-key 3056513887B78AEB
 pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
