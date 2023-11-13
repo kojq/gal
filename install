@@ -140,6 +140,11 @@ cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
 curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
 systemctl enable akb
 
+# pacman-key -r 313F5ABD
+# pacman-key --lsign-key 313F5ABD
+# echo -e '\n[miffe]\nServer = https://arch.miffe.org/$arch/\n' >> /etc/pacman.conf
+# echo -e '\n[mesa-git]\nSigLevel = PackageOptional\nServer = https://pkgbuild.com/~lcarlier/$repo/$arch\n' >> /etc/pacman.conf
+
 EOF
 
 umount -R /mnt
