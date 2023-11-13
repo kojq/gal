@@ -30,7 +30,7 @@ mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
 # Mount root partition
 mount -t bcachefs -o noatime /dev/$disk$separator'2' /mnt
 
-# Create subvolumes
+# Create subvolume
 bcachefs subvolume create /mnt/root
 
 # Mount ESP partition
