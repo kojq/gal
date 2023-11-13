@@ -1,0 +1,146 @@
+#!/bin/bash
+set -e
+
+# Select disk
+clear
+echo WARNING: Back up data. The entire disk will be wiped.
+PS3='Select disk: '
+select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
+do [[ -n $disk ]] && break || echo Invalid selection. Try again.
+done
+[[ $disk =~ [0-9]$ ]] && separator=p
+
+# Set credentials
+clear
+read -p 'Set username: ' username
+read -sp 'Set password: ' password
+
+# Synchronize system clock
+timedatectl set-ntp true
+
+# Create partitions
+parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpart ARCH btrfs 513MiB 100%
+# parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 513MiB set 1 esp on mkpart ARCH bcachefs 513MiB 100%
+
+# Format partitions
+mkfs.fat -F32 /dev/$disk$separator'1'
+mkfs.btrfs -f /dev/$disk$separator'2'
+# mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
+
+# Mount root partition
+mount /dev/$disk$separator'2' /mnt
+# mount -t bcachefs -o noatime /dev/$disk$separator'2' /mnt
+
+# Create subvolumes
+btrfs su c /mnt/root
+btrfs su c /mnt/snapshots
+# bcachefs subvolume create /mnt/root
+
+# Unmount root partition
+umount /mnt
+
+# Mount root subvolume
+mount -o noatime,compress=zstd,subvol=root /dev/$disk$separator'2' /mnt
+
+# Mount snapshots subvolume
+mkdir /mnt/.snapshots
+mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.snapshots
+
+# Mount ESP partition
+mkdir /mnt/boot
+mount -o umask=0077 /dev/$disk$separator'1' /mnt/boot
+
+pacstrap -K /mnt nvidia amd-ucode aria2 base bcachefs-tools bemenu bemenu-wayland bluez bluez-utils booster bottom brightnessctl cliphist cups distrobox espeak-ng fastfetch fcitx5 firefox firefox-ublock-origin foot fprintd fwupd gitoxide gnome-disk-utility grim gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mako mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas openresolv pipewire-alsa pipewire-jack pipewire-pulse podman reflector sbctl slurp speech-dispatcher swaybg swayimg swaylock typst vulkan-intel vulkan-radeon waybar wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zathura-cb zathura-djvu zathura-ps zellij zram-generator
+
+genfstab -U /mnt > /mnt/etc/fstab
+
+arch-chroot /mnt <<EOF
+
+# ibus-hangul ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey
+# libqalculate nucleo simple-scan
+
+ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
+hwclock -wu
+
+sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
+locale-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+
+echo arch > /etc/hostname
+
+sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
+sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
+
+echo '
+export EDITOR=/usr/bin/helix' >> /etc/bash.bashrc
+
+mkdir /etc/iwd
+echo '[General]
+EnableNetworkConfiguration=true' > /etc/iwd/main.conf
+
+mkdir /etc/sudoers.d
+echo $username 'ALL=(ALL:ALL) ALL' > /etc/sudoers.d/users
+chmod -R 0400 /etc/sudoers.d
+
+echo permit :wheel > /etc/doas.conf
+chmod 0400 /etc/doas.conf
+
+useradd -mG wheel,seat $username
+echo $username:$password | chpasswd
+
+mkdir -p /home/$username/.config/hypr
+curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf
+
+mkdir /home/$username/Pictures
+curl -o /home/$username/Pictures/wallpaper.jpg https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/Sakata.Gintoki.full.2608724.jpg
+
+chown -R $username:$username /home/$username/
+
+yes | wgcf register
+wgcf generate
+cp wgcf-profile.conf /etc/wireguard
+rm wgcf-account.toml wgcf-profile.conf
+
+systemctl enable bluetooth cups.socket iwd ly nftables reflector.timer seatd systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
+
+mkdir /etc/pacman.d/hooks
+echo '[Trigger]
+Type = Package
+Target = systemd
+Operation = Upgrade
+
+[Action]
+Description = Upgrading systemd-boot...
+When = PostTransaction
+Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-systemd-boot.hook
+
+mkdir -p /boot/loader/entries
+echo 'title Arch Linux
+linux /vmlinuz-linux
+initrd /amd-ucode.img
+initrd /intel-ucode.img
+initrd /booster-linux.img
+options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
+
+bootctl install
+
+echo '[zram0]
+zram-size = ram / 2
+compression-algorithm = zstd
+swap-priority = 100
+fs-type = swap' > /etc/systemd/zram-generator.conf
+
+sbctl create-keys
+sbctl enroll-keys -m
+sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+sbctl sign -s /boot/vmlinuz-linux
+
+cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
+curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
+systemctl enable akb
+
+EOF
+
+umount -R /mnt
+reboot
