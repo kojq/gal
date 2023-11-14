@@ -5,6 +5,7 @@ bcachefs-tools
 cloud-init
 dhcpcd
 dnsmasq
+edk2-shell
 espeak-ng
 grub
 helix
@@ -28,3 +29,4 @@ virtualbox-guest-utils-nox
 wgcf
 wireguard-tools
 zellij
+zsh
