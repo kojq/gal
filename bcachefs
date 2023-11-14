@@ -108,10 +108,10 @@ Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-s
 
 mkdir -p /boot/loader/entries
 echo 'title Arch Linux
-linux /vmlinuz-linux
+linux /vmlinuz-linux-git
 initrd /amd-ucode.img
 initrd /intel-ucode.img
-initrd /booster-linux.img
+initrd /booster-linux-git.img
 options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 bootctl install
@@ -126,7 +126,7 @@ sbctl create-keys
 sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux
+sbctl sign -s /boot/vmlinuz-linux-git
 
 cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
 curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
