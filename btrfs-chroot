@@ -12,9 +12,6 @@ done
 # Mount root subvolume
 mount -o noatime,compress=zstd,subvol=root /dev/$disk$separator'2' /mnt
 
-# Mount home subvolume
-mount -o noatime,compress=zstd,subvol=home /dev/$disk$separator'2' /mnt/home
-
 # Mount snapshots subvolume
 mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.snapshots
 
