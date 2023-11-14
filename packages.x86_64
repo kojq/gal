@@ -3,8 +3,7 @@ arch-install-scripts
 base
 bcachefs-tools
 cloud-init
-dhcpcd
-dnsmasq
+dosfstools
 edk2-shell
 espeak-ng
 grub
@@ -13,7 +12,7 @@ hyperv
 intel-ucode
 iwd
 linux-firmware
-linux-git
+linux
 mkinitcpio
 mkinitcpio-archiso
 open-vm-tools
