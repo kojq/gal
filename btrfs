@@ -116,7 +116,7 @@ linux /vmlinuz-linux
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs nvidia_drm.modeset=1 rw' > /boot/loader/entries/arch.conf
 
 bootctl install
 
