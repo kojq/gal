@@ -99,7 +99,7 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2006.*", MODE="0600"
 KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2007.*", MODE="0600"
 
 # Switch Pro Controller (Bluetooth)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057E:2009.*", MODE="0600"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2009.*", MODE="0600"
 
 # Switch Pro Controller (USB)
 KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2009", MODE="0600"
