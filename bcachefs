@@ -82,19 +82,19 @@ curl -o /home/$username/Pictures/wallpaper.jpg https://raw.githubusercontent.com
 chown -R $username:$username /home/$username/
 
 echo '# Joy-Con L (Bluetooth)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2006.*", MODE="0600", TAG+="uaccess"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2006.*", MODE="0600"
 
 # Joy-Con R (Bluetooth)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2007.*", MODE="0600", TAG+="uaccess"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2007.*", MODE="0600"
 
 # Switch Pro Controller (Bluetooth)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2009.*", MODE="0600", TAG+="uaccess"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2009.*", MODE="0600"
 
 # Switch Pro Controller (USB)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2009", MODE="0600", TAG+="uaccess"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2009", MODE="0600"
 
 # Joy-Con Charging Grip (USB)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="200e", MODE="0600", TAG+="uaccess"' > /etc/udev/rules.d/10-nintendo.rules
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="200e", MODE="0600"' > /etc/udev/rules.d/10-nintendo.rules
 
 yes | wgcf register
 wgcf generate
