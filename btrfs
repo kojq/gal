@@ -52,9 +52,6 @@ genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt <<EOF
 
-# ibus-kkc ibus-m17n ibus-table-chinese ibus-unikey
-# libqalculate nucleo simple-scan
-
 ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 hwclock -wu
 
