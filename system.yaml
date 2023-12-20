@@ -1,14 +1,5 @@
 repo:
   'https://pkg-repo.blendos.co/'
-package-repos:
-  - name: 'cachyos-v3'
-    repo-url: 'https://mirror.cachyos.org/repo/$arch_v3/$repo'
-  - name: 'cachyos-core-v3'
-    repo-url: 'https://mirror.cachyos.org/repo/$arch_v3/$repo'
-  - name: 'cachyos-extra-v3'
-    repo-url: 'https://mirror.cachyos.org/repo/$arch_v3/$repo'
-  - name: 'cachyos'
-    repo-url: 'https://mirror.cachyos.org/repo/$arch/$repo'
 packages:
   - 'amd-ucode'
   - 'aria2'
@@ -148,6 +139,15 @@ packages:
   - 'xdg-desktop-portal-hyprland'
   - 'xdg-user-dirs'
   - 'zellij'
+package-repos:
+  - name: 'cachyos-v3'
+    repo-url: 'https://mirror.cachyos.org/repo/$arch_v3/$repo'
+  - name: 'cachyos-core-v3'
+    repo-url: 'https://mirror.cachyos.org/repo/$arch_v3/$repo'
+  - name: 'cachyos-extra-v3'
+    repo-url: 'https://mirror.cachyos.org/repo/$arch_v3/$repo'
+  - name: 'cachyos'
+    repo-url: 'https://mirror.cachyos.org/repo/$arch/$repo'
 services:
   - 'ananicy-cpp'
   - 'avahi-daemon'
