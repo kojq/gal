@@ -1,5 +1,12 @@
 repo:
   'https://pkg-repo.blendos.co/'
+package-repos:
+  - name: 'cachyos-v3'
+  repo-url: 'https://cachyos.org/repo/$arch_v3/$repo'
+  - name: 'cachyos-core-v3'
+  repo-url: 'https://cachyos.org/repo/$arch_v3/$repo'
+  - name: 'cachyos'
+  repo-url: 'https://cachyos.org/repo/$arch_v3/$repo'
 packages:
   - 'amd-ucode'
   - 'aria2'
@@ -139,9 +146,6 @@ packages:
   - 'xdg-desktop-portal-hyprland'
   - 'xdg-user-dirs'
   - 'zellij'
-#package-repos:
-#  - name: 'chaotic-aur'
-#  repo-url: 'https://cdn-mirror.chaotic.cx/$repo/$arch'
 services:
   - 'ananicy-cpp'
   - 'avahi-daemon'
