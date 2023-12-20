@@ -148,6 +148,12 @@ package-repos:
     repo-url: 'https://mirror.cachyos.org/repo/$arch_v3/$repo'
   - name: 'cachyos'
     repo-url: 'https://mirror.cachyos.org/repo/$arch/$repo'
+  - name: 'core'
+    repo-url: 'https://geo.mirror.pkgbuild.com/$repo/os/$arch'
+  - name: 'extra'
+    repo-url: 'https://geo.mirror.pkgbuild.com/$repo/os/$arch'
+  - name: 'multilib'
+    repo-url: 'https://geo.mirror.pkgbuild.com/$repo/os/$arch'
 services:
   - 'ananicy-cpp'
   - 'avahi-daemon'
