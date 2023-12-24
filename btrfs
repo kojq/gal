@@ -33,14 +33,14 @@ btrfs su c /mnt/@
 btrfs su c /mnt/@/.snapshots
 
 # Unmount root partition
-umount /mnt/@
+umount /mnt
 
 # Mount root subvolume
 mount -o noatime,compress=zstd,subvol=@ /dev/$disk$separator'2' /mnt
 
 # Mount snapshots subvolume
-mkdir /mnt/@/.snapshots
-mount -o noatime,compress=zstd,subvol=@/.snapshots /dev/$disk$separator'2' /mnt/@/.snapshots
+mkdir /mnt/.snapshots
+mount -o noatime,compress=zstd,subvol=@/.snapshots /dev/$disk$separator'2' /mnt/.snapshots
 
 # Mount ESP partition
 mkdir /mnt/boot
