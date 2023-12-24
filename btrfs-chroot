@@ -10,12 +10,15 @@ done
 [[ $disk =~ [0-9]$ ]] && separator=p
 
 # Mount root subvolume
-mount -o noatime,compress=zstd,subvol=root /dev/$disk$separator'2' /mnt
+mount -o noatime,compress=zstd,subvol=@ /dev/$disk$separator'2' /mnt
 
 # Mount snapshots subvolume
-mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.snapshots
+mount -o noatime,compress=zstd,subvol=@/.snapshots /dev/$disk$separator'2' /mnt/.snapshots
+
+# Mount var subvolume
+mount -o noatime,nodatacow,subvol=@/var /dev/$disk$separator'2' /mnt/var
 
 # Mount ESP partition
-mount -o fmask=0077,dmask=0077 /dev/$disk$separator'1' /mnt/boot
+mount -o umask=0077 /dev/$disk$separator'1' /mnt/boot
 
 arch-chroot /mnt
