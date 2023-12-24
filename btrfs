@@ -31,6 +31,8 @@ mount /dev/$disk$separator'2' /mnt
 # Create subvolumes
 btrfs su c /mnt/@
 btrfs su c /mnt/@/.snapshots
+btrfs su c /mnt/@/var
+chattr +C /mnt/@/var
 
 # Unmount root partition
 umount /mnt
@@ -41,6 +43,10 @@ mount -o noatime,compress=zstd,subvol=@ /dev/$disk$separator'2' /mnt
 # Mount snapshots subvolume
 mkdir /mnt/.snapshots
 mount -o noatime,compress=zstd,subvol=@/.snapshots /dev/$disk$separator'2' /mnt/.snapshots
+
+# Mount var subvolume
+mkdir /mnt/var
+mount -o noatime,nodatacow,subvol=@/var /dev/$disk$separator'2' /mnt/var
 
 # Mount ESP partition
 mkdir /mnt/boot
