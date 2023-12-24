@@ -31,7 +31,7 @@ mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
 # bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
 
 # Create subvolume
-bcachefs subvolume create /mnt/root
+bcachefs subvolume create /mnt/@
 
 # Mount ESP partition
 mkdir /mnt/boot
@@ -90,7 +90,7 @@ linux /vmlinuz-linux
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 bootctl install
 
