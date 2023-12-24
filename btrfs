@@ -47,7 +47,6 @@ mkdir /mnt/boot
 mount -o umask=0077 /dev/$disk$separator'1' /mnt/boot
 
 pacstrap -K /mnt amd-ucode aria2 base blueman booster bottom brightnessctl cliphist cups distrobox espeak-ng fastfetch fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-configtool fcitx5-hangul fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey firefox firefox-ublock-origin foot fprintd fuzzel fwupd gitoxide gnome-disk-utility grim gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iptables-nft iwd lapce lib32-libva-intel-driver lib32-libva-mesa-driver lib32-mesa lib32-mesa-vdpau lib32-opencl-clover-mesa lib32-opencl-rusticl-mesa lib32-vulkan-intel lib32-vulkan-radeon libmythes libreoffice-fresh libva-intel-driver libva-mesa-driver linux linux-firmware linux-headers logrotate ly mako man-db man-pages mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ntfs-3g opencl-clover-mesa opencl-rusticl-mesa opendoas openresolv otf-font-awesome pipewire-alsa pipewire-jack pipewire-pulse podman rocm-opencl-runtime sbctl slurp speech-dispatcher swaybg swayimg swaylock ttf-jetbrains-mono typst vulkan-intel vulkan-radeon waybar wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zellij zram-generator
-# grimblast howdy nucleo waybar-hyprland
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -100,7 +99,7 @@ linux /vmlinuz-linux
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH rootflags=subvol=root rootfstype=btrfs zswap.enabled=0 rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
 
 bootctl install
 
