@@ -29,18 +29,18 @@ mkfs.btrfs -f /dev/$disk$separator'2'
 mount /dev/$disk$separator'2' /mnt
 
 # Create subvolumes
-btrfs su c /mnt/root
-btrfs su c /mnt/snapshots
+btrfs su c /mnt/@
+btrfs su c /mnt/@/.snapshots
 
 # Unmount root partition
-umount /mnt
+umount /mnt/@
 
 # Mount root subvolume
-mount -o noatime,compress=zstd,subvol=root /dev/$disk$separator'2' /mnt
+mount -o noatime,compress=zstd,subvol=@ /dev/$disk$separator'2' /mnt
 
 # Mount snapshots subvolume
-mkdir /mnt/.snapshots
-mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.snapshots
+mkdir /mnt/@/.snapshots
+mount -o noatime,compress=zstd,subvol=@/.snapshots /dev/$disk$separator'2' /mnt/@/.snapshots
 
 # Mount ESP partition
 mkdir /mnt/boot
@@ -99,7 +99,7 @@ linux /vmlinuz-linux
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=@ rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
 
 bootctl install
 
