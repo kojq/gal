@@ -46,7 +46,8 @@ mount -o noatime,compress=zstd,subvol=snapshots /dev/$disk$separator'2' /mnt/.sn
 mkdir /mnt/boot
 mount -o umask=0077 /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt amd-ucode aria2 base bcachefs-tools bemenu bemenu-wayland blueman bluez booster bottom brightnessctl cliphist cups distrobox espeak-ng fastfetch fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-configtool fcitx5-hangul fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey firefox firefox-ublock-origin foot fprintd fwupd gitoxide gnome-disk-utility grim gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iwd j4-dmenu-desktop libmythes libreoffice-fresh libva-mesa-driver linux linux-firmware ly mako mesa mesa-vdpau mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendoas openresolv pipewire-alsa pipewire-jack pipewire-pulse podman sbctl slurp speech-dispatcher swaybg swaylock typst vulkan-intel vulkan-radeon waybar wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zellij zram-generator
+pacstrap -K /mnt amd-ucode aria2 base blueman booster bottom brightnessctl cliphist cups distrobox espeak-ng fastfetch fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-configtool fcitx5-hangul fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey firefox firefox-ublock-origin foot fprintd fuzzel fwupd gitoxide gnome-disk-utility grim gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iptables-nft iwd lapce lib32-libva-intel-driver lib32-libva-mesa-driver lib32-mesa lib32-mesa-vdpau lib32-opencl-clover-mesa lib32-opencl-rusticl-mesa lib32-vulkan-intel lib32-vulkan-radeon libmythes libreoffice-fresh libva-intel-driver libva-mesa-driver linux linux-firmware linux-headers logrotate ly mako man-db man-pages mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ntfs-3g opencl-clover-mesa opencl-rusticl-mesa opendoas openresolv otf-font-awesome pipewire-alsa pipewire-jack pipewire-pulse podman rocm-opencl-runtime sbctl slurp speech-dispatcher swaybg swayimg swaylock ttf-jetbrains-mono typst vulkan-intel vulkan-radeon waybar wf-recorder wgcf wireguard-tools wireplumber xdg-desktop-portal-hyprland xdg-user-dirs zellij zram-generator
+# grimblast howdy nucleo waybar-hyprland
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -82,45 +83,16 @@ useradd -mG wheel,seat $username
 echo $username:$password | chpasswd
 
 mkdir -p /home/$username/.config/hypr
-curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/hyprland.conf
-
-mkdir /home/$username/Pictures
-curl -o /home/$username/Pictures/wallpaper.jpg https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/Sakata.Gintoki.full.2608724.jpg
+curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/
 
 chown -R $username:$username /home/$username/
-
-echo '# Joy-Con L (Bluetooth)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2006.*", MODE="0600"
-
-# Joy-Con R (Bluetooth)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2007.*", MODE="0600"
-
-# Switch Pro Controller (Bluetooth)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:057e:2009.*", MODE="0600"
-
-# Switch Pro Controller (USB)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2009", MODE="0600"
-
-# Joy-Con Charging Grip (USB)
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="200e", MODE="0600"' > /etc/udev/rules.d/10-nintendo.rules
 
 yes | wgcf register
 wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 
-systemctl enable bluetooth cups.socket iwd ly nftables seatd systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
-
-mkdir /etc/pacman.d/hooks
-echo '[Trigger]
-Type = Package
-Target = systemd
-Operation = Upgrade
-
-[Action]
-Description = Upgrading systemd-boot...
-When = PostTransaction
-Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-systemd-boot.hook
+systemctl enable bluetooth cups.socket iwd ly nftables systemd-boot-update systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
 
 mkdir -p /boot/loader/entries
 echo 'title Arch Linux
@@ -128,21 +100,19 @@ linux /vmlinuz-linux
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=root rootfstype=btrfs rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH rootflags=subvol=root rootfstype=btrfs zswap.enabled=0 rw' > /boot/loader/entries/arch.conf
 
 bootctl install
 
 echo '[zram0]
-zram-size = ram / 2
-compression-algorithm = zstd
-swap-priority = 100
-fs-type = swap' > /etc/systemd/zram-generator.conf
+zram-size = ram / 3
+compression-algorithm = zstd' > /etc/systemd/zram-generator.conf
 
 sbctl create-keys
 sbctl enroll-keys -m
-sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
-sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux
+sbctl sign -s /efi/EFI/BOOT/BOOTX64.EFI
+sbctl sign -s /efi/EFI/systemd/systemd-bootx64.efi
+sbctl sign -s /efi/vmlinuz-linux
 
 cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
 curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
