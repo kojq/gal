@@ -90,6 +90,8 @@ mkdir /home/$username/.config/hypr
 curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/dotfiles/main/hypr/hyprland.conf
 mkdir /home/$username/.config/mako
 curl -o /home/$username/.config/mako/config https://raw.githubusercontent.com/kojq/dotfiles/main/mako/config
+mkdir /home/$username/.config/swaylock
+curl -o /home/$username/.config/mako/config https://raw.githubusercontent.com/kojq/dotfiles/main/swaylock/config
 mkdir /home/$username/.config/waybar
 curl -o /home/$username/.config/waybar/style.css https://raw.githubusercontent.com/kojq/dotfiles/main/waybar/style.css
 
