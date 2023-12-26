@@ -88,6 +88,9 @@ echo $username:$password | chpasswd
 mkdir /home/$username/.config
 mkdir /home/$username/.config/hypr
 curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/dotfiles/main/hypr/hyprland.conf
+mkdir /home/$username/.config/images
+curl -o /home/$username/.config/images/home.jpg https://raw.githubusercontent.com/kojq/dotfiles/main/images/home.jpg
+curl -o /home/$username/.config/images/lock.jpg https://raw.githubusercontent.com/kojq/dotfiles/main/images/lock.jpg
 mkdir /home/$username/.config/mako
 curl -o /home/$username/.config/mako/config https://raw.githubusercontent.com/kojq/dotfiles/main/mako/config
 mkdir /home/$username/.config/swaylock
