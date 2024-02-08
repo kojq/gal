@@ -9,14 +9,8 @@ do [[ -n $disk ]] && break || echo Invalid selection. Try again.
 done
 [[ $disk =~ [0-9]$ ]] && separator=p
 
-# Mount root subvolume
-mount -o noatime,compress=zstd,subvol=@ /dev/$disk$separator'2' /mnt
-
-# Mount snapshots subvolume
-mount -o noatime,compress=zstd,subvol=@/.snapshots /dev/$disk$separator'2' /mnt/.snapshots
-
-# Mount var subvolume
-mount -o noatime,nodatacow,subvol=@/var /dev/$disk$separator'2' /mnt/var
+# Mount system
+mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
 
 # Mount ESP partition
 mount -o umask=0077 /dev/$disk$separator'1' /mnt/boot
