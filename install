@@ -114,10 +114,6 @@ sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sbctl sign -s /boot/vmlinuz-linux
 
-cat /sys/class/dmi/id/sys_vendor | grep -q ASUS && \
-curl -o /etc/systemd/system/akb.service https://raw.githubusercontent.com/kojq/ASUS-Keyboard-Backlight/main/akb.service && \
-systemctl enable akb
-
 EOF
 
 umount -R /mnt
