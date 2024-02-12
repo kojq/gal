@@ -83,6 +83,7 @@ curl -o /home/$username/.config/mako/config https://raw.githubusercontent.com/ko
 mkdir /home/$username/.config/swaylock
 curl -o /home/$username/.config/swaylock/config https://raw.githubusercontent.com/kojq/dotfiles/main/swaylock/config
 mkdir /home/$username/.config/waybar
+curl -o /home/$username/.config/waybar/config https://raw.githubusercontent.com/kojq/dotfiles/main/waybar/config
 curl -o /home/$username/.config/waybar/style.css https://raw.githubusercontent.com/kojq/dotfiles/main/waybar/style.css
 
 chown -R $username:$username /home/$username/
