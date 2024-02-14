@@ -101,7 +101,7 @@ linux /vmlinuz-linux
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /booster-linux.img
-options root=PARTLABEL=ARCH zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH lockdown=integrity zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 bootctl install
 
