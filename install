@@ -97,10 +97,10 @@ systemctl enable bluetooth cups.socket iwd ly nftables systemd-boot-update syste
 
 mkdir -p /boot/loader/entries
 echo 'title Arch Linux
-linux /vmlinuz-linux
+linux /vmlinuz-linux-hardened
 initrd /amd-ucode.img
 initrd /intel-ucode.img
-initrd /booster-linux.img
+initrd /booster-linux-hardened.img
 options root=PARTLABEL=ARCH lockdown=integrity zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 bootctl install
@@ -113,7 +113,7 @@ sbctl create-keys
 sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux
+sbctl sign -s /boot/vmlinuz-linux-hardened
 
 EOF
 
