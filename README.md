@@ -28,6 +28,9 @@ Make adjustments after installing. Below are a few examples.
 
 - Connect to the Internet with `iwctl`
 - Decrease microphone volume with `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .4`
+- Enable GTK dark theme
+  - `gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark`
+  - `gsettings set org.gnome.desktop.interface color-scheme prefer-dark`
 - Modify language or keyboard layout
 - Change GPU for `wf-recorder` to `/dev/dri/renderD129` in `~/.config/hypr/hyprland.conf`
 
