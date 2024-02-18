@@ -73,6 +73,8 @@ useradd -mG wheel $username
 echo $username:$password | chpasswd
 
 mkdir /home/$username/.config
+mkdir /home/$username/.config/fuzzel
+curl -o /home/$username/.config/fuzzel/fuzzel.ini https://raw.githubusercontent.com/kojq/dotfiles/main/fuzzel/fuzzel.ini
 mkdir /home/$username/.config/hypr
 curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/dotfiles/main/hypr/hyprland.conf
 mkdir /home/$username/.config/images
