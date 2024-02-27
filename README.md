@@ -21,7 +21,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 1. Run the following command:
 
 ```ShellSession
-bash <(curl https://raw.githubusercontent.com/kojq/Get-Arch-Linux/main/install)
+sh <(curl https://raw.githubusercontent.com/kojq/gal/main/install)
 ```
 
 Make adjustments after installing. Below are a few examples.
