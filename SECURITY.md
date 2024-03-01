@@ -2,11 +2,11 @@
 
 ## Supported Versions
 
-Only the latest version will be supported with security updates until the repository is archived.
+Only the latest version will be supported with security updates. If the repository is archived, there will be no further security updates.
 
 ## Reporting a Vulnerability
 
-A security vulnerability is a weakness in computational logic enabling attackers to compromise confidentiality, integrity, OR availability.
+A security vulnerability is a weakness in computational logic enabling attackers to compromise confidentiality, integrity, or availability.
 
 Private vulnerability reporting is enabled for the repository.
 
