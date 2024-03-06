@@ -100,6 +100,7 @@ initrd /intel-ucode.img
 initrd /booster-linux.img
 options root=PARTLABEL=ARCH lockdown=integrity zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
+mkdir /etc/pacman.d/hooks
 echo '[Trigger]
 Type = Package
 Operation = Upgrade
