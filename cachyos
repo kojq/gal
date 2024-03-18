@@ -36,7 +36,7 @@ bcachefs subvolume create /mnt/@
 # Mount ESP partition
 mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt amd-ucode aria2 base base-devel bcachefs-tools blueman booster brightnessctl cups distrobox espeak-ng fastfetch fcitx5-configtool fcitx5-hangul firefox firefox-ublock-origin foot fuzzel fwupd gnome-disk-utility gnome-keyring gnome-themes-extra grim helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iptables-nft iwd libmythes libreoffice-fresh libva-intel-driver libva-mesa-driver linux-cachyos-hardened-lto linux-firmware logrotate ly mako mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio opencl-clover-mesa opencl-rusticl-mesa otf-geist-mono-nerd otf-monaspace-nerd pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland qt6ct reflector rocm-opencl-runtime sbctl slurp speech-dispatcher swaybg swayimg systemd-resolvconf typst vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-gtk xdg-desktop-portal-hyprland xdg-user-dirs zellij zram-generator
+pacstrap -K /mnt amd-ucode aria2 base base-devel bcachefs-tools blueman booster brightnessctl cups distrobox espeak-ng fastfetch fcitx5-configtool fcitx5-hangul firefox firefox-ublock-origin foot fuzzel fwupd gnome-disk-utility gnome-keyring gnome-themes-extra grim helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iptables-nft iwd libmythes libreoffice-fresh libva-intel-driver libva-mesa-driver linux-cachyos linux-firmware logrotate ly mako mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio opencl-clover-mesa opencl-rusticl-mesa otf-geist-mono-nerd otf-monaspace-nerd pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland qt6ct reflector rocm-opencl-runtime sbctl slurp speech-dispatcher swaybg swayimg systemd-resolvconf typst vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-gtk xdg-desktop-portal-hyprland xdg-user-dirs zellij zram-generator
 # fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey
 
 genfstab -U /mnt > /mnt/etc/fstab
@@ -93,10 +93,10 @@ systemctl enable bluetooth cups.socket iwd ly nftables reflector.timer systemd-r
 
 mkdir -p /boot/loader/entries
 echo 'title Arch Linux
-linux /vmlinuz-linux-cachyos-hardened-lto
+linux /vmlinuz-linux-cachyos
 initrd /amd-ucode.img
 initrd /intel-ucode.img
-initrd /booster-linux-cachyos-hardened-lto.img
+initrd /booster-linux-cachyos.img
 options root=PARTLABEL=ARCH lockdown=integrity zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 mkdir /etc/pacman.d/hooks
@@ -119,7 +119,7 @@ sbctl create-keys
 sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux-cachyos-hardened-lto
+sbctl sign -s /boot/vmlinuz-linux-cachyos
 
 EOF
 
