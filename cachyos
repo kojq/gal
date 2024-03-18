@@ -1,0 +1,127 @@
+#!/bin/bash
+set -e
+
+# Select disk
+clear
+echo WARNING: Back up data. The entire disk will be wiped.
+PS3='Select disk: '
+select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
+do [[ -n $disk ]] && break || echo Invalid selection. Try again.
+done
+[[ $disk =~ [0-9]$ ]] && separator=p
+
+# Set credentials
+clear
+read -p 'Set username: ' username
+read -sp 'Set password: ' password
+
+# Synchronize system clock
+timedatectl set-ntp true
+
+# Create partitions
+parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 257MiB set 1 esp on mkpart ARCH 257MiB 100%
+
+# Format partitions
+mkfs.fat -F32 /dev/$disk$separator'1'
+mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
+# bcachefs format -f --compression=zstd --discard /dev/$disk$separator'2'
+
+# Mount root partition
+mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
+# bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
+
+# Create subvolume
+bcachefs subvolume create /mnt/@
+
+# Mount ESP partition
+mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
+
+pacstrap -K /mnt amd-ucode aria2 base base-devel bcachefs-tools blueman booster brightnessctl cups distrobox espeak-ng fastfetch fcitx5-configtool fcitx5-hangul firefox firefox-ublock-origin foot fuzzel fwupd gnome-disk-utility gnome-keyring gnome-themes-extra grim helix hunspell hunspell-en_us hyphen hyphen-en hyprland intel-media-driver intel-ucode iptables-nft iwd libmythes libreoffice-fresh libva-intel-driver libva-mesa-driver linux-cachyos-hardened-lto linux-firmware logrotate ly mako mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio opencl-clover-mesa opencl-rusticl-mesa otf-geist-mono-nerd otf-monaspace-nerd pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland qt6ct reflector rocm-opencl-runtime sbctl slurp speech-dispatcher swaybg swayimg systemd-resolvconf typst vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-gtk xdg-desktop-portal-hyprland xdg-user-dirs zellij zram-generator
+# fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey
+
+genfstab -U /mnt > /mnt/etc/fstab
+
+arch-chroot /mnt <<EOF
+
+ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
+hwclock -wu
+
+sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
+locale-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+
+echo arch > /etc/hostname
+
+sed -i '/# Misc options/a NoExtract = etc/pacman.d/mirrorlist' /etc/pacman.conf
+sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
+sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
+
+echo '
+export EDITOR=/usr/bin/helix
+flashfetch' >> /etc/bash.bashrc
+
+mkdir /etc/iwd
+echo '[General]
+EnableNetworkConfiguration=true' > /etc/iwd/main.conf
+
+mkdir /etc/sudoers.d
+echo $username 'ALL=(ALL:ALL) ALL' > /etc/sudoers.d/users
+chmod -R 0400 /etc/sudoers.d
+
+useradd -mG wheel $username
+echo $username:$password | chpasswd
+
+mkdir /home/$username/.config
+mkdir /home/$username/.config/fuzzel
+curl -o /home/$username/.config/fuzzel/fuzzel.ini https://raw.githubusercontent.com/kojq/dotfiles/main/fuzzel/fuzzel.ini
+mkdir /home/$username/.config/hypr
+curl -o /home/$username/.config/hypr/hyprland.conf https://raw.githubusercontent.com/kojq/dotfiles/main/hypr/hyprland.conf
+mkdir /home/$username/.config/images
+curl -o /home/$username/.config/images/home.jpg https://raw.githubusercontent.com/kojq/dotfiles/main/images/home.jpg
+curl -o /home/$username/.config/images/lock.png https://raw.githubusercontent.com/kojq/dotfiles/main/images/lock.png
+mkdir /home/$username/.config/mako
+curl -o /home/$username/.config/mako/config https://raw.githubusercontent.com/kojq/dotfiles/main/mako/config
+
+chown -R $username:$username /home/$username/
+
+yes | wgcf register
+wgcf generate
+cp wgcf-profile.conf /etc/wireguard
+rm wgcf-account.toml wgcf-profile.conf
+
+systemctl enable bluetooth cups.socket iwd ly nftables reflector.timer systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
+
+mkdir -p /boot/loader/entries
+echo 'title Arch Linux
+linux /vmlinuz-linux
+initrd /amd-ucode.img
+initrd /intel-ucode.img
+initrd /booster-linux.img
+options root=PARTLABEL=ARCH lockdown=integrity zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
+
+mkdir /etc/pacman.d/hooks
+echo '[Trigger]
+Type = Package
+Operation = Upgrade
+Target = systemd
+[Action]
+Description = Upgrading systemd-boot...
+When = PostTransaction
+Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-systemd-boot.hook
+
+bootctl install
+
+echo '[zram0]
+zram-size = ram / 2
+compression-algorithm = zstd' > /etc/systemd/zram-generator.conf
+
+sbctl create-keys
+sbctl enroll-keys -m
+sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+sbctl sign -s /boot/vmlinuz-linux
+
+EOF
+
+umount -R /mnt
+reboot
