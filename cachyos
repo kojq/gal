@@ -93,10 +93,10 @@ systemctl enable bluetooth cups.socket iwd ly nftables reflector.timer systemd-r
 
 mkdir -p /boot/loader/entries
 echo 'title Arch Linux
-linux /vmlinuz-linux
+linux /vmlinuz-linux-cachyos-hardened-lto
 initrd /amd-ucode.img
 initrd /intel-ucode.img
-initrd /booster-linux.img
+initrd /booster-linux-cachyos-hardened-lto.img
 options root=PARTLABEL=ARCH lockdown=integrity zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 mkdir /etc/pacman.d/hooks
@@ -119,7 +119,7 @@ sbctl create-keys
 sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux
+sbctl sign -s /boot/vmlinuz-linux-cachyos-hardened-lto
 
 EOF
 
