@@ -34,7 +34,7 @@ mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
 bcachefs subvolume create /mnt/@
 
 # Mount ESP partition
-mount -m /dev/$disk$separator'1' /mnt/boot
+mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
 
 pacstrap -K /mnt amd-ucode aria2 base bcachefs-tools blueman booster brightnessctl cups distrobox espeak-ng fastfetch fcitx5-configtool fcitx5-hangul firefox firefox-ublock-origin foot fuzzel fwupd gnome-disk-utility gnome-keyring gnome-themes-extra grim helix hunspell hunspell-en_us hyphen hyphen-en hyprland hyprlock intel-media-driver intel-ucode iptables-nft iwd libmythes libreoffice-fresh libva-intel-driver libva-mesa-driver linux linux-firmware logrotate ly mako mesa-vdpau mpv mythes-en nautilus nftables noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra obs-studio opencl-clover-mesa opencl-rusticl-mesa opendoas openresolv otf-geist-mono-nerd otf-monaspace-nerd pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland qt6ct reflector rocm-opencl-runtime sbctl slurp speech-dispatcher swaybg swayimg typst vulkan-intel vulkan-radeon wgcf wireguard-tools wireplumber xdg-desktop-portal-gtk xdg-desktop-portal-hyprland xdg-user-dirs zellij zram-generator
 
@@ -67,10 +67,10 @@ EnableNetworkConfiguration=true' > /etc/iwd/main.conf
 
 mkdir /etc/sudoers.d
 echo $username 'ALL=(ALL:ALL) ALL' > /etc/sudoers.d/users
-#chmod -R 0400 /etc/sudoers.d
+chmod -R 0400 /etc/sudoers.d
 
 echo permit :wheel > /etc/doas.conf
-#chmod 0400 /etc/doas.conf
+chmod 0400 /etc/doas.conf
 
 useradd -mG wheel $username
 echo $username:$password | chpasswd
