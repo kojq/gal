@@ -58,7 +58,6 @@ sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
 echo '
-export EDITOR=/usr/bin/helix
 fastfetch' >> /etc/bash.bashrc
 
 mkdir /etc/iwd
