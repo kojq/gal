@@ -78,6 +78,8 @@ curl -o /home/$username/.config/hypr/hyprlock.conf https://raw.githubusercontent
 mkdir /home/$username/.config/images
 curl -o /home/$username/.config/images/home.jpg https://raw.githubusercontent.com/kojq/dotfiles/main/images/home.jpg
 curl -o /home/$username/.config/images/lock.jpg https://raw.githubusercontent.com/kojq/dotfiles/main/images/lock.jpg
+mkdir /home/$username/.config/mako
+curl -o /home/$username/.config/mako/config https://raw.githubusercontent.com/kojq/dotfiles/main/mako/config
 
 chown -R $username:$username /home/$username/
 
