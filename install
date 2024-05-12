@@ -19,7 +19,7 @@ read -sp 'Set password: ' password
 timedatectl set-ntp true
 
 # Create partitions
-parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 257MiB set 1 esp on mkpart ARCH 257MiB 100%
+parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 129MiB set 1 esp on mkpart ARCH 129MiB 100%
 
 # Format partitions
 mkfs.fat -F32 /dev/$disk$separator'1'
@@ -96,7 +96,7 @@ linux /vmlinuz-linux-zen
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /booster-linux-zen.img
-options root=PARTLABEL=ARCH lockdown=integrity zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH lockdown=integrity zswap.enabled=0 rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
