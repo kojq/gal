@@ -21,17 +21,16 @@ timedatectl set-ntp true
 # Create partitions
 parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 129MiB set 1 esp on mkpart ARCH 129MiB 100%
 
-# Format partitions
+# Format ESP partition
 mkfs.fat -F32 /dev/$disk$separator'1'
-mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
-# bcachefs format -f --compression=zstd --discard /dev/$disk$separator'2'
+
+# Format root partition
+# mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
+bcachefs format -f --compression=zstd --discard /dev/$disk$separator'2'
 
 # Mount root partition
-mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
-# bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
-
-# Create subvolume
-bcachefs subvolume create /mnt/@
+# mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
+bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
 
 # Mount ESP partition
 mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
@@ -100,7 +99,7 @@ linux /vmlinuz-linux-zen
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /booster-linux-zen.img
-options root=PARTLABEL=ARCH nouveau.config=NvGspRm=1 lockdown=integrity zswap.enabled=0 rootflags=subvol=@ rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH nouveau.config=NvGspRm=1 lockdown=integrity zswap.enabled=0 rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
