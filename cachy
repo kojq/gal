@@ -1,0 +1,102 @@
+#!/bin/bash
+set -e
+
+# Select disk
+clear
+echo WARNING: Back up data. The entire disk will be wiped.
+PS3='Select disk: '
+select disk in $(lsblk -do NAME -x SIZE | tac | head -n -2)
+do [[ -n $disk ]] && break || echo Invalid selection. Try again.
+done
+[[ $disk =~ [0-9]$ ]] && separator=p
+
+# Set credentials
+clear
+read -p 'Set username: ' username
+read -p 'Set password: ' password
+
+# Synchronize system clock
+timedatectl set-ntp true
+
+# Create partitions
+parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 1025MiB set 1 esp on mkpart ARCH 1025MiB 100%
+
+# Format ESP partition
+mkfs.fat -F32 /dev/$disk$separator'1'
+
+# Format root partition
+# mkfs.bcachefs -f --compression=zstd --discard /dev/$disk$separator'2'
+bcachefs format -f --compression=zstd --discard /dev/$disk$separator'2'
+
+# Mount root partition
+# mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
+bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
+
+# Mount ESP partition
+mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
+
+pacstrap -K /mnt amd-ucode base booster cachy-browser cosmic-epoch-git cuda helix linux-cachyos-lts-nvidia-open linux-firmware logrotate noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect sbctl sof-firmware wgcf wireguard-tools zram-generator
+
+genfstab -U /mnt > /mnt/etc/fstab
+
+arch-chroot /mnt <<EOF
+
+ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
+hwclock -wu
+
+sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
+locale-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+
+echo host > /etc/hostname
+
+sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
+sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
+
+
+useradd -mG wheel $username
+echo $username:$password | chpasswd
+
+chown -R $username:$username /home/$username/
+
+yes | wgcf register
+wgcf generate
+cp wgcf-profile.conf /etc/wireguard
+rm wgcf-account.toml wgcf-profile.conf
+
+systemctl enable nftables systemd-resolved wg-quick@wgcf-profile cosmic-greeter
+
+mkdir -p /boot/loader/entries
+echo 'title Arch Linux
+linux /vmlinuz-linux-zen
+initrd /amd-ucode.img
+initrd /intel-ucode.img
+initrd /booster-linux-zen.img
+options root=PARTLABEL=ARCH nouveau.config=NvGspRm=1 lockdown=integrity zswap.enabled=0 rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
+
+mkdir /etc/pacman.d/hooks
+echo '[Trigger]
+Type = Package
+Operation = Upgrade
+Target = systemd
+[Action]
+Description = Upgrading systemd-boot...
+When = PostTransaction
+Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-systemd-boot.hook
+
+bootctl install
+
+echo '[zram0]
+zram-size = ram / 2
+compression-algorithm = zstd' > /etc/systemd/zram-generator.conf
+
+sbctl create-keys
+sbctl enroll-keys -m
+sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+sbctl sign -s /boot/vmlinuz-linux-zen
+
+EOF
+
+umount -R /mnt
+reboot
