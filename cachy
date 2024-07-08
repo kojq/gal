@@ -101,4 +101,4 @@ sbctl sign -s /boot/vmlinuz-linux-cachyos
 
 EOF
 
-umount -R /mnt
+umount -l -R /mnt
