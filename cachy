@@ -35,13 +35,20 @@ bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
 # Mount ESP partition
 mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -KM /mnt amd-ucode base booster cosmic-epoch-git cuda firefox firefox-ublock-origin helix linux-cachyos-lts-nvidia-open linux-firmware logrotate noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect sbctl sof-firmware wgcf wireguard-tools zram-generator
+pacstrap -KM /mnt amd-ucode base booster cosmic-epoch-git cuda firefox firefox-ublock-origin helix linux-cachyos linux-firmware logrotate noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect sbctl sof-firmware wgcf wireguard-tools zram-generator
+
 #bluez cachyos-fish-config cachyos-hooks cachyos-keyring cachyos-mirrorlist cachyos-v4-mirrorlist cachyos-v3-mirrorlist cachyos-rate-mirrors cachyos-settings
 #dosfstools e2fsprogs exfatprogs f2fs-tools jfsutils sysfsutils usbutils xfsprogs
-#iptables-nft linux-cachyos
+#iptables-nft
 #networkmanager netctl systemd-boot-manager plymouth cachyos-plymouth-theme
 #mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
 #nvidia-utils nvidia-settings egl-wayland opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils libva-nvidia-driver vulkan-icd-loader lib32-vulkan-icd-loader linux-cachyos-nvidia
+
+#aria2 cups distrobox fastfetch ollama podman typst zed
+#blueman brightnessctl espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en iptables-nft iwd libmythes libreoffice-fresh mythes-en
+#intel-media-driver intel-ucode libva-intel-driver vulkan-intel
+#libva-mesa-driver mesa-vdpau opencl-rusticl-mesa rocm-opencl-runtime vulkan-nouveau vulkan-radeon
+#openresolv pipewire-alsa pipewire-jack pipewire-pulse polkit-kde-agent qt6ct reflector speech-dispatcher wireplumber xdg-user-dirs
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -59,25 +66,21 @@ echo host > /etc/hostname
 sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 
-
 useradd -mG wheel $username
 echo $username:$password | chpasswd
-
-chown -R $username:$username /home/$username/
 
 yes | wgcf register
 wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 
-systemctl enable nftables systemd-resolved wg-quick@wgcf-profile cosmic-greeter
+systemctl enable cosmic-greeter nftables systemd-resolved wg-quick@wgcf-profile
 
 mkdir -p /boot/loader/entries
 echo 'title Arch Linux
-linux /vmlinuz-linux-zen
+linux /vmlinuz-linux-cachyos
 initrd /amd-ucode.img
-initrd /intel-ucode.img
-initrd /booster-linux-zen.img
+initrd /booster-linux-cachyos.img
 options root=PARTLABEL=ARCH nouveau.config=NvGspRm=1 lockdown=integrity zswap.enabled=0 rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
 
 mkdir /etc/pacman.d/hooks
@@ -93,14 +96,14 @@ Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-s
 bootctl install
 
 echo '[zram0]
-zram-size = ram / 2
+zram-size = ram
 compression-algorithm = zstd' > /etc/systemd/zram-generator.conf
 
 sbctl create-keys
 sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux-zen
+sbctl sign -s /boot/vmlinuz-linux-cachyos
 
 EOF
 
