@@ -35,7 +35,7 @@ bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
 # Mount ESP partition
 mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-mirrorlist cachyos-v3-mirrorlist cosmic-epoch-git cuda dbus-broker-units firefox firefox-ublock-origin helix iptables-nft keepassxc linux-cachyos-rc linux-firmware logrotate networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect pipewire-jack rog-control-center sbctl sof-firmware wgcf wireguard-tools zed zram-generator
+pacstrap /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-mirrorlist cachyos-v3-mirrorlist cosmic-epoch-git cuda dbus-broker-units firefox firefox-ublock-origin helix iptables-nft keepassxc linux-cachyos-rc linux-firmware logrotate networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect pipewire-jack rog-control-center sbctl sof-firmware wgcf wireguard-tools zed zram-generator
 #cachyos-fish-config cachyos-hooks plymouth cachyos-plymouth-theme cachyos-settings cachyos-v4-mirrorlist
 #dosfstools e2fsprogs exfatprogs f2fs-tools jfsutils sysfsutils usbutils xfsprogs
 #netctl systemd-boot-manager
