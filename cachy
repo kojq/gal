@@ -40,15 +40,14 @@ pacstrap -KM /mnt base bluez booster cosmic-epoch-git cuda dbus-broker-units fir
 #cachyos-fish-config cachyos-hooks cachyos-keyring cachyos-mirrorlist plymouth cachyos-plymouth-theme cachyos-rate-mirrors cachyos-settings cachyos-v3-mirrorlist cachyos-v4-mirrorlist
 #dosfstools e2fsprogs exfatprogs f2fs-tools jfsutils sysfsutils usbutils xfsprogs
 #iptables-nft
-#networkmanager netctl systemd-boot-manager 
+#networkmanager netctl systemd-boot-manager
 #mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
-#nvidia-utils nvidia-settings egl-wayland opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils libva-nvidia-driver vulkan-icd-loader lib32-vulkan-icd-loader linux-cachyos-nvidia
-
+#nvidia-settings lib32-opencl-nvidia lib32-nvidia-utils libva-nvidia-driver lib32-vulkan-icd-loader linux-cachyos-nvidia
 #aria2 cups distrobox fastfetch ollama podman typst zed
 #blueman brightnessctl espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en iptables-nft iwd libmythes libreoffice-fresh mythes-en
 #intel-media-driver intel-ucode libva-intel-driver vulkan-intel
 #libva-mesa-driver mesa-vdpau opencl-rusticl-mesa rocm-opencl-runtime vulkan-nouveau vulkan-radeon
-#openresolv pipewire-alsa pipewire-jack pipewire-pulse polkit-kde-agent qt6ct reflector speech-dispatcher wireplumber xdg-user-dirs
+#openresolv pipewire-alsa pipewire-pulse reflector speech-dispatcher xdg-user-dirs
 
 genfstab -U /mnt > /mnt/etc/fstab
 
