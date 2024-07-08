@@ -35,7 +35,13 @@ bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
 # Mount ESP partition
 mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt amd-ucode base booster cosmic-epoch-git cuda firefox firefox-ublock-origin helix linux-cachyos-lts-nvidia-open linux-firmware logrotate noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect sbctl sof-firmware wgcf wireguard-tools zram-generator
+pacstrap -KM /mnt amd-ucode base booster cosmic-epoch-git cuda firefox firefox-ublock-origin helix linux-cachyos-lts-nvidia-open linux-firmware logrotate noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect sbctl sof-firmware wgcf wireguard-tools zram-generator
+#bluez cachyos-fish-config cachyos-hooks cachyos-keyring cachyos-mirrorlist cachyos-v4-mirrorlist cachyos-v3-mirrorlist cachyos-rate-mirrors cachyos-settings
+#dosfstools e2fsprogs exfatprogs f2fs-tools jfsutils sysfsutils usbutils xfsprogs
+#iptables-nft linux-cachyos
+#networkmanager netctl systemd-boot-manager plymouth cachyos-plymouth-theme
+#mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
+#nvidia-utils nvidia-settings egl-wayland opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils libva-nvidia-driver vulkan-icd-loader lib32-vulkan-icd-loader linux-cachyos-nvidia
 
 genfstab -U /mnt > /mnt/etc/fstab
 
