@@ -35,12 +35,12 @@ bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
 # Mount ESP partition
 mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -KM /mnt amd-ucode base booster cosmic-epoch-git cuda firefox firefox-ublock-origin helix linux-cachyos linux-firmware logrotate noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect sbctl sof-firmware wgcf wireguard-tools zram-generator
+pacstrap -KM /mnt amd-ucode base bluez booster cosmic-epoch-git cuda firefox firefox-ublock-origin helix linux-cachyos linux-firmware logrotate noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect sbctl sof-firmware wgcf wireguard-tools zram-generator
 
-#bluez cachyos-fish-config cachyos-hooks cachyos-keyring cachyos-mirrorlist cachyos-v4-mirrorlist cachyos-v3-mirrorlist cachyos-rate-mirrors cachyos-settings
+#cachyos-fish-config cachyos-hooks cachyos-keyring cachyos-mirrorlist plymouth cachyos-plymouth-theme cachyos-rate-mirrors cachyos-settings cachyos-v3-mirrorlist cachyos-v4-mirrorlist
 #dosfstools e2fsprogs exfatprogs f2fs-tools jfsutils sysfsutils usbutils xfsprogs
 #iptables-nft
-#networkmanager netctl systemd-boot-manager plymouth cachyos-plymouth-theme
+#networkmanager netctl systemd-boot-manager 
 #mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
 #nvidia-utils nvidia-settings egl-wayland opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils libva-nvidia-driver vulkan-icd-loader lib32-vulkan-icd-loader linux-cachyos-nvidia
 
@@ -63,9 +63,6 @@ echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 echo host > /etc/hostname
 
-sed -i -E 's/^#(Color|VerbosePkgLists)$/\1/' /etc/pacman.conf
-sed -i 's/^#\(ParallelDownloads = \)5$/\1'$[`nproc`-1]'/' /etc/pacman.conf
-
 useradd -mG wheel $username
 echo $username:$password | chpasswd
 
@@ -74,14 +71,14 @@ wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 
-systemctl enable cosmic-greeter nftables systemd-resolved wg-quick@wgcf-profile
+systemctl enable bluetooth cosmic-greeter nftables systemd-resolved wg-quick@wgcf-profile
 
 mkdir -p /boot/loader/entries
-echo 'title Arch Linux
+echo 'title Linux
 linux /vmlinuz-linux-cachyos
 initrd /amd-ucode.img
 initrd /booster-linux-cachyos.img
-options root=PARTLABEL=ARCH nouveau.config=NvGspRm=1 lockdown=integrity zswap.enabled=0 rootfstype=bcachefs rw' > /boot/loader/entries/arch.conf
+options root=PARTLABEL=ARCH nouveau.config=NvGspRm=1 lockdown=integrity zswap.enabled=0 rootfstype=bcachefs nowatchdog rw' > /boot/loader/entries/linux.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
