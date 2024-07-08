@@ -35,7 +35,7 @@ bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
 # Mount ESP partition
 mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
 
-pacstrap -K /mnt amd-ucode base booster cachy-browser cosmic-epoch-git cuda helix linux-cachyos-lts-nvidia-open linux-firmware logrotate noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect sbctl sof-firmware wgcf wireguard-tools zram-generator
+pacstrap -K /mnt amd-ucode base booster cosmic-epoch-git cuda firefox firefox-ublock-origin helix linux-cachyos-lts-nvidia-open linux-firmware logrotate noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect sbctl sof-firmware wgcf wireguard-tools zram-generator
 
 genfstab -U /mnt > /mnt/etc/fstab
 
