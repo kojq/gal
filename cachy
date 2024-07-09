@@ -39,8 +39,7 @@ cp /etc/pacman-more.conf /etc/pacman.conf
 sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 
-pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-mirrorlist cachyos-v3-mirrorlist cosmic-epoch-git cuda dbus-broker-units firefox firefox-ublock-origin helix iptables-nft keepassxc linux-cachyos-rc linux-firmware logrotate networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect pipewire-jack rog-control-center sbctl sof-firmware wgcf wireguard-tools zed zram-generator
-#cachyos-fish-config cachyos-hooks plymouth cachyos-plymouth-theme cachyos-settings cachyos-v4-mirrorlist
+pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-mirrorlist cachyos-v3-mirrorlist cosmic-epoch-git cuda dbus-broker-units firefox firefox-ublock-origin helix iptables-nft keepassxc linux-cachyos linux-firmware logrotate networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nvidia-open obs-studio openconnect pipewire-jack rog-control-center sbctl sof-firmware systemd-resolvconf wgcf wireguard-tools zed zram-generator
 #dosfstools e2fsprogs exfatprogs f2fs-tools jfsutils sysfsutils usbutils xfsprogs
 #netctl systemd-boot-manager
 #lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
@@ -76,8 +75,8 @@ systemctl enable bluetooth NetworkManager nftables systemd-resolved systemd-time
 
 mkdir -p /boot/loader/entries
 echo 'title Linux
-linux /vmlinuz-linux-cachyos-rc
-initrd /booster-linux-cachyos-rc.img
+linux /vmlinuz-linux-cachyos
+initrd /booster-linux-cachyos.img
 options root=PARTLABEL=ARCH rw rootfstype=bcachefs lockdown=integrity zswap.enabled=0 nowatchdog nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
 
 mkdir /etc/pacman.d/hooks
@@ -100,8 +99,9 @@ sbctl create-keys
 sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux-cachyos-rc
+sbctl sign -s /boot/vmlinuz-linux-cachyos
 
 EOF
 
 umount -lR /mnt
+reboot
