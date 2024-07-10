@@ -39,10 +39,9 @@ cp /etc/pacman-more.conf /etc/pacman.conf
 sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 
-pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cosmic-session-git cuda dbus-broker-units firefox firefox-ublock-origin helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos linux-cachyos-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-jack sbctl systemd-resolvconf vulkan-radeon wgcf wireguard-tools zed zram-generator
+pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cosmic-session-git cuda dbus-broker-units firefox firefox-ublock-origin helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos linux-cachyos-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack sbctl systemd-resolvconf vulkan-radeon wgcf wireguard-tools zed zram-generator
 
-#aria2 cups distrobox fastfetch ollama podman typst espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en iwd libmythes libreoffice-fresh mythes-en
-#opencl-rusticl-mesa rocm-opencl-runtime pipewire-alsa pipewire-pulse speech-dispatcher xdg-user-dirs netctl systemd-boot-manager
+#aria2 cups distrobox podman typst espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa rocm-opencl-runtime pipewire-pulse netctl systemd-boot-manager
 #dosfstools e2fsprogs exfatprogs f2fs-tools jfsutils sysfsutils usbutils xfsprogs
 
 genfstab -U /mnt > /mnt/etc/fstab
