@@ -39,7 +39,7 @@ cp /etc/pacman-more.conf /etc/pacman.conf
 sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 
-pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cuda dbus-broker-units firefox firefox-ublock-origin fuzzel helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos linux-cachyos-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager niri noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland sbctl systemd-resolvconf vulkan-radeon wgcf wireguard-tools xdg-desktop-portal-gnome zed zram-generator
+pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cuda dbus-broker-units firefox firefox-ublock-origin fuzzel helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos linux-cachyos-nvidia-open linux-firmware logrotate ly mesa-vdpau networkmanager niri noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland sbctl systemd-resolvconf vulkan-radeon wgcf wireguard-tools xdg-desktop-portal-gnome zed zram-generator
 
 #aria2 cups distrobox podman typst espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa rocm-opencl-runtime pipewire-pulse netctl systemd-boot-manager
 #dosfstools e2fsprogs exfatprogs f2fs-tools jfsutils sysfsutils usbutils xfsprogs cosmic-session-git
@@ -65,7 +65,7 @@ wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 
-systemctl enable bluetooth NetworkManager nftables systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
+systemctl enable bluetooth ly NetworkManager nftables systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
 
 mkdir -p /boot/loader/entries
 echo 'title Linux
@@ -81,7 +81,7 @@ Target = systemd
 [Action]
 Description = Upgrading systemd-boot...
 When = PostTransaction
-Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-systemd-boot.hook
+Exec = systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-systemd-boot.hook
 
 bootctl install
 
