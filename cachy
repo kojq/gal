@@ -46,7 +46,11 @@ pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-r
 
 genfstab -U /mnt > /mnt/etc/fstab
 
+pmconf=$(</etc/pacman.conf)
+
 arch-chroot /mnt <<EOF
+
+echo $pmconf > /etc/pacman.conf
 
 ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 hwclock -wu
