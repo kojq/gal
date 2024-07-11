@@ -39,7 +39,7 @@ cp /etc/pacman-more.conf /etc/pacman.conf
 sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 
-pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cuda dbus-broker-units firefox firefox-ublock-origin fuzzel helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos linux-cachyos-nvidia-open linux-firmware logrotate ly mesa-vdpau networkmanager niri noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland sbctl systemd-resolvconf vulkan-radeon wgcf wireguard-tools xdg-desktop-portal-gnome zed zram-generator
+pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cuda dbus-broker-units firefox firefox-ublock-origin fuzzel helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-hardened-lto linux-cachyos-hardened-lto-nvidia-open linux-firmware logrotate ly mesa-vdpau networkmanager niri noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland sbctl systemd-resolvconf vulkan-radeon wgcf wireguard-tools xdg-desktop-portal-gnome zed zram-generator
 
 #aria2 cups distrobox podman typst espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa rocm-opencl-runtime pipewire-pulse netctl systemd-boot-manager
 #dosfstools e2fsprogs exfatprogs f2fs-tools jfsutils sysfsutils usbutils xfsprogs cosmic-session-git
@@ -73,9 +73,9 @@ systemctl enable bluetooth ly NetworkManager nftables systemd-resolved systemd-t
 
 mkdir -p /boot/loader/entries
 echo 'title Linux
-linux /vmlinuz-linux-cachyos
-initrd /booster-linux-cachyos.img
-options root=PARTLABEL=ARCH rw rootfstype=bcachefs lockdown=integrity zswap.enabled=0 nowatchdog nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
+linux /vmlinuz-linux-cachyos-hardened-lto
+initrd /booster-linux-cachyos-hardened-lto.img
+options root=PARTLABEL=ARCH rw rootfstype=bcachefs lockdown=confidentiality zswap.enabled=0 nowatchdog nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
@@ -97,7 +97,7 @@ sbctl create-keys
 sbctl enroll-keys -m
 sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
-sbctl sign -s /boot/vmlinuz-linux-cachyos
+sbctl sign -s /boot/vmlinuz-linux-cachyos-hardened-lto
 
 EOF
 
