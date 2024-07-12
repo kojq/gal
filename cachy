@@ -38,6 +38,7 @@ mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
 cp /etc/pacman-more.conf /etc/pacman.conf
 sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
+sed -i '/\[multilib\]/,+1 s/^/#/' /etc/pacman.conf
 
 pacstrap -K /mnt alacritty base blueman booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cuda dbus-broker-units firefox firefox-ublock-origin fuzzel helix iptables-nft iwd keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-hardened-lto linux-cachyos-hardened-lto-nvidia-open linux-firmware logrotate mesa-vdpau niri noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland sbctl systemd-resolvconf vulkan-radeon wgcf wireguard-tools xdg-desktop-portal-gnome zed zram-generator
 
