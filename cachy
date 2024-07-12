@@ -42,15 +42,14 @@ sed -i '/\[multilib\]/,+1 s/^/#/' /etc/pacman.conf
 
 pacstrap -K /mnt alacritty base blueman booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cuda dbus-broker-units firefox firefox-ublock-origin fuzzel helix iptables-nft iwd keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-hardened-lto linux-cachyos-hardened-lto-nvidia-open linux-firmware logrotate mesa-vdpau niri noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland sbctl systemd-resolvconf vulkan-radeon wgcf wireguard-tools xdg-desktop-portal-gnome zed zram-generator
 
-#tuigreet wlgreet aria2 cosmic-session-git cups distrobox espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en netctl opencl-rusticl-mesa pipewire-pulse podman rocm-opencl-runtime systemd-boot-manager typst
+#tuigreet wlgreet auto-cpufreq rog-control-center eww
+#aria2 cosmic-session-git cups distrobox espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en netctl opencl-rusticl-mesa pipewire-pulse podman rocm-opencl-runtime systemd-boot-manager typst
 
 genfstab -U /mnt > /mnt/etc/fstab
 
-pmconf=$(</etc/pacman.conf)
-
 arch-chroot /mnt <<EOF
 
-echo $pmconf > /etc/pacman.conf
+curl -o /etc/pacman.conf https://raw.githubusercontent.com/kojq/gal/main/pacman.conf
 
 ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 hwclock -wu
