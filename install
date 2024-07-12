@@ -59,8 +59,6 @@ locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 echo host > /etc/hostname
-echo modules_force_load: nvidia > /etc/booster.yaml
-/usr/lib/booster/regenerate_images
 
 echo '
 fastfetch' >> /etc/bash.bashrc
@@ -83,7 +81,7 @@ mkdir -p /boot/loader/entries
 echo 'title Linux
 linux /vmlinuz-linux-cachyos-hardened-lto
 initrd /booster-linux-cachyos-hardened-lto.img
-options root=PARTLABEL=ARCH rw rootfstype=bcachefs lockdown=confidentiality zswap.enabled=0 nowatchdog nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
+options root=PARTLABEL=ARCH rw rootfstype=bcachefs lockdown=confidentiality zswap.enabled=0 nowatchdog nouveau.config=NvGspRm=1 nvidia-drm.modeset=1' > /boot/loader/entries/linux.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
