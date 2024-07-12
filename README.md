@@ -1,7 +1,7 @@
 <div align=center>
   <img src=LOGO.svg height=140/>
 
-  # Get Arch Linux
+  # Get Arch Linux (CachyOS)
 
   Install Arch Linux with a favorable graphical experience.
 </div>
