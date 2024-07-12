@@ -40,10 +40,10 @@ sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 sed -i '/\[multilib\]/,+1 s/^/#/' /etc/pacman.conf
 
-pacstrap -K /mnt alacritty base blueman booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cuda dbus-broker-units fastfetch fcitx5-configtool fcitx5-hangul firefox firefox-ublock-origin fuzzel gnome-disk-utility gnome-keyring gnome-themes-extra helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-hardened-lto linux-cachyos-hardened-lto-nvidia-open linux-firmware logrotate ly mesa-vdpau nautilus networkmanager niri noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland qt6ct rog-control-center sbctl swaybg systemd-resolvconf typst vulkan-radeon wgcf wireguard-tools xdg-desktop-portal-gnome zed zram-generator
+pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cosmic-epoch-git cuda dbus-broker-units firefox firefox-ublock-origin helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-hardened-lto linux-cachyos-hardened-lto-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland sbctl systemd-resolvconf typst vulkan-radeon wgcf wireguard-tools zed zram-generator
 
 #aria2 cosmic-session-git cups distrobox espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en netctl opencl-rusticl-mesa pipewire-pulse podman rocm-opencl-runtime speech-dispatcher systemd-boot-manager
-#fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey
+#fcitx5-configtool fcitx5-hangul fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -57,11 +57,7 @@ hwclock -wu
 sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
-
 echo host > /etc/hostname
-
-echo '
-fastfetch' >> /etc/bash.bashrc
 
 useradd -mG wheel $username
 echo $username:$password | chpasswd
@@ -71,13 +67,13 @@ wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 
-systemctl enable bluetooth ly NetworkManager nftables systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
+systemctl enable bluetooth NetworkManager nftables systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
 
 mkdir -p /boot/loader/entries
 echo 'title Linux
 linux /vmlinuz-linux-cachyos-hardened-lto
 initrd /booster-linux-cachyos-hardened-lto.img
-options root=PARTLABEL=ARCH nowatchdog quiet rw rootfstype=bcachefs zswap.enabled=0 lockdown=confidentiality nouveau.config=NvGspRm=1 nvidia-drm.modeset=1' > /boot/loader/entries/linux.conf
+options root=PARTLABEL=ARCH nowatchdog quiet rw rootfstype=bcachefs zswap.enabled=0 lockdown=confidentiality nvidia-drm.modeset=1 nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
