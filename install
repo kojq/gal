@@ -59,6 +59,8 @@ locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 echo host > /etc/hostname
+echo modules_force_load: nvidia > /etc/booster.yaml
+/usr/lib/booster/regenerate_images
 
 echo '
 fastfetch' >> /etc/bash.bashrc
