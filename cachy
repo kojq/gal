@@ -40,11 +40,10 @@ sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 sed -i '/\[multilib\]/,+1 s/^/#/' /etc/pacman.conf
 
-pacstrap -K /mnt alacritty base blueman booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cuda dbus-broker-units fastfetch fcitx5-configtool fcitx5-hangul firefox firefox-ublock-origin fuzzel helix iptables-nft iwd keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-hardened-lto linux-cachyos-hardened-lto-nvidia-open linux-firmware logrotate mesa-vdpau niri noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland sbctl systemd-resolvconf vulkan-radeon wgcf wireguard-tools xdg-desktop-portal-gnome zed zram-generator
+pacstrap -K /mnt alacritty base blueman booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cuda dbus-broker-units fastfetch fcitx5-configtool fcitx5-hangul firefox firefox-ublock-origin fuzzel gnome-disk-utility gnome-keyring gnome-themes-extra helix iptables-nft iwd keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-hardened-lto linux-cachyos-hardened-lto-nvidia-open linux-firmware logrotate ly mesa-vdpau niri nautilus noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack qt6-wayland rog-control-center qt6ct sbctl systemd-resolvconf swaybg typst vulkan-radeon wgcf wireguard-tools xdg-desktop-portal-gnome zed zram-generator
 
-#tuigreet wlgreet auto-cpufreq rog-control-center eww
 #fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey
-#aria2 cosmic-session-git cups distrobox espeak-ng speech-dispatcher fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en netctl opencl-rusticl-mesa pipewire-pulse podman rocm-opencl-runtime systemd-boot-manager typst
+#aria2 cosmic-session-git cups distrobox espeak-ng speech-dispatcher fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en netctl opencl-rusticl-mesa pipewire-pulse podman rocm-opencl-runtime systemd-boot-manager
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -76,7 +75,7 @@ wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 
-systemctl enable bluetooth iwd nftables systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
+systemctl enable bluetooth iwd ly nftables systemd-resolved systemd-timesyncd wg-quick@wgcf-profile
 
 mkdir -p /boot/loader/entries
 echo 'title Linux
