@@ -40,9 +40,9 @@ sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 sed -i '/\[multilib\]/,+1 s/^/#/' /etc/pacman.conf
 
-pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cosmic-session-git cuda dbus-broker-units firefox firefox-ublock-origin helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-hardened-lto linux-cachyos-hardened-lto-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack pipewire-pulse qt6-wayland sbctl systemd-resolvconf typst vulkan-radeon wgcf wireguard-tools xdg-user-dirs zed zram-generator
+pacstrap -K /mnt espeak-ng speech-dispatcher base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cosmic-session-git cuda dbus-broker-units firefox firefox-ublock-origin helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-hardened-lto linux-cachyos-hardened-lto-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack pipewire-pulse qt6-wayland sbctl systemd-resolvconf typst vulkan-radeon wgcf wireguard-tools xdg-user-dirs zed zram-generator
 
-#aria2 cups distrobox espeak-ng fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa podman rocm-opencl-runtime speech-dispatcher
+#aria2 cups distrobox fwupd hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa podman rocm-opencl-runtime
 #fcitx5-configtool fcitx5-hangul fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey
 
 genfstab -U /mnt > /mnt/etc/fstab
