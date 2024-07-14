@@ -28,9 +28,6 @@ Make adjustments after installing. Below are a few examples.
 - Connect to the Internet
 - Decrease microphone volume
   - `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .4`
-- Enable GTK dark theme (`gnome-themes-extra` needs to be installed)
-  - `gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark`
-  - `gsettings set org.gnome.desktop.interface color-scheme prefer-dark`
 - Modify language or keyboard layout (or add IME with `fcitx5`)
 
 ## Features
