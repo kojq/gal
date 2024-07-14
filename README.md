@@ -26,7 +26,6 @@ sh <(curl https://raw.githubusercontent.com/kojq/gal/main/install)
 Make adjustments after installing. Below are a few examples.
 
 - Connect to the Internet
-  - `nmcli`
 - Decrease microphone volume
   - `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .4`
 - Enable GTK dark theme (`gnome-themes-extra` needs to be installed)
