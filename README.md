@@ -3,7 +3,7 @@
 
   # Get Arch Linux (CachyOS)
 
-  Install Arch Linux with a favorable graphical experience.
+  Install Arch Linux (CachyOS) with a favorable graphical experience.
 </div>
 
 ## Community
@@ -14,7 +14,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 
 1. Set Secure Boot mode to Setup mode via firmware settings
 
-1. Boot into the live environment
+1. Boot into the CachyOS live environment
 
 1. Connect to the Internet
 
@@ -26,13 +26,13 @@ sh <(curl https://raw.githubusercontent.com/kojq/gal/main/install)
 Make adjustments after installing. Below are a few examples.
 
 - Connect to the Internet
-  - `iwctl`
+  - `nmcli`
 - Decrease microphone volume
   - `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .4`
-- Enable GTK dark theme
+- Enable GTK dark theme (`gnome-themes-extra` needs to be installed)
   - `gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark`
   - `gsettings set org.gnome.desktop.interface color-scheme prefer-dark`
-- Modify language or keyboard layout
+- Modify language or keyboard layout (or add IME with `fcitx5`)
 
 ## Features
 
