@@ -73,7 +73,7 @@ mkdir -p /boot/loader/entries
 echo 'title Linux
 linux /vmlinuz-linux-cachyos-lto
 initrd /booster-linux-cachyos-lto.img
-options root=PARTLABEL=ARCH nowatchdog quiet rw rootfstype=bcachefs zswap.enabled=0 lockdown=confidentiality nvidia-drm.modeset=1 nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
+options root=PARTLABEL=ARCH nowatchdog quiet rw rootfstype=bcachefs zswap.enabled=0 lockdown=confidentiality nvidia_drm.modeset=1 nvidia_drm.fbdev=1 nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
