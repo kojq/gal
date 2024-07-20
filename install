@@ -40,10 +40,10 @@ sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 sed -i '/\[multilib\]/,+1 s/^/#/' /etc/pacman.conf
 
-pacstrap -K /mnt nautilus base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cosmic-session-git cuda cups-pdf dbus-broker-units espeak-ng firefox firefox-ublock-origin helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-lto linux-cachyos-lto-nvidia-open linux-firmware logrotate ly mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack pipewire-pulse qt6-wayland sbctl speech-dispatcher systemd-resolvconf vulkan-radeon wgcf wireguard-tools xdg-user-dirs zed zram-generator
+pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cosmic-files-git cosmic-session-git cuda cups-pdf dbus-broker-units espeak-ng fcitx5-configtool fcitx5-hangul firefox firefox-ublock-origin helix iptables-nft keepassxc libva-mesa-driver libva-nvidia-driver linux-cachyos-lto linux-cachyos-lto-nvidia-open linux-firmware logrotate ly mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack pipewire-pulse qt6-wayland sbctl speech-dispatcher systemd-resolvconf vulkan-radeon wgcf wireguard-tools xdg-user-dirs zed zram-generator
 
-#cosmic-files-git distrobox podman typst aria2 system76-power hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa rocm-opencl-runtime
-#fcitx5-configtool fcitx5-hangul fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey
+#aria2 distrobox hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa podman rocm-opencl-runtime system76-power typst
+#fcitx5-anthy fcitx5-bamboo fcitx5-chewing fcitx5-chinese-addons fcitx5-kkc fcitx5-libthai fcitx5-m17n fcitx5-mozc fcitx5-pinyin-zhwiki fcitx5-rime fcitx5-sayura fcitx5-skk fcitx5-table-extra fcitx5-table-other fcitx5-unikey
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -73,7 +73,7 @@ mkdir -p /boot/loader/entries
 echo 'title Linux
 linux /vmlinuz-linux-cachyos-lto
 initrd /booster-linux-cachyos-lto.img
-options root=PARTLABEL=ARCH nowatchdog quiet rw rootfstype=bcachefs zswap.enabled=0 lockdown=confidentiality nvidia_drm.modeset=1 nvidia_drm.fbdev=1 nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
+options root=PARTLABEL=ARCH nowatchdog quiet rw rootfstype=bcachefs zswap.enabled=0 nvidia_drm.modeset=1 nvidia_drm.fbdev=1 nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
