@@ -54,6 +54,8 @@ curl -o /etc/pacman.conf https://raw.githubusercontent.com/kojq/gal/main/pacman.
 ln -s /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 hwclock -wu
 
+sed -i -r 's/(animation = )none/\1doom/; s/(clock = )none/\1%c/; s/(bigclock = )false/\1true/' /etc/ly/config.ini
+
 sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
