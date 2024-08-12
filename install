@@ -40,10 +40,10 @@ sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 sed -i '/\[multilib\]/,+1 s/^/#/' /etc/pacman.conf
 
-pacstrap -K /mnt base bluez booster cachy-browser cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cosmic-files-git cosmic-session-git crun cuda cups-pdf dbus-broker-units distrobox espeak-ng fcitx5-configtool fcitx5-hangul fcitx5-libthai fcitx5-mozc fcitx5-sayura fcitx5-unikey helix iptables-nft keepassxc libva-mesa-driver linux-cachyos-lto linux-cachyos-lto-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland sbctl speech-dispatcher system76-power systemd-resolvconf upower vulkan-radeon wgcf wireguard-tools xdg-user-dirs zed zram-generator
+pacstrap -K /mnt base bluez booster cachy-browser cachyos-keyring cachyos-mirrorlist cachyos-rate-mirrors cachyos-v3-mirrorlist cosmic-files cosmic-session crun cuda cups-pdf dbus-broker-units distrobox espeak-ng fcitx5-configtool fcitx5-hangul fcitx5-libthai fcitx5-mozc fcitx5-sayura fcitx5-unikey helix iptables-nft keepassxc libva-mesa-driver linux-cachyos-lto linux-cachyos-lto-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack pipewire-pulse podman qt6-wayland sbctl speech-dispatcher system76-power systemd-resolvconf upower vulkan-radeon wgcf wireguard-tools xdg-user-dirs zed zram-generator
 
 #fcitx5-chewing fcitx5-m17n fcitx5-pinyin-zhwiki fcitx5-table-other
-#aria2 hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa rocm-opencl-runtime typst
+#aria2 hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa pijul rocm-opencl-runtime typst
 
 genfstab -U /mnt > /mnt/etc/fstab
 
