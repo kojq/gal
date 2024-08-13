@@ -66,6 +66,7 @@ yes | wgcf register
 wgcf generate
 cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
+sed -i '/^DNS/ s/.\{1\}$/2/' /etc/wireguard/wgcf-profile.conf
 
 systemctl enable bluetooth com.system76.PowerDaemon cups.socket greetd NetworkManager nftables systemd-resolved systemd-timesyncd upower wg-quick@wgcf-profile
 
