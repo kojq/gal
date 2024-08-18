@@ -94,7 +94,7 @@ Target = systemd
 [Action]
 Description = Upgrading systemd-boot...
 When = PostTransaction
-Exec = systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-systemd-boot.hook
+Exec = /usr/bin/systemctl restart systemd-boot-update' > /etc/pacman.d/hooks/1-systemd-boot.hook
 
 bootctl install
 
