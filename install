@@ -68,17 +68,7 @@ cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 sed -i '/^DNS/ s/.\{1\}$/2/' /etc/wireguard/wgcf-profile.conf
 
-systemctl enable bluetooth com.system76.PowerDaemon cups.socket greetd NetworkManager nftables systemd-resolved systemd-timesyncd upower wg-quick@wgcf-profile
-
-echo '[terminal]
-vt = "1"
-
-[general]
-service = "login"
-
-[default_session]
-command = "cosmic-comp systemd-cat -t cosmic-greeter cosmic-greeter"
-user = "cosmic-greeter"' > /etc/greetd/config.toml
+systemctl enable bluetooth com.system76.PowerDaemon cosmic-greeter cups.socket NetworkManager nftables systemd-resolved systemd-timesyncd upower wg-quick@wgcf-profile
 
 mkdir -p /boot/loader/entries
 echo 'title Linux
