@@ -29,7 +29,7 @@ Make adjustments after installing. Below are a few examples.
 - Connect to the Internet
 - Decrease microphone volume
   - `wpctl set-volume @DEFAULT_AUDIO_SOURCE@ .4`
-- Modify language or keyboard layout (or add IME with `fcitx5`)
+- Modify locales or keyboard layout (or add IME with `fcitx5`)
 
 ## Features
 
