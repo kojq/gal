@@ -40,7 +40,7 @@ sed -i 's/\(ParallelDownloads = \)10$/\1'$[`nproc`-1]'/' /etc/pacman.conf
 sed -i 's/#<disabled_v3>//g' /etc/pacman.conf
 sed -i '/\[multilib\]/,+1 s/^/#/' /etc/pacman.conf
 
-pacstrap -K /mnt base bluez booster firefox-developer-edition cachyos-keyring cachyos-mirrorlist cachyos-v3-mirrorlist cosmic-files-git cosmic-session-git cuda cups-pdf dbus-broker-units espeak-ng iptables-nft keepassxc libva-mesa-driver linux-cachyos-lto linux-cachyos-lto-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack pipewire-pulse qt6-wayland sbctl speech-dispatcher system76-power systemd-resolvconf upower vulkan-radeon wgcf wireguard-tools xdg-user-dirs zed zram-generator
+pacstrap -K /mnt base bluez booster cachyos-keyring cachyos-mirrorlist cachyos-v3-mirrorlist cosmic-files-git cosmic-session-git cuda cups-pdf dbus-broker-units espeak-ng firefox-developer-edition iptables-nft keepassxc libva-mesa-driver linux-cachyos-lto linux-cachyos-lto-nvidia-open linux-firmware logrotate mesa-vdpau networkmanager noto-fonts noto-fonts-cjk noto-fonts-emoji obs-studio openconnect pipewire-alsa pipewire-jack pipewire-pulse qt6-wayland sbctl speech-dispatcher system76-power systemd-resolvconf upower vulkan-radeon wgcf wireguard-tools xdg-user-dirs zed zram-generator
 
 #fcitx5-configtool fcitx5-hangul fcitx5-libthai fcitx5-mozc fcitx5-sayura fcitx5-unikey
 #fcitx5-chewing fcitx5-m17n fcitx5-pinyin-zhwiki fcitx5-table-other
@@ -75,7 +75,7 @@ mkdir -p /boot/loader/entries
 echo 'title Linux
 linux /vmlinuz-linux-cachyos-lto
 initrd /booster-linux-cachyos-lto.img
-options root=PARTLABEL=ARCH nowatchdog quiet rw rootfstype=bcachefs zswap.enabled=0 nvidia_drm.modeset=1 nvidia_drm.fbdev=1 nouveau.config=NvGspRm=1' > /boot/loader/entries/linux.conf
+options nouveau.config=NvGspRm=1 nowatchdog nvidia_drm.fbdev=1 nvidia_drm.modeset=1 quiet root=PARTLABEL=ARCH rootfstype=bcachefs rw zswap.enabled=0' > /boot/loader/entries/linux.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
