@@ -28,6 +28,9 @@ mkfs.fat -F32 /dev/$disk$separator'1'
 # mkfs.bcachefs -f --compression=zstd:3 --discard --encrypted /dev/$disk$separator'2'
 bcachefs format -f --compression=zstd:3 --discard --encrypted /dev/$disk$separator'2'
 
+# Unlock root partition prior to mount
+bcachefs unlock -k session /dev/$disk$separator'2'
+
 # Mount root partition
 # mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
 bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
