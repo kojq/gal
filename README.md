@@ -19,8 +19,12 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 1. Connect to the Internet
 
 1. Run the following commands:
+
 ```ShellSession
 run0 su
+```
+
+```ShellSession
 sh <(curl https://raw.githubusercontent.com/kojq/gal/main/install)
 ```
 
