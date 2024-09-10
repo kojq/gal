@@ -47,7 +47,7 @@ pacstrap -K /mnt apparmor base bluez booster cachyos-keyring cachyos-mirrorlist 
 
 #fcitx5-configtool fcitx5-hangul fcitx5-libthai fcitx5-mozc fcitx5-sayura fcitx5-unikey
 #fcitx5-chewing fcitx5-m17n fcitx5-pinyin-zhwiki fcitx5-table-other
-#aria2 helix hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa pijul rocm-opencl-runtime typst
+#aria2 hunspell hunspell-en_us hyphen hyphen-en libmythes libreoffice-fresh mythes-en opencl-rusticl-mesa pijul rocm-opencl-runtime typst
 
 genfstab -U /mnt > /mnt/etc/fstab
 
