@@ -25,15 +25,15 @@ parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 1025MiB set 1 esp on mkpa
 mkfs.fat -F32 /dev/$disk$separator'1'
 
 # Format root partition
-# mkfs.bcachefs -f --compression=zstd:4 --discard --encrypted /dev/$disk$separator'2'
-bcachefs format -f --compression=zstd:4 --discard /dev/$disk$separator'2'
+# bcachefs format -f --compression=zstd:3 --discard --encrypted /dev/$disk$separator'2'
+mkfs.bcachefs -f --compression=zstd:3 --discard /dev/$disk$separator'2'
 
 # Unlock root partition (-k session)?
 # bcachefs unlock /dev/$disk$separator'2'
 
 # Mount root partition
-# mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
-bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
+# bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
+mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
 
 # Mount ESP partition
 mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
