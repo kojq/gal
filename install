@@ -82,9 +82,10 @@ options lsm=landlock,lockdown,yama,integrity,apparmor,bpf nouveau.config=NvGspRm
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
-Type = Package
 Operation = Upgrade
+Type = Package
 Target = systemd
+
 [Action]
 Description = Upgrading systemd-boot...
 When = PostTransaction
