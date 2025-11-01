@@ -67,7 +67,7 @@ cp wgcf-profile.conf /etc/wireguard
 rm wgcf-account.toml wgcf-profile.conf
 sed -i '/^DNS/ s/.\{1\}$/2/' /etc/wireguard/wgcf-profile.conf
 
-systemctl enable apparmor bluetooth com.system76.PowerDaemon cosmic-greeter cups.socket NetworkManager nftables systemd-resolved systemd-timesyncd upower wg-quick@wgcf-profile
+systemctl enable apparmor bluetooth com.system76.PowerDaemon cosmic-greeter cups.socket fstrim.timer NetworkManager nftables systemd-resolved systemd-timesyncd upower wg-quick@wgcf-profile
 
 mkdir -p /boot/loader/entries
 echo 'title Linux
