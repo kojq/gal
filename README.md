@@ -1,5 +1,5 @@
 <div align=center>
-  <img src=LOGO.svg height=140/>
+  <img src=LOGO.svg height="140"/>
 
   # Get Arch Linux (CachyOS)
 
