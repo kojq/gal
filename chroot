@@ -10,7 +10,7 @@ done
 [[ $disk =~ [0-9]$ ]] && separator=p
 
 # Mount system
-mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
+mount -t xfs /dev/$disk$separator'2' /mnt
 
 # Mount ESP partition
 mount -o umask=0077 /dev/$disk$separator'1' /mnt/boot
