@@ -25,15 +25,10 @@ parted -s /dev/$disk mklabel gpt mkpart ESP fat32 1MiB 1025MiB set 1 esp on mkpa
 mkfs.fat -F32 /dev/$disk$separator'1'
 
 # Format root partition
-# bcachefs format -f --compression=zstd:3 --discard --encrypted /dev/$disk$separator'2'
-mkfs.bcachefs -f --compression=zstd:3 --discard /dev/$disk$separator'2'
-
-# Unlock root partition (-k session)?
-# bcachefs unlock /dev/$disk$separator'2'
+mkfs.xfs -f /dev/$disk$separator'2'
 
 # Mount root partition
-# bcachefs mount -o noatime /dev/$disk$separator'2' /mnt
-mount -o noatime -t bcachefs /dev/$disk$separator'2' /mnt
+mount -t xfs /dev/$disk$separator'2' /mnt
 
 # Mount ESP partition
 mount -o umask=0077 -m /dev/$disk$separator'1' /mnt/boot
@@ -78,7 +73,7 @@ mkdir -p /boot/loader/entries
 echo 'title Linux
 linux /vmlinuz-linux-cachyos
 initrd /booster-linux-cachyos.img
-options lsm=landlock,lockdown,yama,integrity,apparmor,bpf nouveau.config=NvGspRm=1 nowatchdog nvidia_drm.fbdev=1 nvidia_drm.modeset=1 quiet root=PARTLABEL=ARCH rootfstype=bcachefs rw zswap.enabled=0' > /boot/loader/entries/linux.conf
+options lsm=landlock,lockdown,yama,integrity,apparmor,bpf nouveau.config=NvGspRm=1 nowatchdog nvidia_drm.fbdev=1 nvidia_drm.modeset=1 quiet root=PARTLABEL=ARCH rootfstype=xfs rw zswap.enabled=0' > /boot/loader/entries/linux.conf
 
 mkdir /etc/pacman.d/hooks
 echo '[Trigger]
