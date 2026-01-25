@@ -6,10 +6,6 @@
   Install Arch Linux (CachyOS) with a favorable graphical experience.
 </div>
 
-## Community
-
-Disrespect is not tolerated. Feel free to [join the Discord server](https://discord.com/invite/C6NdvU5bzN).
-
 ## Usage
 
 1. Set Secure Boot mode to Setup mode via firmware settings
@@ -21,7 +17,7 @@ Disrespect is not tolerated. Feel free to [join the Discord server](https://disc
 1. Run the following commands:
 
 ```ShellSession
-run0 su
+run0
 ```
 
 ```ShellSession
