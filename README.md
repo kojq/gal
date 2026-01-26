@@ -14,14 +14,10 @@
 
 1. Connect to the Internet
 
-1. Run the following commands:
+1. Run the following command(s):
 
 ```ShellSession
-run0
-```
-
-```ShellSession
-sh <(curl https://raw.githubusercontent.com/kojq/gal/main/install)
+run0 sh <(curl https://raw.githubusercontent.com/kojq/gal/main/install)
 ```
 
 Make adjustments after installing. Below are a few examples.
